@@ -25,6 +25,13 @@ var loaders = [
     {
         test: /\.less$/,
         loader: "style!css!less"
+    },
+    {
+        test: /[\/\\](node_modules|global)[\/\\].*\.css$/,
+        loaders: [
+            'style?sourceMap',
+            'css'
+        ]
     }
 
 ];

@@ -1,11 +1,17 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { DatePicker } from 'antd';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
-const App = React.createClass({
-    render: () =>{
-        return <DatePicker />
-    }
-});
+injectTapEventPlugin();
+var handleToggle = function(){
+    alert(123);
+};
+const App = () => (
+    <MuiThemeProvider>
+        <RaisedButton label="Default" onClick={handleToggle}/>
+    </MuiThemeProvider>
+);
 
 render(<App/>, document.getElementById("app"));
