@@ -4,20 +4,23 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { browserHistory } from 'react-router';
-import { syncHistoryWithStore, routerReducer as routing } from 'react-router-redux';
+import { syncHistoryWithStore, routerReducer} from 'react-router-redux';
 import reducers from '../reducers/index';
 
 const Routes = require('../routes/index');
 
-const store = createStore(
-    ...reducers,
-    routing,
-    applyMiddleware(thunk)
-);
+const store = createStore(combineReducers({
+    ...reducers
+    //routerReducer,
+    //applyMiddleware(thunk)
+}), {});
+
+
+//const history = syncHistoryWithStore(browserHistory, store);
 
 const App = () => (
     <Provider store={store}>
-        <Routes history={history} />
+        <Routes/>
     </Provider>
 );
 

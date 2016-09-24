@@ -11,15 +11,10 @@ const PORT = process.env.PORT || "8888";
 var loaders = [
     {
         test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components|public)/,
-        loaders: ['react-hot']
-    },
-    {
-        test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components|public)/,
+        exclude: /node_modules/,
         loader: 'babel',
         query: {
-            presets: ['es2015', 'react']
+            presets: ['es2015', "stage-1",'react']
         }
     },
     {
@@ -40,7 +35,7 @@ module.exports = {
     entry: [
         `webpack-dev-server/client?http://${HOST}:${PORT}`,
         `webpack/hot/only-dev-server`,
-        `./src/index.jsx` // Your appʼs entry point
+        `./src/entry/index.jsx` // Your appʼs entry point
     ],
     devtool: process.env.WEBPACK_DEVTOOL || 'cheap-module-source-map',
     output: {
