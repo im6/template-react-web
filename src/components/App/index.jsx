@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { DatePicker } from 'antd';
+import { connect } from 'react-redux';
 
-const Ab = (test) => {
+const App = (test) => {
     debugger;
     return (
         <div>
@@ -11,20 +12,11 @@ const Ab = (test) => {
 
     );
 };
-
-Ab.propTypes = {
-};
-
-function mapStateToProps(state) {
+function mapStateToProps({list}) {
     debugger;
     return {
-        value: state.count
-    }
+        todos: list
+    };
 }
 
-const App = connect(
-    mapStateToProps
-)(Ab);
-
-
-export default App;
+export default connect(mapStateToProps)(App);
