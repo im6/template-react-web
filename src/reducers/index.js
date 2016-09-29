@@ -1,7 +1,10 @@
-import list from './list.jsx';
+// Use require.context to require reducers automatically
+// Ref: https://webpack.github.io/docs/context.html
+const context = require.context('./', false, /\.jsx$/);
+const keys = context.keys().filter(item => item !== './index.js');
 
-const reducers = {
-    list
-};
-debugger;
+const reducers = keys.reduce((memo, key) => {
+    memo[key.match(/([^\/]+)\.jsx$/)[1]] = context(key);
+    return memo;
+}, {});
 export default reducers;

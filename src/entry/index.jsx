@@ -2,26 +2,19 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
-import thunk from 'redux-thunk';
-import { browserHistory } from 'react-router';
-import { syncHistoryWithStore, routerReducer} from 'react-router-redux';
-import reducers from '../reducers/index';
+import list from '../reducers/list';
+import reducers from '../reducers';
+import App from '../components/App/index.jsx';
 
-const Routes = require('../routes/index');
+var a = {
+    list
+};
+var b = reducers;
+debugger;
+const store = createStore(combineReducers(a));
 
-const store = createStore(combineReducers({
-    ...reducers
-    //routerReducer,
-    //applyMiddleware(thunk)
-}), {});
-
-
-//const history = syncHistoryWithStore(browserHistory, store);
-
-const App = () => (
+render(
     <Provider store={store}>
-        <Routes/>
-    </Provider>
-);
-
-render(<App/>, document.getElementById("app"));
+        <App/>
+    </Provider>,
+    document.getElementById("app"));

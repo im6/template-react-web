@@ -1,15 +1,28 @@
-import React from 'react';
-import { render } from 'react-dom';
-
-const App = ()=>{
-
+debugger;
+const App = ({ location }) => {
+    let currentElem = null;
+    switch (location.pathname) {
+        case '/home':
+            currentElem = <Home/>;
+            break;
+        case '/dashboard':
+            currentElem = <Dashboard />;
+            break;
+        case '/login':
+            currentElem = <Auth />;
+            break;
+        default :
+            currentElem = <Home/>;
+            break;
+    }
     return (
-        <h1>  this is App Container  </h1>
+        <Layout>
+            {currentElem}
+        </Layout>
     );
 };
 
 App.propTypes = {
-
 };
 
 export default App;

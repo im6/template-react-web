@@ -1,15 +1,22 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import { render } from 'react-dom';
 
-const ErrorPage = ()=>{
+//const ErrorPage = ()=>{
+//    return <h1> this is Error Page Container </h1>;
+//};
 
-    return (
-        <h1>  this is Error Page Container  </h1>
-    );
-};
+class ErrorPage extends React.Component {
 
-ErrorPage.propTypes = {
+    static propTypes = {
+        children: PropTypes.element.isRequired,
+    };
 
-};
+    render() {
+        // NOTE: If you need to add or modify header, footer etc. of the app,
+        // please do that inside the Layout component.
+        return <h1> this is Error Page Container </h1>;
+    }
+
+}
 
 export default ErrorPage;

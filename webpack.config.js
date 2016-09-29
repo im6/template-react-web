@@ -14,7 +14,15 @@ var loaders = [
         exclude: /node_modules/,
         loader: 'babel',
         query: {
-            presets: ['es2015', "stage-1",'react']
+            presets: ['es2015','react', "stage-0"],
+            plugins: [
+                'transform-runtime',
+                ['import', {
+                    libraryName: 'antd',
+                    libraryDirectory: "lib",
+                    style: true
+                }]
+            ]
         }
     },
     {
@@ -22,13 +30,10 @@ var loaders = [
         loader: "style!css!less"
     },
     {
-        test: /[\/\\](node_modules|global)[\/\\].*\.css$/,
-        loaders: [
-            'style?sourceMap',
-            'css'
-        ]
+        test: /\.css$/,
+        exclude: /\.useable\.css$/,
+        loader: "style!css"
     }
-
 ];
 
 module.exports = {
