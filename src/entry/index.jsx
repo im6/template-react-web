@@ -3,10 +3,9 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-import { Router, Route, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer as routing } from 'react-router-redux';
-
-import App from '../components/App/index.jsx';
+import Routes from '../routes/index';
 
 import list from '../reducers/list';
 
@@ -20,10 +19,7 @@ const history = syncHistoryWithStore(browserHistory, store);
 
 render(
   <Provider store={store}>
-    <Router history={history}>
-      <Route path="/" component={App} />
-      <Route path="/list" component={App} />
-    </Router>
+    <Routes history={history} />
   </Provider>,
   document.getElementById('app')
 );
