@@ -4,6 +4,7 @@
 =========================
 
 An unopinionate react starter for SPA.
+If you prefer a server-side rendering solution, please go to [react-starter-kit](https://github.com/kriasoft/react-starter-kit)
 
 
 ## cli example
@@ -51,3 +52,6 @@ Enjoy!
 ## License
 
 MIT
+
+---
+Made with ♥ by ZJ Guo ([@郭子剑](http://www.weibo.com/111581118)) and inspired by [ant-init](https://github.com/ant-design/antd-init)
