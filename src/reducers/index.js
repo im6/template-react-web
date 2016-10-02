@@ -3,7 +3,8 @@
 const context = require.context('./', false, /\.jsx$/);
 const keys = context.keys().filter(item => item !== './index.js');
 
-const reducers = keys.reduce((memo, key) => {
+const reducers = keys.reduce((memo1, key) => {
+  const memo = memo1;
   memo[key.match(/([^\/]+)\.jsx$/)[1]] = context(key);
   return memo;
 }, {});

@@ -1,5 +1,5 @@
 import requester from './requester';
 
-export async function getList(){
+export default async function getList() {
   return requester('/test');
 }

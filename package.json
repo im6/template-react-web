@@ -66,6 +66,6 @@
     "express": "^4.14.0"
   },
   "pre-commit": [
-    //"lint"
+    "lint"
   ]
 }

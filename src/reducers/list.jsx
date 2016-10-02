@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { handleActions } from 'redux-actions';
 
 const list = handleActions({

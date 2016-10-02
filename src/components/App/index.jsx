@@ -1,27 +1,35 @@
-import React, { Component, PropTypes } from 'react';
+
+import React, { PropTypes } from 'react';
 import { DatePicker, Button } from 'antd';
 import { connect } from 'react-redux';
 import AppLayout from '../../layouts/app/AppLayout.jsx';
 
-const App = ({url}) => {
-  const fn = (url)=>{
-    if(url === '/'){
-      return <DatePicker/>
-    } else if(url === '/list'){
-      return <Button type="primary">Primary</Button>
-
+const App = ({ url }) => {
+  let ele = null;
+  const fn = (localUrl) => {
+    if (localUrl === '/') {
+      ele = <DatePicker />;
+    } else if (localUrl === '/list') {
+      ele = <Button type="primary">Primary</Button>;
     }
+
+    return ele;
   };
+
   return (
     <AppLayout>
-      {fn(url)}
+      { fn(url) }
     </AppLayout>
   );
 };
 
-function mapStateToProps({list},{route}) {
+App.propTypes = {
+  url: PropTypes.string.isRequired,
+};
+
+function mapStateToProps({ list }, { route }) {
   return {
-    url: route.path
+    url: route.path,
   };
 }
 

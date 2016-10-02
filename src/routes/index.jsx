@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Router, Route, IndexRoute, Link } from 'react-router';
+import { Router, Route } from 'react-router';
 import App from '../components/App/index.jsx';
 
 const Routes = ({ history }) =>
@@ -8,7 +8,7 @@ const Routes = ({ history }) =>
   </Router>;
 
 Routes.propTypes = {
-  history: PropTypes.any,
+  history: PropTypes.object.isRequired,
 };
 
 export default Routes;
