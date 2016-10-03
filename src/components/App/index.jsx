@@ -4,13 +4,25 @@ import { DatePicker, Button } from 'antd';
 import { connect } from 'react-redux';
 import AppLayout from '../../layouts/app/AppLayout.jsx';
 
-const App = ({ url }) => {
+const App = ({ dispatch,  route}) => {
   let ele = null;
+  const url = route.path;
+
+  const onBtnClick = ()=>{
+    dispatch({
+      type:'list/get',
+      payload:{
+        test:123
+      }
+    })
+
+  };
+
   const fn = (localUrl) => {
     if (localUrl === '/') {
       ele = <DatePicker />;
     } else if (localUrl === '/list') {
-      ele = <Button type="primary">Primary</Button>;
+      ele = <Button type="primary" onClick = {onBtnClick}>Primary</Button>;
     }
 
     return ele;
@@ -24,13 +36,11 @@ const App = ({ url }) => {
 };
 
 App.propTypes = {
-  url: PropTypes.string.isRequired,
+  //url: PropTypes.string.isRequired,
 };
 
-function mapStateToProps({ list }, { route }) {
-  return {
-    url: route.path,
-  };
+function mapStateToProps({list}, { route }) {
+  return {};
 }
 
-export default connect(mapStateToProps)(App);
+export default connect()(App);

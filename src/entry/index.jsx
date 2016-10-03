@@ -3,19 +3,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
-import thunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
 import { browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer as routing } from 'react-router-redux';
 import Routes from '../routes/index';
 import list from '../reducers/list';
+import mySaga from '../saga/list.js';
 
 const appDom = document.getElementById('app');
+const sagaMiddleware = createSagaMiddleware();
 
-const reducers = combineReducers({
+let allReducers = {
   list,
   routing,
-});
-const store = createStore(reducers, applyMiddleware(thunk));
+};
+
+const store = createStore(combineReducers(allReducers), applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(mySaga);
 
 const history = syncHistoryWithStore(browserHistory, store);
 

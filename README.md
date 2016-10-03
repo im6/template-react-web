@@ -35,7 +35,7 @@ do the style copping
 - redux
 - react-router
 - webpack
-- react-thunk
+- react-saga
 - express
 - eslint
 - babel
