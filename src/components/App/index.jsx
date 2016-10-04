@@ -12,10 +12,9 @@ const App = ({ dispatch,  route}) => {
     dispatch({
       type:'list/get',
       payload:{
-        test:123
+        test:"do it"
       }
     })
-
   };
 
   const fn = (localUrl) => {

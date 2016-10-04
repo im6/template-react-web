@@ -4,10 +4,10 @@ import { getList } from '../services/list';
 
 function* fetchUser(action) {
   try {
-    const user = yield call(getList);
-    yield put({type: "list/get/success", user: user});
+    const payload = yield call(getList, {test: 123});
+    yield put({type: "list/get/success", payload});
   } catch (e) {
-    yield put({type: "list/get/fail", message: e});
+    yield put({type: "list/get/fail", payload: {msg: e}});
   }
 }
 

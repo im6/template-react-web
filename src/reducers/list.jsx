@@ -8,12 +8,10 @@ const list = handleActions({
   },
   ['list/get/success'](state, action) {
     console.log('loading success!');
-    debugger;
     return { ...state, loading: false };
   },
   ['list/get/fail'](state, action) {
-    debugger;
-    console.log('loading fail!');
+    console.error('loading fail!');
     return { ...state, loading: false };
   }
 }, {

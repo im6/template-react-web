@@ -4,9 +4,9 @@ import cookie from 'js-cookie';
 
 
 function jsonParse(res) {
-  return res.json().then(jsonResult => ({ ...res, jsonResult }));
+  //return res.json().then(data => ({ ...res, data }));
+  return res.json();
 }
-
 
 const requester = (url, options) => {
   const opts = { ...options };
