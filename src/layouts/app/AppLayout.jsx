@@ -3,21 +3,21 @@ import { Link } from 'react-router';
 import styles from './AppLayout.less';
 
 const AppLayout = ({ children }) =>
-  <div className={styles.normal}>
-    <div className={styles.head}>
+  <div>
+    <div>
       <h1>RA</h1>
     </div>
-    <div className={styles.content}>
-      <div className={styles.side}>
-        <h2>Route:</h2>
-        <Link to="/">Main123</Link><br />
+    <div>
+      <div>
+        <h2 className={styles.routeName}>Route:</h2>
+        <Link to="/">Main</Link><br />
         <Link to="/list">List</Link><br />
       </div>
-      <div className={styles.main}>
+      <div>
         {children}
       </div>
     </div>
-    <div className={styles.foot}>
+    <div>
       Built with react, react-router, redux, redux-thunk, ant-design, by ZJ Guo
     </div>
   </div>;

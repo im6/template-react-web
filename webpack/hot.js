@@ -12,7 +12,7 @@ Object.assign(baseTemplate, {
   },
   plugins: asset.plugins("hot"),
   entry: asset.entry("hot"),
-  devtool: 'cheap-module-source-map',
+  devtool: 'source-map',
   output: {
     path: path.join(__dirname, '../public'),
     filename: 'bundle.js'

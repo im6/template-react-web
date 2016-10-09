@@ -4,8 +4,8 @@ import App from '../components/App/index.jsx';
 
 const Routes = ({ history }) =>
   <Router history={history}>
-    <Route path="/" component={App} />
-    <Route path="/list" component={App} />
+    <Route path="/" component={App} key="1" />
+    <Route path="/list" component={App} key="2"/>
   </Router>;
 
 Routes.propTypes = {
