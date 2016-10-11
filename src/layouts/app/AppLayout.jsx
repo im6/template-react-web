@@ -1,16 +1,15 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import styles from './AppLayout.less';
-import styles2 from './AppLayout.css';
+import styles from './AppLayout.css';
 
 const AppLayout = ({ children }) =>
-  <div className={styles2.background}>
+  <div className={styles.background}>
     <div>
       <h1>RA</h1>
     </div>
     <div>
       <div>
-        <h2 className={styles2.routeName}>Route:</h2>
+        <h2 className={styles.routeName}>Route:</h2>
         <Link to="/">Main</Link><br />
         <Link to="/list">List</Link><br />
       </div>

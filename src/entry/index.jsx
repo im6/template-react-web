@@ -6,7 +6,8 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { browserHistory, Router, Route } from 'react-router';
 import { syncHistoryWithStore, routerReducer as routing } from 'react-router-redux';
-//import Routes from '../routes/index';
+import Routes from '../routes/index.jsx';
+
 import list from '../reducers/list';
 import mySaga from '../saga/list.js';
 
@@ -30,14 +31,23 @@ const history = syncHistoryWithStore(browserHistory, store);
 let render = () => {
   ReactDOM.render(
     <Provider store={store}>
-      <Router history={history}>
-        <Route path="/" component={App}/>
-        <Route path="/list" component={App}/>
-      </Router>
+      <Routes history={history} />
     </Provider>,
     appDom
   );
 };
+
+//let render = () => {
+//  ReactDOM.render(
+//    <Provider store={store}>
+//      <Router history={history}>
+//        <Route path="/" component={App}/>
+//        <Route path="/list" component={App}/>
+//      </Router>
+//    </Provider>,
+//    appDom
+//  );
+//};
 
 
 if (module.hot) {

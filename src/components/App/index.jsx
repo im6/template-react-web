@@ -38,6 +38,10 @@ App.propTypes = {
   //url: PropTypes.string.isRequired,
 };
 
+App.componentDidMount = ()=>{
+  debugger;
+};
+
 function mapStateToProps({list}, { route }) {
   return {};
 }
