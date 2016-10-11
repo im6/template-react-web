@@ -77,7 +77,7 @@ var plugins = {
     new HtmlWebpackPlugin({
       title: 'ZJ Guo',
       template: 'src/template/index.html',
-      //favicon: 'src/content/img/favicon.ico',
+      favicon: './src/content/img/favicon.ico',
       hash:true,
       showErrors: false
     }),
