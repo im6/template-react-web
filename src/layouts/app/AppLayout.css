@@ -1,0 +1,10 @@
+
+
+.routeName {
+  color: green;
+}
+
+.background {
+    background: #f5f6f7 url("./assets/gradient.jpg") repeat-x 0 0;
+    height: 100%;
+}
