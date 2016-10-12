@@ -34,11 +34,12 @@ var loaders = [
             ]
         }
     },
-  {test: /\.less$/, loader:  'style!css!less?modules&importLoaders=1'},
-  //{test: /\.css/, loader: "style-loader!css-loader?modules"},
-  {test: /\.css/, loader: "style-loader!css-loader?modules"},
-  { test: /\.png$/, loader: "url-loader?limit=100000" },
-  { test: /\.jpg$/, loader: "file-loader" }
+  { test: /\.less$/, loader: "style!css?modules!less"},
+  //{ test: /\.css/, loader: "style-loader!css-loader?modules"},
+  //{ test: /\.png$/, loader: "url-loader?limit=100000" },
+  //{ test: /\.jpg$/, loader: "url-loader" }
+  { test: /\.jpg$/, loader: "file-loader?name=assets/[name].[ext]" },
+  //{ test: /\.(woff|png|jpg$|gif)$/, loader: 'url-loader?limit=10000' },
 ];
 
 
