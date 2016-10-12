@@ -29,17 +29,14 @@ var loaders = [
                 ['import', {
                     libraryName: 'antd',
                     libraryDirectory: "lib",
-                    style: true
+                    style: true  // use less, 'css' to css build
                 }]
             ]
         }
     },
-  { test: /\.less$/, loader: "style!css?modules!less"},
-  //{ test: /\.css/, loader: "style-loader!css-loader?modules"},
-  //{ test: /\.png$/, loader: "url-loader?limit=100000" },
-  //{ test: /\.jpg$/, loader: "url-loader" }
-  { test: /\.jpg$/, loader: "file-loader?name=assets/[name].[ext]" },
-  //{ test: /\.(woff|png|jpg$|gif)$/, loader: 'url-loader?limit=10000' },
+  { test: /\.less$/, loader: "style!css!less"}, // load ant.design
+  { test: /\.css$/, loader: "style!css?modules!autoprefixer-loader?browsers=last 2 versions"},
+  { test: /\.(gif|png|jpg|jpeg|svg)($|\?)/, loader: 'url?limit=10000' }
 ];
 
 

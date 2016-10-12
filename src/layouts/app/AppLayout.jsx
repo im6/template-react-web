@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import styles from './AppLayout.less';
+import styles from './AppLayout.css';
 
 const AppLayout = ({ children }) =>
   <div className={styles.background}>
