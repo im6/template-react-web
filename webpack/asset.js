@@ -35,8 +35,13 @@ var loaders = [
         }
     },
   { test: /\.less$/, loader: "style!css!less"}, // load ant.design
-  { test: /\.css$/, loader: "style!css?modules!autoprefixer-loader?browsers=last 2 versions"},
-  { test: /\.(gif|png|jpg|jpeg|svg)($|\?)/, loader: 'url?limit=10000' }
+  {
+    test: /\.css$/,
+    loader: "style!css?modules!autoprefixer-loader?browsers=last 2 versions"
+  },
+  { test: /\.(gif|png|jpg|jpeg)($|\?)/, loader: 'url?limit=10000' },
+  { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
+  { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" }
 ];
 
 

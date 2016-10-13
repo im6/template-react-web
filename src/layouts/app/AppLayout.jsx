@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import styles from './AppLayout.css';
+import 'font-awesome/less/font-awesome.less';
 
 const AppLayout = ({ children }) =>
   <div className={styles.background}>
@@ -10,8 +11,14 @@ const AppLayout = ({ children }) =>
     <div>
       <div>
         <h2 className={styles.routeName}>Route:</h2>
-        <Link to="/">Main</Link><br />
-        <Link to="/list">List</Link><br />
+        <Link to="/">
+          Main
+        </Link>
+        <br />
+        <Link to="/list">
+          List
+          <i className="fa fa-car"/>
+        </Link><br />
       </div>
       <div>
         {children}
