@@ -6,6 +6,7 @@ const Routes = ({ history }) =>
   <Router history={history}>
     <Route path="/" component={App} key="1" />
     <Route path="/list" component={App} key="2"/>
+    <Route path="/table" component={App} key="3"/>
   </Router>;
 
 Routes.propTypes = {

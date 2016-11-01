@@ -18,6 +18,11 @@ const AppLayout = ({ children }) =>
         <Link to="/list">
           List
           <i className="fa fa-car"/>
+        </Link>
+        <br />
+        <Link to="/table">
+          Table
+          <i className="fa fa-table"/>
         </Link><br />
       </div>
       <div>

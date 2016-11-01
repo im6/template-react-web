@@ -3,6 +3,7 @@ import React, { PropTypes } from 'react';
 import { DatePicker, Button } from 'antd';
 import { connect } from 'react-redux';
 import AppLayout from '../../layouts/app/AppLayout.jsx';
+import TableEnterLeave from '../TableEnterLeave';
 
 const App = ({ dispatch,  route}) => {
   let ele = null;
@@ -22,6 +23,8 @@ const App = ({ dispatch,  route}) => {
       ele = <DatePicker />;
     } else if (localUrl === '/list') {
       ele = <Button type="primary" onClick = {onBtnClick}>Primary</Button>;
+    } else if(localUrl === '/table'){
+      ele = <DatePicker />;
     }
 
     return ele;
@@ -38,9 +41,6 @@ App.propTypes = {
   //url: PropTypes.string.isRequired,
 };
 
-App.componentDidMount = ()=>{
-  debugger;
-};
 
 function mapStateToProps({list}, { route }) {
   return {};
