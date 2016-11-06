@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import styles from './AppLayout.css';
+import styles from './AppLayout.less';
 import 'font-awesome/less/font-awesome.less';
+import img from '!file!./assets/gradient.jpg';
 
 const AppLayout = ({ children }) =>
-  <div className={styles.background}>
+  <div className={styles.background} style={{background: `#f5f6f7 url(${img}) repeat-x 0 0`}}>
     <div>
       <h1>RA</h1>
     </div>

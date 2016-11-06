@@ -3,7 +3,8 @@ var webpack = require('webpack'),
   HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const HOST = "127.0.0.1",
-  PORT = "3000";
+  PORT = "3000",
+  antDir = /node_modules\/antd\/lib/;
 
 var baseTemplate = {
   output: {
@@ -34,7 +35,18 @@ var loaders = [
             ]
         }
     },
-  { test: /\.less$/, loader: "style!css!less"}, // load ant.design
+  {
+    test: /\.less$/,
+    loader: "style!css!less",
+    include: antDir
+
+  },
+
+  {
+    test: /\.less$/,
+    loader: "style!css?module!less",
+    exclude: antDir
+  },
   {
     test: /\.css$/,
     loader: "style!css?modules!autoprefixer-loader?browsers=last 2 versions"
