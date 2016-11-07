@@ -1,8 +1,16 @@
 import React from 'react';
+
+import Table from 'antd/lib/table';
 import QueueAnim from 'rc-queue-anim';
 import { TweenOneGroup } from 'rc-tween-one';
-import {Table, Button} from 'antd';
-import './styles.css';
+import Button from 'antd/lib/button';
+
+import 'antd/lib/table/style/index.less';
+import 'antd/lib/spin/style/index.less';
+import 'antd/lib/pagination/style/index.less';
+
+import '!style!css!autoprefixer-loader?browsers=last 2 versions!./styles.css'
+
 class TableEnterLeave extends React.Component {
   static propTypes = {
     className: React.PropTypes.string,
@@ -200,3 +208,5 @@ class TableEnterLeave extends React.Component {
     </div>);
   }
 }
+
+export default TableEnterLeave;
