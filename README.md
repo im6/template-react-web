@@ -41,6 +41,7 @@ do the style copping
 - babel
 - es6
 - less
+- immutable.js
 
 
 ## How Does It Work?

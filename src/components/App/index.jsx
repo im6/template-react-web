@@ -4,6 +4,7 @@ import { DatePicker, Button } from 'antd';
 import { connect } from 'react-redux';
 import AppLayout from '../../layouts/app/AppLayout.jsx';
 import TableEnterLeave from '../TableEnterLeave';
+import { List, Map } from 'immutable';
 
 const App = ({ dispatch,  route}) => {
   let ele = null;
@@ -22,7 +23,21 @@ const App = ({ dispatch,  route}) => {
     if (localUrl === '/') {
       ele = <DatePicker />;
     } else if (localUrl === '/list') {
-      ele = <Button type="primary" onClick = {onBtnClick}>Primary</Button>;
+
+      const dummyTodos = List([
+        Map({ id: 0, isDone: true,  text: 'make components' }),
+        Map({ id: 1, isDone: false, text: 'design actions' }),
+        Map({ id: 2, isDone: false, text: 'implement reducer' }),
+        Map({ id: 3, isDone: false, text: 'connect components' })
+      ]);
+      ele = <div>
+        <ul>
+          {dummyTodos.map(t=> (
+            <li>{t.toJS().text}</li>
+          ))}
+        </ul>
+      </div>
+
     } else if(localUrl === '/table'){
       ele = <TableEnterLeave />;
     }
