@@ -25,7 +25,10 @@ const App = ({ dispatch,  route}) => {
       ele = <DatePicker />;
     } else if (localUrl === '/list') {
 
-      ele = <Test1 list={[1,2,3,4]}/>;
+      ele = <div>
+        <Button type="primary" onClick = {onBtnClick}>Primary</Button>;
+        <Test1 list={[1,2,3,4]}/>
+      </div>;
 
     } else if(localUrl === '/table'){
       ele = <TableEnterLeave />;

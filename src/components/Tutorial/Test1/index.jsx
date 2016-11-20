@@ -1,7 +1,8 @@
 import React from 'react';
 import {Table, Button} from 'antd';
+import Immutable, {Map, List} from 'immutable';
 
-class Test1 extends React.Component {
+class Test1 extends React.PureComponent {
   static propTypes = {
     list: React.PropTypes.array,
   };
@@ -28,8 +29,8 @@ class Test1 extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState){
-    console.log('shouldComponentUpdate');
-    return true;
+    let me = this;
+    return !Immutable.is(Immutable.fromJS(nextState), Immutable.fromJS(me.state));
   }
   componentWillUpdate(nextProps, nextState){
     console.log('componentWillUpdate');
@@ -47,10 +48,24 @@ class Test1 extends React.Component {
 
   changeName(){
     let me = this;
-    var newInfo = Object.assign(me.state.info, {name: 'Charlie'+Math.random()});
+    var newState = Object.assign({},me.state.info);
+    var newInfo = Object.assign(newState,{name: 'Charlie'+ me.state.list.length})
+
     me.setState({
       info: newInfo
     });
+  }
+
+  changeNameBad(){
+    let me = this;
+    me.setState({
+      info: {
+        name: 'peter',
+        age: 12
+      },
+      list: me.state.list
+    });
+    // not gonna change the value but will rerender unnecessarily.
   }
 
   render() {
