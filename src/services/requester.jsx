@@ -10,10 +10,14 @@ function jsonParse(res) {
 
 const requester = (url, options) => {
   const opts = { ...options };
-  opts.headers = {
-    ...opts.headers,
-    authorization: cookie.get('authorization') || ''
-  };
+
+  let copyHeader = Object.assign({},opts.headers);
+  copyHeader = Object.assign(copyHeader, {
+    authorization: cookie.get('authorization') || '',
+    "Content-Type": 'application/json',
+  });
+  opts.headers = copyHeader;
+
   return fetch(url, opts)
     .then(jsonParse);
 
