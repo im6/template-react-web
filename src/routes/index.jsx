@@ -1,12 +1,13 @@
 import React, { PropTypes } from 'react';
 import { Router, Route } from 'react-router';
-import App from '../components/App/index.jsx';
+import App from '../modules/app/index.jsx'
+
 
 const Routes = ({ history }) =>
   <Router history={history}>
-    <Route path="/" component={App} key="1" />
-    <Route path="/list" component={App} key="2"/>
-    <Route path="/table" component={App} key="3"/>
+    <Route path="/" component={App} />
+    <Route path="todos" component={App}/>
+    <Route path="users" component={App}/>
   </Router>;
 
 Routes.propTypes = {

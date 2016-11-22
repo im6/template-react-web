@@ -9,17 +9,19 @@ import { syncHistoryWithStore, routerReducer as routing } from 'react-router-red
 import Routes from '../routes/index.jsx';
 
 import list from '../reducers/list';
+import reducers from '../reducers/index.js';
 import mySaga from '../saga/list.js';
 
 import App from '../components/App/index.jsx';
 import List from '../components/List/index.jsx';
 
 
+
 const appDom = document.getElementById('app');
 const sagaMiddleware = createSagaMiddleware();
 
 let allReducers = {
-  list,
+  list: reducers.list.default,
   routing,
 };
 

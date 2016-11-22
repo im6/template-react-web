@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import styles from './AppLayout.less';
+import styles from './style.less';
 import 'font-awesome/less/font-awesome.less';
 import img from '!file!./assets/gradient.jpg';
 
-const AppLayout = ({ children }) =>
+const Layout = ({ children }) =>
   <div className={styles.background} style={{background: `#f5f6f7 url(${img}) repeat-x 0 0`}}>
     <div>
       <h1>RA</h1>
@@ -30,8 +30,8 @@ const AppLayout = ({ children }) =>
     </div>
   </div>;
 
-AppLayout.propTypes = {
+Layout.propTypes = {
   children: PropTypes.element.isRequired,
 };
 
-export default AppLayout;
+export default Layout;
