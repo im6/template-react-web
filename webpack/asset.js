@@ -4,7 +4,7 @@ var webpack = require('webpack'),
 
 const HOST = "127.0.0.1",
   PORT = "3000",
-  antDir = /node_modules\/antd\/lib/;
+  antDir = process.platform === 'win32' ? /node_modules\\antd\\lib/ :  /node_modules\/antd\/lib/;
 
 var baseTemplate = {
   output: {
