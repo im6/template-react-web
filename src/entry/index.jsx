@@ -12,10 +12,7 @@ import list from '../reducers/list';
 import reducers from '../reducers/index.js';
 import mySaga from '../saga/list.js';
 
-import App from '../components/App/index.jsx';
-import List from '../components/List/index.jsx';
-
-
+import App from '../modules/app/index.jsx';
 
 const appDom = document.getElementById('app');
 const sagaMiddleware = createSagaMiddleware();
@@ -33,23 +30,16 @@ const history = syncHistoryWithStore(browserHistory, store);
 let render = () => {
   ReactDOM.render(
     <Provider store={store}>
-      <Routes history={history} />
+      <Router history={history} >
+        <Route path="/" component={App}/>
+        <Route path="/todos" component={App}/>
+        <Route path="/users" component={App} />
+      </Router>
     </Provider>,
     appDom
   );
 };
 
-//let render = () => {
-//  ReactDOM.render(
-//    <Provider store={store}>
-//      <Router history={history}>
-//        <Route path="/" component={App}/>
-//        <Route path="/list" component={App}/>
-//      </Router>
-//    </Provider>,
-//    appDom
-//  );
-//};
 
 
 if (module.hot) {

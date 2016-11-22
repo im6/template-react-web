@@ -9,8 +9,6 @@ import Todos from '../todos';
 import Users from '../users';
 
 const App = ({ dispatch,  route}) => {
-  let ele = null;
-  const url = route.path;
 
   const onBtnClick = ()=>{
     dispatch({
@@ -20,6 +18,11 @@ const App = ({ dispatch,  route}) => {
       }
     })
   };
+
+  let ele = null;
+  const url = route.path;
+
+
 
   const fn = (localUrl) => {
     if (localUrl === '/') {
@@ -31,11 +34,14 @@ const App = ({ dispatch,  route}) => {
         <Test1 list={[1,2,3,4]}/>
       </div>;
 
-    }  else if (localUrl == 'todos'){
+    }  else if (localUrl == '/todos'){
 
-      ele = <Todos />
+      ele = <div>
+        <Todos />
+        <Button type="primary" onClick={onBtnClick.bind(this)}>Call Ajax</Button>
+      </div>;
 
-    } else if(localUrl == 'users'){
+    } else if(localUrl == '/users'){
 
       ele = <Users />
 

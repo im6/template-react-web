@@ -3,13 +3,16 @@ import { Link } from 'react-router';
 import styles from './style.less';
 import 'font-awesome/less/font-awesome.less';
 import img from '!file!./assets/gradient.jpg';
-import { Row, Col } from 'antd';
+import { Row, Col, Button } from 'antd';
 
 import Footer from './components/footer/index.jsx';
 import Header from './components/header/index.jsx';
 
-const Layout = ({ children }) =>
-  <div className={styles.background} style={{background: `#f5f6f7 url(${img}) repeat-x 0 0`}}>
+
+
+const Layout = ({children}) =>{
+
+  var result = <div className={styles.background} style={{background: `#f5f6f7 url(${img}) repeat-x 0 0`}}>
     <Header />
     <Row>
       <Col span={6}></Col>
@@ -37,6 +40,10 @@ const Layout = ({ children }) =>
 
     <Footer />
   </div>;
+
+  return result;
+};
+
 
 Layout.propTypes = {
   children: PropTypes.element.isRequired,
