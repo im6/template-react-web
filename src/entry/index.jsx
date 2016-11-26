@@ -8,7 +8,9 @@ import { browserHistory, Router, Route } from 'react-router';
 import { syncHistoryWithStore, routerReducer as routing } from 'react-router-redux';
 import Routes from '../routes/index.jsx';
 
-import list from '../reducers/list';
+import todos from '../modules/todos/reducer.js';
+import users from '../modules/users/reducer.js';
+
 import reducers from '../reducers/index.js';
 import mySaga from '../saga/list.js';
 
@@ -18,7 +20,8 @@ const appDom = document.getElementById('app');
 const sagaMiddleware = createSagaMiddleware();
 
 let allReducers = {
-  list: reducers.list.default,
+  todos,
+  users,
   routing,
 };
 

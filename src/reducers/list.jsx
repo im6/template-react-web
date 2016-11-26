@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { handleActions } from 'redux-actions';
 
-const list = handleActions({
+export const list = handleActions({
   ['list/get'](state, action) {
     console.log('loading...');
     return { ...state, loading: true };
@@ -18,5 +18,3 @@ const list = handleActions({
   list: [],
   loading: true,
 });
-
-export default list;
