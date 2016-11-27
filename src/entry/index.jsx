@@ -6,7 +6,7 @@ import { createStore, applyMiddleware,compose, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { browserHistory, Router, Route } from 'react-router';
 import { syncHistoryWithStore, routerReducer as routing } from 'react-router-redux';
-import Routes from '../routes/index.jsx';
+//import Routes from '../routes/index.jsx';
 
 import todos from '../modules/todos/reducer.js';
 import users from '../modules/users/reducer.js';

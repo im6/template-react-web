@@ -14,7 +14,7 @@ function* fetchUser(action) {
 
 function* fetchTodos(action) {
   try {
-    const payload = yield call(getTodos, {test: 123});
+    const payload = yield call(getTodos, action.payload);
     yield put({type: "todos/get/success", payload});
   } catch (e) {
     yield put({type: "todos/get/fail", payload: {msg: e}});
@@ -32,8 +32,10 @@ function* mySaga(a) {
 
 export default function*(){
   yield fork(mySaga);
-
   yield put({
-    type: 'todos/get'
+    type:'todos/get',
+    payload:{
+      test:"get some todos initially"
+    }
   });
 }

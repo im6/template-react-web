@@ -27,7 +27,7 @@ const App = ({ dispatch,  route}) => {
 
       ele = <div>
         <Button type="primary" onClick = {onBtnClick}>Primary</Button>;
-        <Test1 list={[1,2,3,4]}/>
+        <Test1 list={[1,2,3,4,5]}/>
       </div>;
 
     } else if(localUrl === '/table'){
@@ -50,7 +50,7 @@ App.propTypes = {
 
 
 function mapStateToProps({list}, { route }) {
-  return {};
+  return { };
 }
 
-export default connect()(App);
+//export default connect()(App);

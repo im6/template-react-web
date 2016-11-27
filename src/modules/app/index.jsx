@@ -14,13 +14,18 @@ const App = ({location}) => {
   let url = location.hash.replace(/#\//, '');
 
   const fn = (localUrl) => {
-    if (localUrl === '/') {
-      ele = <DatePicker />;
-    }  else if (localUrl == 'todos'){
+    if (localUrl === '') {
+
+      ele = <div>
+        <h1>Welcome to index page</h1>
+        <DatePicker />
+      </div>;
+
+    }
+    else if (localUrl == 'todos'){
 
       ele = <div>
         <Todos />
-        <Button type="primary" onClick={onBtnClick.bind(this)}>Call Ajax123</Button>
       </div>;
 
     } else if(localUrl == 'users'){
@@ -28,6 +33,7 @@ const App = ({location}) => {
       ele = <Users />
 
     }
+
     return ele;
   };
 

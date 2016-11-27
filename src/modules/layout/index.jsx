@@ -20,6 +20,10 @@ const Layout = ({children}) =>{
       <Col span={6}>
         <div>
           <h2 className={styles.routeName}>Route:</h2>
+          <Link to="/">
+            <h4>Home</h4>
+          </Link>
+          <br />
           <Link to="/#/todos">
             <h4>Todos</h4>
           </Link>
