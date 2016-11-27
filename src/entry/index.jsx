@@ -46,6 +46,7 @@ let render = () => {
         <Route path="/" component={App}/>
         <Route path="/todos" component={App}/>
         <Route path="/users" component={App} />
+        <Route path="*" component={App} />
       </Router>
     </Provider>,
     appDom

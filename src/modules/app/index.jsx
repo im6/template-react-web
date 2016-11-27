@@ -8,38 +8,22 @@ import { List, Map } from 'immutable';
 import Todos from '../todos';
 import Users from '../users';
 
-const App = ({ dispatch,  route}) => {
-
-  const onBtnClick = ()=>{
-    dispatch({
-      type:'list/get',
-      payload:{
-        test:"do it"
-      }
-    })
-  };
+const App = ({location}) => {
 
   let ele = null;
-  const url = route.path;
+  let url = location.hash.replace(/#\//, '');
 
   const fn = (localUrl) => {
     if (localUrl === '/') {
       ele = <DatePicker />;
-    } else if (localUrl === '/list') {
-
-      ele = <div>
-        <Button type="primary" onClick = {onBtnClick}>Primary</Button>;
-        <Test1 list={[1,2,3,4]}/>
-      </div>;
-
-    }  else if (localUrl == '/todos'){
+    }  else if (localUrl == 'todos'){
 
       ele = <div>
         <Todos />
         <Button type="primary" onClick={onBtnClick.bind(this)}>Call Ajax123</Button>
       </div>;
 
-    } else if(localUrl == '/users'){
+    } else if(localUrl == 'users'){
 
       ele = <Users />
 
@@ -58,9 +42,5 @@ App.propTypes = {
   //url: PropTypes.string.isRequired,
 };
 
-
-function mapStateToProps({list}, { route }) {
-  return {};
-}
 
 export default connect()(App);

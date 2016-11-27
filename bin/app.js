@@ -41,7 +41,7 @@ app.post('/todos', function (req, res) {
         {key: 4,value: 'drink'},
       ]
     });
-  }, 1000);
+  }, 400);
 
 });
 
