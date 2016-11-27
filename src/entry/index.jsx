@@ -11,7 +11,7 @@ import Routes from '../routes/index.jsx';
 import todos from '../modules/todos/reducer.js';
 import users from '../modules/users/reducer.js';
 
-import reducers from '../reducers/index.js';
+import list from '../reducers/list.jsx';
 import mySaga from '../saga/list.js';
 
 import App from '../modules/app/index.jsx';
@@ -22,6 +22,7 @@ const sagaMiddleware = createSagaMiddleware();
 let allReducers = {
   todos,
   users,
+  list,
   routing,
 };
 

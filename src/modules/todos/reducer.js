@@ -4,18 +4,24 @@ import { handleActions } from 'redux-actions';
 const todos = handleActions({
   ['todos/get'](state, action) {
     console.log('loading todos...');
-    return { ...state, loading: true };
+    return { ...state,
+      todoList:[],
+      loading: true
+    };
   },
   ['todos/get/success'](state, action) {
     console.log('loading todos success!');
-    return { ...state, loading: false };
+    return { ...state,
+      loading: false,
+      todoList: action.payload.data
+    };
   },
   ['todos/get/fail'](state, action) {
     console.error('loading todos fail!');
     return { ...state, loading: false };
   }
 }, {
-  list: [],
+  todoList: [],
   loading: true,
 });
 

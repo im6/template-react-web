@@ -30,5 +30,20 @@ app.post('/test', function (req, res) {
   });
 });
 
+app.post('/todos', function (req, res) {
+  setTimeout(function(){
+    res.json({
+      status: 'success',
+      data: [
+        {key: 1,value: 'wash'},
+        {key: 2,value: 'walk'},
+        {key: 3,value: 'smear'},
+        {key: 4,value: 'drink'},
+      ]
+    });
+  }, 1000);
+
+});
+
 module.exports = app;
 

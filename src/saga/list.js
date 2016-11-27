@@ -1,6 +1,7 @@
 import { takeEvery, takeLatest } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
-import { getList } from '../services/list';
+import { getList, getTodos } from '../services/list';
+
 
 function* fetchUser(action) {
   try {
@@ -11,8 +12,22 @@ function* fetchUser(action) {
   }
 }
 
-function* mySaga() {
-  yield* takeLatest("list/get", fetchUser);
+function* fetchTodos(action) {
+  try {
+    const payload = yield call(getTodos, {test: 123});
+    yield put({type: "todos/get/success", payload});
+  } catch (e) {
+    yield put({type: "todos/get/fail", payload: {msg: e}});
+  }
+}
+
+
+function* mySaga(a) {
+  yield [
+    takeLatest("list/get", fetchUser),
+    takeLatest("todos/get", fetchTodos),
+    takeLatest("users/get", fetchUser),
+  ]
 }
 
 export default mySaga;

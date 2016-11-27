@@ -22,8 +22,6 @@ const App = ({ dispatch,  route}) => {
   let ele = null;
   const url = route.path;
 
-
-
   const fn = (localUrl) => {
     if (localUrl === '/') {
       ele = <DatePicker />;
@@ -38,7 +36,7 @@ const App = ({ dispatch,  route}) => {
 
       ele = <div>
         <Todos />
-        <Button type="primary" onClick={onBtnClick.bind(this)}>Call Ajax</Button>
+        <Button type="primary" onClick={onBtnClick.bind(this)}>Call Ajax123</Button>
       </div>;
 
     } else if(localUrl == '/users'){

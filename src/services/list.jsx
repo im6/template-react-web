@@ -9,7 +9,7 @@ export async function getList(obj) {
 }
 
 export async function getTodos(obj) {
-  return requester('/test', {
+  return requester('/todos', {
     method: "POST",
     body: JSON.stringify(obj)
   });
