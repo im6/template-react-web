@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createStore, applyMiddleware,compose, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { browserHistory, Router, Route } from 'react-router';
 import { syncHistoryWithStore, routerReducer as routing } from 'react-router-redux';
@@ -19,14 +19,22 @@ import App from '../modules/app/index.jsx';
 const appDom = document.getElementById('app');
 const sagaMiddleware = createSagaMiddleware();
 
+const initialState = {};
+const enhancer = compose(
+  applyMiddleware(sagaMiddleware),
+  window.devToolsExtension ? window.devToolsExtension() : f => f
+);
+
 let allReducers = {
   todos,
   users,
   list,
-  routing,
 };
 
-const store = createStore(combineReducers(allReducers), applyMiddleware(sagaMiddleware));
+const store = createStore(combineReducers({
+  ...allReducers, routing,
+}), initialState, enhancer);
+
 sagaMiddleware.run(mySaga);
 
 const history = syncHistoryWithStore(browserHistory, store);

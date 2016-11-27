@@ -1,5 +1,5 @@
 import { takeEvery, takeLatest } from 'redux-saga';
-import { call, put } from 'redux-saga/effects';
+import { call, put, fork } from 'redux-saga/effects';
 import { getList, getTodos } from '../services/list';
 
 
@@ -30,4 +30,10 @@ function* mySaga(a) {
   ]
 }
 
-export default mySaga;
+export default function*(){
+  yield fork(mySaga);
+
+  yield put({
+    type: 'todos/get'
+  });
+}

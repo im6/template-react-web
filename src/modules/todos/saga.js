@@ -15,4 +15,11 @@ function* mySaga() {
   yield* takeLatest("todos/get", fetchUser);
 }
 
-export default mySaga;
+export default function*(){
+  yield fork(mySaga);
+
+  yield put({
+    type: 'todos/get'
+  });
+  debugger;
+}
