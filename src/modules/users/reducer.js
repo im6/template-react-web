@@ -8,7 +8,9 @@ const users = handleActions({
   },
   ['users/get/success'](state, action) {
     console.log('loading users success!');
-    return { ...state, loading: false };
+    return { ...state,
+      list: action.payload.data,
+      loading: false };
   },
   ['users/get/fail'](state, action) {
     console.error('loading users fail!');

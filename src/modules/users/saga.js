@@ -1,18 +1,29 @@
 import { takeEvery, takeLatest } from 'redux-saga';
-import { call, put } from 'redux-saga/effects';
-import { getList } from '../services/list';
+import { call, put, fork } from 'redux-saga/effects';
+import { getUsers } from '../../services/list.jsx';
 
-function* fetchUser(action) {
+function* fetchUsers(action) {
   try {
-    const payload = yield call(getList, {test: 123});
-    yield put({type: "todos/get/success", payload});
+    const payload = yield call(getUsers, action.payload);
+    yield put({type: "users/get/success", payload});
   } catch (e) {
-    yield put({type: "todos/get/fail", payload: {msg: e}});
+    yield put({type: "users/get/fail", payload: {msg: e}});
   }
 }
 
-function* mySaga() {
-  yield* takeLatest("todos/get", fetchUser);
+
+function* mySaga(a) {
+  yield [
+    takeLatest("users/get", fetchUsers)
+  ]
 }
 
-export default mySaga;
+export default function*(){
+  yield fork(mySaga);
+  yield put({
+    type:'users/get',
+    payload:{
+      test:"get some users initially"
+    }
+  });
+}

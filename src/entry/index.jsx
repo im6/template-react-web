@@ -12,7 +12,8 @@ import todos from '../modules/todos/reducer.js';
 import users from '../modules/users/reducer.js';
 
 import list from '../reducers/list.jsx';
-import mySaga from '../saga/list.js';
+import mySaga from '../modules/todos/saga.js';
+import mySaga2 from '../modules/users/saga.js';
 
 import App from '../modules/app/index.jsx';
 
@@ -36,6 +37,7 @@ const store = createStore(combineReducers({
 }), initialState, enhancer);
 
 sagaMiddleware.run(mySaga);
+sagaMiddleware.run(mySaga2);
 
 const history = syncHistoryWithStore(browserHistory, store);
 

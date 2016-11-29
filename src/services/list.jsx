@@ -14,3 +14,10 @@ export async function getTodos(obj) {
     body: JSON.stringify(obj)
   });
 }
+
+export async function getUsers(obj) {
+  return requester('/users', {
+    method: "POST",
+    body: JSON.stringify(obj)
+  });
+}

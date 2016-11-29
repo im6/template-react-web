@@ -45,5 +45,21 @@ app.post('/todos', function (req, res) {
 
 });
 
+app.post('/users', function (req, res) {
+  setTimeout(function(){
+    res.json({
+      status: 'success',
+      data: [
+        {key: 1,value: 'Tim'},
+        {key: 2,value: 'Sam'},
+        {key: 3,value: 'Mitt'},
+        {key: 4,value: 'ODom'},
+      ]
+    });
+  }, 400);
+
+});
+
+
 module.exports = app;
 
