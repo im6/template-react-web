@@ -4,6 +4,6 @@ import { Tag } from 'antd';
 
 
 const TodoItem = ({ todo }) =>
-  <Tag color="#87d068">{ todo.key + ': ' + todo.value }</Tag>;
+  <Tag color="#87d068">{ todo.get('key') + ': ' + todo.get('value') }</Tag>;
 
 export default TodoItem;

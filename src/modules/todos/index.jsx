@@ -21,8 +21,8 @@ const Todos = ({data, dispatch, isLoading}) => {
 
 function mapStateToProps({todos, routing}){
   return {
-    data: todos.todoList,
-    isLoading: todos.loading
+    data: todos.get('todoList'),
+    isLoading: todos.get('loading')
   }
 }
 
