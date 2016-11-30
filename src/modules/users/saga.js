@@ -2,6 +2,13 @@ import { takeEvery, takeLatest } from 'redux-saga';
 import { call, put, fork } from 'redux-saga/effects';
 import { getUsers } from '../../services/list.jsx';
 
+
+function* mySaga(a) {
+  yield [
+    takeLatest("users/get", fetchUsers)
+  ]
+}
+
 function* fetchUsers(action) {
   try {
     const payload = yield call(getUsers, action.payload);
@@ -12,11 +19,6 @@ function* fetchUsers(action) {
 }
 
 
-function* mySaga(a) {
-  yield [
-    takeLatest("users/get", fetchUsers)
-  ]
-}
 
 export default function*(){
   yield fork(mySaga);

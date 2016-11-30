@@ -8,17 +8,14 @@ import { browserHistory, Router, Route } from 'react-router';
 import { syncHistoryWithStore, routerReducer as routing } from 'react-router-redux';
 //import Routes from '../routes/index.jsx';
 
-import todos from '../modules/todos/reducer.js';
-import users from '../modules/users/reducer.js';
-
-import list from '../reducers/list.jsx';
-import mySaga from '../modules/todos/saga.js';
-import mySaga2 from '../modules/users/saga.js';
+import sagaManager from '../config/saga';
+import reducers from '../config/reducer';
 
 import App from '../modules/app/index.jsx';
 
 const appDom = document.getElementById('app');
 const sagaMiddleware = createSagaMiddleware();
+
 
 const initialState = {};
 const enhancer = compose(
@@ -26,18 +23,14 @@ const enhancer = compose(
   window.devToolsExtension ? window.devToolsExtension() : f => f
 );
 
-let allReducers = {
-  todos,
-  users,
-  list,
-};
+
+let appReducers = reducers;
 
 const store = createStore(combineReducers({
-  ...allReducers, routing,
+  ...appReducers, routing,
 }), initialState, enhancer);
 
-sagaMiddleware.run(mySaga);
-sagaMiddleware.run(mySaga2);
+sagaManager(sagaMiddleware);
 
 const history = syncHistoryWithStore(browserHistory, store);
 
