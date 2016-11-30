@@ -1,7 +1,6 @@
 import { takeEvery, takeLatest } from 'redux-saga';
 import { call, put, fork } from 'redux-saga/effects';
-import { getUsers } from '../../services/list.jsx';
-
+import { getUsers } from '../../services/list';
 
 function* mySaga(a) {
   yield [
@@ -17,8 +16,6 @@ function* fetchUsers(action) {
     yield put({type: "users/get/fail", payload: {msg: e}});
   }
 }
-
-
 
 export default function*(){
   yield fork(mySaga);

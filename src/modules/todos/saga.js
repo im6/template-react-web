@@ -1,6 +1,6 @@
 import { takeEvery, takeLatest } from 'redux-saga';
 import { call, put, fork } from 'redux-saga/effects';
-import { getTodos } from '../../services/list.jsx';
+import { getTodos } from '../../services/list';
 
 function* mySaga(a) {
   yield [

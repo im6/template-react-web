@@ -1,4 +1,5 @@
 /* eslint global-require:0 */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -6,16 +7,14 @@ import { createStore, applyMiddleware,compose, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { browserHistory, Router, Route } from 'react-router';
 import { syncHistoryWithStore, routerReducer as routing } from 'react-router-redux';
-//import Routes from '../routes/index.jsx';
 
-import sagaManager from '../config/saga';
-import reducers from '../config/reducer';
-
-import App from '../modules/app/index.jsx';
+import { sagaInitiator } from '../config/saga';
+import { moduleReducers } from '../config/reducer';
 
 const appDom = document.getElementById('app');
 const sagaMiddleware = createSagaMiddleware();
 
+import App from '../modules/app/index.jsx';
 
 const initialState = {};
 const enhancer = compose(
@@ -24,13 +23,11 @@ const enhancer = compose(
 );
 
 
-let appReducers = reducers;
-
 const store = createStore(combineReducers({
-  ...appReducers, routing,
+  ...moduleReducers, routing,
 }), initialState, enhancer);
 
-sagaManager(sagaMiddleware);
+sagaInitiator(sagaMiddleware);
 
 const history = syncHistoryWithStore(browserHistory, store);
 
