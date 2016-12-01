@@ -7,8 +7,8 @@ const Users = ({data}) => <UserList users={data} />
 
 function mapStateToProps({users, routing}){
   return {
-    data: users.list,
-    isLoading: users.loading
+    data: users.get('list'),
+    isLoading: users.get('loading')
   }
 }
 

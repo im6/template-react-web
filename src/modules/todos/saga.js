@@ -1,6 +1,6 @@
 import { takeEvery, takeLatest } from 'redux-saga';
 import { call, put, fork } from 'redux-saga/effects';
-import { getTodos } from '../../services/list';
+import { getTodos } from '../../services/resource';
 import Immutable, {List} from 'immutable';
 
 function* mySaga(a) {
