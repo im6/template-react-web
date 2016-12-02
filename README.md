@@ -30,18 +30,19 @@ do the style copping
 
 ## Highlight
 
-- react
 - ant.design
+- express
+- react
 - redux
 - react-router
-- webpack
 - react-saga
-- express
-- eslint
-- babel
+- webpack
 - es6
+- babel
 - less
+- eslint
 - immutable.js
+- isomorphic-fetch
 
 
 ## How Does It Work?
