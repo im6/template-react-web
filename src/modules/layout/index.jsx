@@ -7,11 +7,13 @@ import { Row, Col, Button } from 'antd';
 
 import Footer from './components/footer/index.jsx';
 import Header from './components/header/index.jsx';
+import Background from './components/background/index.jsx';
 
 const Layout = ({children}) =>{
 
   var result = <div className={styles.background} style={{background: `#f5f6f7 url(${img}) repeat-x 0 0`}}>
     <Header />
+    <Background />
     <Row>
       <Col span={6}></Col>
 
