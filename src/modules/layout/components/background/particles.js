@@ -1,15 +1,9 @@
 import {merge as _merge} from 'lodash';
 
-let pJSDom = [];
 
+const drawCanvas = (canvas_el, params) => {
 
-
-let pJS = function(tag_id, params){
-
-  var canvas_el = document.querySelector('#'+tag_id+' > .particles-js-canvas-el');
-
-  /* particles.js variables with default values */
-  this.pJS = {
+  let pJS = {
     canvas: {
       el: canvas_el,
       w: canvas_el.offsetWidth,
@@ -131,9 +125,6 @@ let pJS = function(tag_id, params){
     tmp: {}
   };
 
-  var pJS = this.pJS;
-
-  /* params settings */
   if(params){
     _merge(pJS, params);
   }
@@ -231,7 +222,6 @@ let pJS = function(tag_id, params){
   pJS.fn.canvasClear = function(){
     pJS.canvas.ctx.clearRect(0, 0, pJS.canvas.w, pJS.canvas.h);
   };
-
 
   /* --------- pJS functions - particles ----------- */
 
@@ -379,7 +369,7 @@ let pJS = function(tag_id, params){
       this.img = {
         src: sh.image.src,
         ratio: sh.image.width / sh.image.height
-      }
+      };
       if(!this.img.ratio) this.img.ratio = 1;
       if(pJS.tmp.img_type == 'svg' && pJS.tmp.source_svg != undefined){
         pJS.fn.vendors.createSvgImg(this);
@@ -389,31 +379,32 @@ let pJS = function(tag_id, params){
       }
     }
 
-
-
   };
 
 
   pJS.fn.particle.prototype.draw = function() {
 
-    var p = this;
+    let p = this,
+        radius = null,
+        opacity = null,
+        color_value = null
 
     if(p.radius_bubble != undefined){
-      var radius = p.radius_bubble;
+      radius = p.radius_bubble;
     }else{
-      var radius = p.radius;
+      radius = p.radius;
     }
 
     if(p.opacity_bubble != undefined){
-      var opacity = p.opacity_bubble;
+      opacity = p.opacity_bubble;
     }else{
-      var opacity = p.opacity;
+      opacity = p.opacity;
     }
 
     if(p.color.rgb){
-      var color_value = 'rgba('+p.color.rgb.r+','+p.color.rgb.g+','+p.color.rgb.b+','+opacity+')';
+      color_value = 'rgba('+p.color.rgb.r+','+p.color.rgb.g+','+p.color.rgb.b+','+opacity+')';
     }else{
-      var color_value = 'hsla('+p.color.hsl.h+','+p.color.hsl.s+'%,'+p.color.hsl.l+'%,'+opacity+')';
+      color_value = 'hsla('+p.color.hsl.h+','+p.color.hsl.s+'%,'+p.color.hsl.l+'%,'+opacity+')';
     }
 
     pJS.canvas.ctx.fillStyle = color_value;
@@ -697,22 +688,20 @@ let pJS = function(tag_id, params){
         pJS.canvas.ctx.closePath();
 
       }
-
     }
-
   };
 
 
   pJS.fn.interact.attractParticles  = function(p1, p2){
 
     /* condensed particles */
-    var dx = p1.x - p2.x,
+    let dx = p1.x - p2.x,
       dy = p1.y - p2.y,
       dist = Math.sqrt(dx*dx + dy*dy);
 
     if(dist <= pJS.particles.line_linked.distance){
 
-      var ax = dx/(pJS.particles.move.attract.rotateX*1000),
+      let ax = dx/(pJS.particles.move.attract.rotateX*1000),
         ay = dy/(pJS.particles.move.attract.rotateY*1000);
 
       p1.vx -= ax;
@@ -723,13 +712,12 @@ let pJS = function(tag_id, params){
 
     }
 
-
-  }
+  };
 
 
   pJS.fn.interact.bounceParticles = function(p1, p2){
 
-    var dx = p1.x - p2.x,
+    let dx = p1.x - p2.x,
       dy = p1.y - p2.y,
       dist = Math.sqrt(dx*dx + dy*dy),
       dist_p = p1.radius+p2.radius;
@@ -742,7 +730,7 @@ let pJS = function(tag_id, params){
       p2.vy = -p2.vy;
     }
 
-  }
+  };
 
 
   /* ---------- pJS functions - modes events ------------ */
@@ -761,7 +749,7 @@ let pJS = function(tag_id, params){
             'y': pos ? pos.pos_y : Math.random() * pJS.canvas.h
           }
         )
-      )
+      );
       if(i == nb-1){
         if(!pJS.particles.move.enable){
           pJS.fn.particlesDraw();
@@ -934,7 +922,7 @@ let pJS = function(tag_id, params){
       var pos = {
         x: p.x + normVec.x * repulseFactor,
         y: p.y + normVec.y * repulseFactor
-      }
+      };
 
       if(pJS.particles.move.out_mode == 'bounce'){
         if(pos.x - p.radius > 0 && pos.x + p.radius < pJS.canvas.w) p.x = pos.x;
@@ -1013,7 +1001,7 @@ let pJS = function(tag_id, params){
 
     }
 
-  }
+  };
 
 
   pJS.fn.modes.grabParticle = function(p){
@@ -1030,7 +1018,6 @@ let pJS = function(tag_id, params){
         var opacity_line = pJS.interactivity.modes.grab.line_linked.opacity - (dist_mouse / (1/pJS.interactivity.modes.grab.line_linked.opacity)) / pJS.interactivity.modes.grab.distance;
 
         if(opacity_line > 0){
-
           /* style */
           var color_line = pJS.particles.line_linked.color_rgb_line;
           pJS.canvas.ctx.strokeStyle = 'rgba('+color_line.r+','+color_line.g+','+color_line.b+','+opacity_line+')';
@@ -1043,13 +1030,9 @@ let pJS = function(tag_id, params){
           pJS.canvas.ctx.lineTo(pJS.interactivity.mouse.pos_x, pJS.interactivity.mouse.pos_y);
           pJS.canvas.ctx.stroke();
           pJS.canvas.ctx.closePath();
-
         }
-
       }
-
     }
-
   };
 
 
@@ -1065,9 +1048,8 @@ let pJS = function(tag_id, params){
       pJS.interactivity.el = pJS.canvas.el;
     }
 
-
     /* detect mouse pos - on hover / click event */
-    if(pJS.interactivity.events.onhover.enable || pJS.interactivity.events.onclick.enable){
+    if(pJS.interactivity.events.onhover.enable || pJS.interactivity.events.onclick.enable) {
 
       /* el on mousemove */
       pJS.interactivity.el.addEventListener('mousemove', function(e){
@@ -1161,7 +1143,6 @@ let pJS = function(tag_id, params){
   pJS.fn.vendors.densityAutoParticles = function(){
 
     if(pJS.particles.number.density.enable){
-
       /* calc area */
       var area = pJS.canvas.el.width * pJS.canvas.el.height / 1000;
       if(pJS.tmp.retina){
@@ -1175,7 +1156,6 @@ let pJS = function(tag_id, params){
       var missing_particles = pJS.particles.array.length - nb_particles;
       if(missing_particles < 0) pJS.fn.modes.pushParticles(Math.abs(missing_particles));
       else pJS.fn.modes.removeParticles(missing_particles);
-
     }
 
   };
@@ -1233,7 +1213,6 @@ let pJS = function(tag_id, params){
   pJS.fn.vendors.destroypJS = function(){
     cancelAnimationFrame(pJS.fn.drawAnimFrame);
     canvas_el.remove();
-    pJSDom = null;
   };
 
 
@@ -1399,17 +1378,13 @@ let pJS = function(tag_id, params){
 
   /* ---------- pJS - start ------------ */
 
-
   pJS.fn.vendors.eventsListeners();
 
   pJS.fn.vendors.start();
+}
 
 
-
-};
-
-
-window.requestAnimFrame = (function(){
+const requestAnimFrame = (function(){
   return  window.requestAnimationFrame ||
     window.webkitRequestAnimationFrame ||
     window.mozRequestAnimationFrame    ||
@@ -1420,7 +1395,7 @@ window.requestAnimFrame = (function(){
     };
 })();
 
-window.cancelRequestAnimFrame = ( function() {
+const cancelRequestAnimFrame = ( function() {
   return window.cancelAnimationFrame         ||
     window.webkitCancelRequestAnimationFrame ||
     window.mozCancelRequestAnimationFrame    ||
@@ -1429,9 +1404,7 @@ window.cancelRequestAnimFrame = ( function() {
     clearTimeout
 } )();
 
-function hexToRgb(hex){
-  // By Tim Down - http://stackoverflow.com/a/5624139/3493650
-  // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+const hexToRgb = (hex) => {
   var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
   hex = hex.replace(shorthandRegex, function(m, r, g, b) {
     return r + r + g + g + b + b;
@@ -1442,72 +1415,15 @@ function hexToRgb(hex){
     g: parseInt(result[2], 16),
     b: parseInt(result[3], 16)
   } : null;
-};
+}
 
-function clamp(number, min, max) {
+const clamp = (number, min, max) => {
   return Math.min(Math.max(number, min), max);
-};
+}
 
-function isInArray(value, array) {
+const isInArray = (value, array) => {
   return array.indexOf(value) > -1;
 }
 
 
-/* ---------- particles.js functions - start ------------ */
-
-
-
-let particlesJS = function(tag_id, params){
-
-  //console.log(params);
-
-  /* no string id? so it's object params, and set the id with default id */
-  if(typeof(tag_id) != 'string'){
-    params = tag_id;
-    tag_id = 'particles-js';
-  }
-
-  /* no id? set the id to default id */
-  if(!tag_id){
-    tag_id = 'particles-js';
-  }
-
-  /* pJS elements */
-  var pJS_tag = document.getElementById(tag_id),
-    pJS_canvas_class = 'particles-js-canvas-el',
-    exist_canvas = pJS_tag.getElementsByClassName(pJS_canvas_class);
-
-  /* remove canvas if exists into the pJS target tag */
-  if(exist_canvas.length){
-    while(exist_canvas.length > 0){
-      pJS_tag.removeChild(exist_canvas[0]);
-    }
-  }
-
-  /* create canvas element */
-  var canvas_el = document.createElement('canvas');
-  canvas_el.className = pJS_canvas_class;
-
-  /* set size canvas */
-  canvas_el.style.width = "100%";
-  canvas_el.style.height = "100%";
-
-  /* append canvas */
-  var canvas = document.getElementById(tag_id).appendChild(canvas_el);
-
-  /* launch particle.js */
-  if(canvas != null){
-    pJSDom.push(new pJS(tag_id, params));
-  }
-
-};
-
-
-
-const particleInit = function(tag_id, path_config_json, callback){
-  var params = path_config_json;
-  particlesJS(tag_id, params);
-  if(callback) callback();
-};
-
-export default particleInit;
+export default drawCanvas;
