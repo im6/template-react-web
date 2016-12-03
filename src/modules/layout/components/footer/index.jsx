@@ -4,7 +4,7 @@ import style from './style.less';
 
 const Footer = () =><footer className={style.footerContainer}>
   <div className={style.footerText}>
-    Built with react, react-router, redux, redux-thunk, ant-design, by ZJ Guo
+    <h3>Built with react, react-router, redux, redux-thunk, ant-design, by ZJ Guo</h3>
   </div>
 </footer>
 

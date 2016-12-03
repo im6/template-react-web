@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Card } from 'antd';
-import style from './style.less';
-import particleInit from './particles.js';
+import drawCanvas from './particles.js';
+import styles from './style.less';
 
 class Background extends React.Component {
   constructor(props){
@@ -11,7 +11,7 @@ class Background extends React.Component {
 
   componentDidMount(){
     let me = this;
-    let { container } = me.refs;
+    let { canvas } = me.refs;
     let obj = {
       "particles": {
         "number": {
@@ -22,7 +22,7 @@ class Background extends React.Component {
           }
         },
         "color": {
-          "value": "#ffffff"
+          "value": "#56e2ff"
         },
         "shape": {
           "type": "circle",
@@ -62,7 +62,7 @@ class Background extends React.Component {
         "line_linked": {
           "enable": true,
           "distance": 150,
-          "color": "#ffffff",
+          "color": "#56e2ff",
           "opacity": 0.4,
           "width": 1
         },
@@ -90,7 +90,7 @@ class Background extends React.Component {
           },
           "onclick": {
             "enable": true,
-            "mode": "push"
+            "mode": "repulse"
           },
           "resize": true
         },
@@ -122,17 +122,11 @@ class Background extends React.Component {
       },
       "retina_detect": true
     };
-    particleInit('particles-js', obj, function() {
-      console.log('callback - particles.js config loaded');
-    });
-
-
+    drawCanvas(canvas, obj);
   }
 
-
-
   render() {
-    return <div className={style.container} ref="container" id="particles-js"></div>;
+    return <canvas className={styles.container} style={{"width": "100%","height": "100%"}} ref="canvas"/>
   }
 };
 
