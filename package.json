@@ -48,12 +48,12 @@
     "js-cookie": "^2.1.3",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
-    "material-ui": "^0.15.4",
     "pre-commit": "^1.1.3",
     "qs": "^6.3.0",
     "rc-queue-anim": "^0.12.5",
     "rc-tween-one": "^0.10.1",
     "react": "^15.3.2",
+    "react-dipper": "0.0.3",
     "react-dom": "^15.3.2",
     "react-hot-loader": "1.3.0",
     "react-immutable-proptypes": "^2.1.0",
@@ -72,8 +72,7 @@
   },
   "dependencies": {
     "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "lodash": "^4.17.2"
+    "express": "^4.14.0"
   },
   "pre-commit": []
 }
