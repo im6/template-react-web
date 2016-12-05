@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import styles from './style.less';
-import 'font-awesome/less/font-awesome.less';
-import img from '!file!./assets/gradient.jpg';
 import { Row, Col, Button } from 'antd';
+
+import styles from './style.less';
+import '!style!css!font-awesome/css/font-awesome.min.css';
+import img from '!file!./assets/gradient.jpg';
 
 import Footer from './components/footer/index.jsx';
 import Header from './components/header/index.jsx';
@@ -26,15 +27,22 @@ const Layout = ({children}) =>{
           <div>
             <h2 className={styles.routeName}>Route:</h2>
             <Link to="/">
-              <h4>Home</h4>
+              <h4>
+                <i className="fa fa-home" />
+                Home
+              </h4>
             </Link>
             <br />
             <Link to="/#/todos">
-              <h4>Todos</h4>
+              <h4>
+                <i className="fa fa-list" />
+                Todos</h4>
             </Link>
             <br />
             <Link to="/#/users">
-              <h4>Users</h4>
+              <h4>
+                <i className="fa fa-user" />
+                Users</h4>
             </Link>
             <br />
           </div>
