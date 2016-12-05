@@ -15,7 +15,7 @@ Object.assign(baseTemplate, {
   devtool: 'eval',
   output: {
     path: path.join(__dirname, '../temp'),
-    filename: 'bundle.js'
+    filename: 'app.js'
   }
 });
 

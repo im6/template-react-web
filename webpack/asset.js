@@ -4,13 +4,25 @@ var webpack = require('webpack'),
 
 const HOST = "127.0.0.1",
   PORT = "3000",
-  antDir = process.platform === 'win32' ? /node_modules\\antd\\lib/ :  /node_modules\/antd\/lib/;
+  antDir = process.platform === 'win32' ? /node_modules\\antd\\lib/ :  /node_modules\/antd\/lib/,
+  VENDORS = [
+    'react',
+    'react-dom',
+    'redux',
+    'react-redux',
+    'react-router',
+    'react-router-redux',
+    'redux-saga',
+    'immutable'
+  ];
+
+var commonsChunk = new webpack.optimize.CommonsChunkPlugin({
+  name: 'vendor',
+  filename: 'vendor.js',
+  minChunks: Infinity
+});
 
 var baseTemplate = {
-  output: {
-    path: path.join(__dirname, 'public'),
-    filename: 'bundle.js'
-  },
   resolve: {
     extensions: ['', '.js', '.jsx'],
     modulesDirectories:['node_modules',  './src/modules/']
@@ -60,8 +72,9 @@ var loaders = [
 
 var plugins = {
   hot: [
-      new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoErrorsPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+    commonsChunk
   ],
   watch: [
     new HtmlWebpackPlugin({
@@ -70,7 +83,9 @@ var plugins = {
       //favicon: 'src/content/img/favicon.ico',
       hash:true,
       showErrors: false
-    })
+    }),
+    commonsChunk,
+    new webpack.NoErrorsPlugin(),
   ],
   build: [
     new webpack.optimize.DedupePlugin(),
@@ -101,20 +116,29 @@ var plugins = {
       filename: 'error.html',
       inject: false,
       showErrors: false
-    })
+    }),
+    commonsChunk
   ]
 };
 
 var entry = {
-    hot:[
-      'webpack-dev-server/client?http://' + HOST + ':' + PORT,
-      'webpack/hot/only-dev-server',
-      './src/entry/index.jsx'
-    ],
-    watch:['./src/entry/index.jsx'],
-    build:['./src/entry/index.jsx']
+    hot:{
+      app: [
+        'webpack-dev-server/client?http://' + HOST + ':' + PORT,
+        'webpack/hot/only-dev-server',
+        './src/entry/index.jsx'
+      ],
+      vendor: VENDORS
+    },
+    watch:{
+      app: ['./src/entry/index.jsx'],
+      vendor: VENDORS
+    },
+    build:{
+      app: ['./src/entry/index.jsx'],
+      vendor: VENDORS
+    }
 };
-
 
 
 module.exports = {

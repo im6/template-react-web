@@ -15,7 +15,7 @@ Object.assign(baseTemplate, {
   devtool: 'source-map',
   output: {
     path: path.join(__dirname, '../public'),
-    filename: 'bundle.js'
+    filename: 'app.js'
   },
   devServer: {
     contentBase: "./public",

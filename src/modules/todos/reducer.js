@@ -19,7 +19,6 @@ const todos = handleActions({
   },
   ['todos/get/fail'](state, action) {
     console.error('loading todos fail!');
-    return { ...state, loading: false };
     return state.merge({
       loading: false,
       todoList: []

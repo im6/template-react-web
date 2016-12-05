@@ -3,7 +3,7 @@ import { call, put, fork } from 'redux-saga/effects';
 import { getUsers } from '../../services/resource.js';
 import Immutable, {List} from 'immutable';
 
-function* mySaga(a) {
+function* watchers(a) {
   yield [
     takeLatest("users/get", fetchUsers)
   ]
@@ -17,12 +17,15 @@ function* fetchUsers(action) {
       payload: Immutable.fromJS(payload)
     });
   } catch (e) {
-    yield put({type: "users/get/fail", payload: {msg: e}});
+    yield put({
+      type: "users/get/fail",
+      payload: {msg: e}
+    });
   }
 }
 
 export default function*(){
-  yield fork(mySaga);
+  yield fork(watchers);
   yield put({
     type:'users/get',
     payload:{
