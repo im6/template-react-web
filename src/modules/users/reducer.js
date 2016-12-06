@@ -12,7 +12,7 @@ const users = handleActions({
   ['users/get/success'](state, action) {
     console.log('loading users success!');
     return state.merge({
-      list: action.payload.get('data'),
+      list: action.payload.data,
       loading: false
     });
   },
