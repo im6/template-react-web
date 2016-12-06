@@ -1,7 +1,6 @@
 import { takeEvery, takeLatest } from 'redux-saga';
 import { call, put, fork } from 'redux-saga/effects';
 import { getUsers } from '../../services/resource.js';
-import Immutable, {List} from 'immutable';
 
 function* watchers(a) {
   yield [
@@ -14,7 +13,7 @@ function* fetchUsers(action) {
     const payload = yield call(getUsers, action.payload);
     yield put({
       type: "users/get/success",
-      payload: Immutable.fromJS(payload)
+      payload: payload
     });
   } catch (e) {
     yield put({
