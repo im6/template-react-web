@@ -14,7 +14,7 @@ const todos = handleActions({
     console.log('loading todos success!');
     return state.merge({
       loading: false,
-      todoList: action.payload.get('data')
+      todoList: action.payload.data
     });
   },
   ['todos/get/fail'](state, action) {
