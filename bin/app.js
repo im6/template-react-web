@@ -11,10 +11,6 @@ app.use(express.static(publicDir));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', function (req, res) {
-  res.sendFile(path.resolve(__dirname,`../${publicDir}/index.html`) );
-});
-
 app.get('/test', function (req, res) {
   res.json({
     list:[1,3,5,7,8],
@@ -22,6 +18,11 @@ app.get('/test', function (req, res) {
     reqBody: req.query
   });
 });
+
+app.get('*', function (req, res) {
+  res.sendFile(path.resolve(__dirname,`../${publicDir}/index.html`) );
+});
+
 
 app.post('/test', function (req, res) {
   res.json({
