@@ -1,6 +1,7 @@
 import { takeEvery, takeLatest } from 'redux-saga';
 import { call, put, fork } from 'redux-saga/effects';
 import { getUsers } from '../../services/resource.js';
+import { createAction } from 'redux-actions';
 
 function* watchers(a) {
   yield [
@@ -11,24 +12,18 @@ function* watchers(a) {
 function* fetchUsers(action) {
   try {
     const payload = yield call(getUsers, action.payload);
-    yield put({
-      type: "users/get/success",
-      payload: payload
-    });
+    let actCreater = createAction('users/get/success');
+    yield put(actCreater(payload));
   } catch (e) {
-    yield put({
-      type: "users/get/fail",
-      payload: {msg: e}
-    });
+    let actCreater = createAction('users/get/fail');
+    yield put(actCreater({msg: e}));
   }
 }
 
 export default function*(){
   yield fork(watchers);
-  yield put({
-    type:'users/get',
-    payload:{
-      test:"get some users initially"
-    }
-  });
+  let actCreater = createAction('users/get');
+  yield put(actCreater({
+    test:"get some users initially"
+  }));
 }
