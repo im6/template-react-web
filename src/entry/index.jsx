@@ -5,23 +5,20 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware,compose, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { browserHistory, Router, Route, IndexRoute } from 'react-router';
+import { browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer as routing } from 'react-router-redux';
 import createLogger from 'redux-logger';
 
 
 import { sagaInitiator } from '../config/saga';
 import { moduleReducers } from '../config/reducer';
+import Routes from '../routes/index.jsx';
 
 const appDom = document.getElementById('app');
 const sagaMiddleware = createSagaMiddleware();
 const logger = createLogger();
 
-import App from '../modules/app';
-import Todos from '../modules/todos';
-import Users from '../modules/users';
-import ErrorPage from '../modules/errorPage';
-import Hello from '../modules/Hello';
+
 
 const initialState = {};
 const enhancer = compose(
@@ -41,14 +38,7 @@ const history = syncHistoryWithStore(browserHistory, store);
 let render = () => {
   ReactDOM.render(
     <Provider store={store}>
-      <Router history={history} >
-        <Route path="/" component={App}>
-          <IndexRoute component={Hello}/>
-          <Route path="todos" component={Todos}/>
-          <Route path="users" component={Users} />
-          <Route path="*" component={ErrorPage} />
-        </Route>
-      </Router>
+      <Routes history={history}/>
     </Provider>,
     appDom
   );
@@ -70,9 +60,6 @@ if (module.hot) {
       renderException(error);
     }
   };
-  module.hot.accept('../routes/index', () => {
-    render();
-  });
 }
 
 render();
