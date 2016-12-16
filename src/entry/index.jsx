@@ -38,7 +38,7 @@ const history = syncHistoryWithStore(browserHistory, store);
 let render = () => {
   ReactDOM.render(
     <Provider store={store}>
-      <Routes history={history}/>
+      <Routes history={history} store={store}/>
     </Provider>,
     appDom
   );
@@ -53,6 +53,7 @@ if (module.hot) {
 
     ReactDOM.render(<RedBox error={error} />, appDom);
   };
+
   render = () => {
     try {
       renderNormally();

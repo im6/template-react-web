@@ -7,7 +7,7 @@ import ErrorPage from '../modules/errorPage';
 import Hello from '../modules/Hello';
 
 
-const Routes = ({ history }) =>
+const Routes = ({ history, store }) =>
   <Router history={history} >
     <Route path="/" component={App}>
       <IndexRoute component={Hello}/>
@@ -19,6 +19,7 @@ const Routes = ({ history }) =>
 
 Routes.propTypes = {
   history: PropTypes.object.isRequired,
+  store: PropTypes.object.isRequired,
 };
 
 export default Routes;
