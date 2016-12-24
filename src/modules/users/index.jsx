@@ -5,10 +5,10 @@ import UserList from './components/UserList';
 
 const Users = ({data}) => <UserList users={data} />
 
-function mapStateToProps({users, routing}){
+function mapStateToProps({user, routing}){
   return {
-    data: users.get('list'),
-    isLoading: users.get('loading')
+    data: user.get('list'),
+    isLoading: user.get('loading')
   }
 }
 

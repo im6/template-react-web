@@ -19,10 +19,10 @@ const Todos = ({data, dispatch, isLoading}) => {
   return <TodoList todos={data} getTodoList={fn1} isLoading={isLoading}/>
 };
 
-function mapStateToProps({todos, routing}){
+function mapStateToProps({todo, routing}){
   return {
-    data: todos.get('todoList'),
-    isLoading: todos.get('loading')
+    data: todo.get('todoList'),
+    isLoading: todo.get('loading')
   }
 }
 
