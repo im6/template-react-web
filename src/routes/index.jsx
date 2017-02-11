@@ -4,7 +4,7 @@ import App from '../modules/app';
 import Todos from '../modules/todos';
 import Users from '../modules/users';
 import ErrorPage from '../modules/errorPage';
-import Hello from '../modules/Hello';
+import Hello from '../modules/hello';
 
 
 const Routes = ({ history, store }) =>
