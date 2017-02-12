@@ -1,8 +1,10 @@
 import React, { PropTypes } from 'react';
-import { Card } from 'antd';
+import { Card, Button } from 'antd';
 
 const Hello = () => <Card>
   Hello World
+  <br/>
+  <Button>click me</Button>
 </Card>
 
 export default Hello;

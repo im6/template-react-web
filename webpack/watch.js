@@ -8,7 +8,7 @@ var baseTemplate = asset.template;
 
 Object.assign(baseTemplate, {
   module: {
-    loaders: asset.loaders
+    rules: asset.rules
   },
   plugins: asset.plugins("watch"),
   entry: asset.entry("watch"),

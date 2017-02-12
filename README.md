@@ -32,12 +32,12 @@ do the style copping
 
 - ant.design
 - express
-- react
+- react 15.4
 - redux
-- react-router
+- react-router 3.0
 - react-saga
-- webpack
-- es6
+- webpack 2.2
+- es2015(es6)
 - babel
 - less
 - eslint

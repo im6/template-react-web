@@ -3,13 +3,12 @@ import { Link } from 'react-router';
 import { Row, Col, Button } from 'antd';
 
 import styles from './style.less';
-import '!style!css!font-awesome/css/font-awesome.min.css';
-import img from '!file!./assets/gradient.jpg';
+import '!style-loader!css-loader!font-awesome/css/font-awesome.min.css';
+import img from '!file-loader!./assets/gradient.jpg';
 
 import Footer from './components/footer/index.jsx';
 import Header from './components/header/index.jsx';
 import Background from './components/background/index.jsx';
-
 
 const Layout = ({children}) =>{
 

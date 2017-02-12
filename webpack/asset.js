@@ -24,48 +24,82 @@ var commonsChunk = new webpack.optimize.CommonsChunkPlugin({
 
 var baseTemplate = {
   resolve: {
-    extensions: ['', '.js', '.jsx'],
-    modulesDirectories:['node_modules',  './src/modules/']
+    extensions: ['.js', '.jsx'],
   }
 };
 
 
-var loaders = [
-    {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-            presets: ['es2015','react', "stage-0"],
-            plugins: [
-                'transform-runtime',
-                ['import', {
-                    libraryName: 'antd',
-                    libraryDirectory: "lib",
-                    style: true  // use less, 'css' to css build
-                }]
-            ]
-        }
-    },
+var rules = [
+  {
+      test: /\.jsx?$/,
+      exclude: /node_modules/,
+      use: ['babel-loader']
+  },
   {
     test: /\.less$/,
-    loader: "style!css!less",
+    use: ['style-loader', 'css-loader', 'less-loader'],
     include: antDir
-
   },
 
   {
     test: /\.less$/,
-    loader: "style!css?module!less",
+    use: [
+      'style-loader',
+      {
+        loader: 'css-loader',
+        options: {
+          modules: true
+        }
+      },
+      'less-loader'
+    ],
     exclude: antDir
   },
   {
     test: /\.css$/,
-    loader: "style!css?modules!autoprefixer-loader?browsers=last 2 versions"
+    use: [
+      'style-loader',
+      {
+        loader: 'css-loader',
+        options: {
+          modules: true
+        }
+      },
+      {
+        loader: 'autoprefixer-loader',
+        options: {
+          browsers: 'last 2 versions'
+        }
+      },
+    ],
   },
-  { test: /\.(gif|png|jpg|jpeg)($|\?)/, loader: 'url?limit=10000' },
-  { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
-  { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" }
+  {
+    test: /\.(gif|png|jpg|jpeg)($|\?)/,
+    use: [
+      {
+        loader: 'url-loader',
+        options: {
+          limit: 10000
+        }
+      }
+    ],
+  },
+  {
+    test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+    use: [
+      {
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          mimetype: 'application/font-woff'
+        }
+      }
+    ],
+  },
+  {
+    test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+    use: ['file-loader']
+  }
 ];
 
 
@@ -73,7 +107,7 @@ var loaders = [
 var plugins = {
   hot: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     commonsChunk
   ],
   watch: [
@@ -85,12 +119,11 @@ var plugins = {
       showErrors: false
     }),
     commonsChunk,
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
   ],
   build: [
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
       mange:{
         "screw-ie8" : true
       },
@@ -142,7 +175,7 @@ var entry = {
 
 
 module.exports = {
-  loaders: loaders,
+  rules: rules,
   plugins: function(mode){
       return plugins[mode]
   },
