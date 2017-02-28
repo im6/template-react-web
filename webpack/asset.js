@@ -66,9 +66,13 @@ var rules = [
         }
       },
       {
-        loader: 'autoprefixer-loader',
+        loader: 'postcss-loader',
         options: {
-          browsers: 'last 2 versions'
+          plugins: function () {
+            return [
+              require('autoprefixer')
+            ];
+          }
         }
       },
     ],
