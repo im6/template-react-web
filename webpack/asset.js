@@ -33,7 +33,20 @@ var rules = [
   {
       test: /\.jsx?$/,
       exclude: /node_modules/,
-      use: ['babel-loader']
+      use: [{
+        loader: 'babel-loader',
+        options: {
+          "presets": ["es2015","react", "stage-0"],
+          "plugins": [
+            "transform-runtime",
+            ["import", {
+              "libraryName": "antd",
+              "libraryDirectory": "lib",
+              "style": true  // use less, 'css' to css build
+            }]
+          ]
+        }
+      }]
   },
   {
     test: /\.less$/,
