@@ -1,6 +1,5 @@
 # [react starter](https://facebook.github.io/react/)
-[![build status](http://img.shields.io/travis/reactjs/react-redux/master.svg?style=flat-square)](http://www.guozj.com)
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
+[![build status](http://img.shields.io/travis/reactjs/react-redux/master.svg?style=flat-square)](http://www.guozj.com) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]() [Rating](https://img.shields.io/amo/stars/dustman.svg)]()
 =========================
 
 An unopinionate react starter for SPA.
