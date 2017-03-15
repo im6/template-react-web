@@ -1,13 +1,13 @@
 import React, { PropTypes } from 'react';
 import { Button } from 'antd';
 
-let g = 'g2';
+let g2 = 'g2';
 
 class UserItem extends React.Component {
+  g3 = 'g3';
   constructor(props) {
     super(props);
     let me = this;
-    me.isAnimating = true;
     me.constValue = 'c1';
     me.state = {
       val: 's1'
@@ -19,7 +19,8 @@ class UserItem extends React.Component {
       val: me.state.val + '0'
     });
     me.constValue = me.constValue + '1';
-    g = g + '2';
+    g2 = g2 + '2';
+    me.g3 = me.g3 + '3';
 
   }
 
@@ -32,7 +33,9 @@ class UserItem extends React.Component {
       <br/>
       {me.state.val}
       <br/>
-      {g}
+      {g2}
+      <br/>
+      {me.g3}
       <br/>
       { me.props.user.get('key') + ': ' + me.props.user.get('value') }
       ==========
