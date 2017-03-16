@@ -1,5 +1,6 @@
 /* eslint global-require:0 */
 
+const isDev = process.env.NODE_ENV === 'dev';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -16,13 +17,16 @@ import Routes from '../routes/index.jsx';
 
 const appDom = document.getElementById('app');
 const sagaMiddleware = createSagaMiddleware();
-const logger = createLogger();
-
+let middleList = [sagaMiddleware];
+if(isDev){
+  const logger = createLogger();
+  middleList.push(logger);
+}
 
 
 const initialState = {};
 const enhancer = compose(
-  applyMiddleware(sagaMiddleware, logger),
+  applyMiddleware.apply(null, middleList),
   window.devToolsExtension ? window.devToolsExtension() : f => f
 );
 

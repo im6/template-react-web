@@ -125,7 +125,12 @@ var plugins = {
   hot: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    commonsChunk
+    commonsChunk,
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify("dev")
+      }
+    }),
   ],
   watch: [
     new HtmlWebpackPlugin({
@@ -137,6 +142,11 @@ var plugins = {
     }),
     commonsChunk,
     new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify("dev")
+      }
+    }),
   ],
   build: [
     new webpack.optimize.UglifyJsPlugin({
