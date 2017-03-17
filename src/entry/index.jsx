@@ -8,8 +8,6 @@ import { createStore, applyMiddleware,compose, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer as routing } from 'react-router-redux';
-import createLogger from 'redux-logger';
-
 
 import { sagaInitiator } from '../config/saga';
 import { moduleReducers } from '../config/reducer';
@@ -19,6 +17,8 @@ const appDom = document.getElementById('app');
 const sagaMiddleware = createSagaMiddleware();
 let middleList = [sagaMiddleware];
 if(isDev){
+  console.log('MODE: DEV');
+  let createLogger = require('redux-logger');
   const logger = createLogger();
   middleList.push(logger);
 }
