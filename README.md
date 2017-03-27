@@ -29,8 +29,8 @@ do the style copping
 
 ## Highlight
 
-- ant.design
-- express
+- ant.design(latest)
+- express.js
 - react 15.4
 - redux
 - react-router 3.0
@@ -55,4 +55,4 @@ Enjoy!
 MIT
 
 ---
-Made with ♥ by ZJ Guo ([@郭子剑](http://www.weibo.com/111581118)) and inspired by [ant-init](https://github.com/ant-design/antd-init)
+Made with ♥ by ZJ Guo and inspired by [ant-init](https://github.com/ant-design/antd-init)
