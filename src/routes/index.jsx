@@ -5,17 +5,43 @@ import Todos from '../modules/todos';
 import Users from '../modules/users';
 import ErrorPage from '../modules/errorPage';
 import Hello from '../modules/hello';
+import Loading from '../modules/loading';
+
+import { getAuth } from '../services/resource';
 
 
 const Routes = ({ history, store }) =>{
   const checkAuth = (nextState, replace, callback) => {
-    if(nextState.location.pathname.length < 1){
-      replace('/error');
+    if(store.getState().auth.get('isAuth')){
+      callback();
+    }else{
+      getAuth({username:'Jim',password: 'Teddy'}).then((res) => {
+        if(!res.data){
+          replace('/error');
+        } else {
+          store.dispatch({
+            type: "auth/login",
+            payload: res.data
+          });
+        }
+      }, (res) => {
+        replace('/error');
+        callback();
+      });
+
+      store.dispatch({
+        type: "auth/saveUrl",
+        payload: nextState.location.pathname
+      });
+
+      replace('/loading');
+      callback();
     }
-    callback();
   };
 
   return <Router history={history} >
+    <Route path="/loading"
+           component={Loading}/>
     <Route path="/"
            onEnter={checkAuth}
            component={App}>

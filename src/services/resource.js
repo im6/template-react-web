@@ -21,3 +21,10 @@ export async function getUsers(obj) {
     body: JSON.stringify(obj)
   });
 }
+
+export async function getAuth(obj) {
+  return requester('/auth', {
+    method: "POST",
+    body: JSON.stringify(obj)
+  });
+}

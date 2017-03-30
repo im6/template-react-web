@@ -31,6 +31,20 @@ app.post('/test', function (req, res) {
   });
 });
 
+app.post('/auth', function (req, res) {
+  console.log('username: ' + req.body.username);
+  console.log('password: ' + req.body.password);
+  setTimeout(function(){
+    res.json({
+      status: 'success',
+      data: {
+        isAuth: true
+      }
+    });
+  }, 1000);
+
+});
+
 app.post('/todos', function (req, res) {
   setTimeout(function(){
     res.json({
