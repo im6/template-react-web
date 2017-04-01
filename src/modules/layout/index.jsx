@@ -14,47 +14,30 @@ const Layout = ({children}) =>{
 
   var result = <div style={{background: `#f5f6f7 url(${img}) repeat-x 0 0`}}>
     <Header className={styles.header}/>
-    <div className={styles.canvas}>
-      <Background />
+    <div>
+      <h2 className={styles.routeName}>Route:</h2>
+      <Link to="/">
+        <h4>
+          <i className="fa fa-home" />
+          Home
+        </h4>
+      </Link>
+      <br />
+      <Link to="/todos">
+        <h4>
+          <i className="fa fa-list" />
+          Todos</h4>
+      </Link>
+      <br />
+      <Link to="/users">
+        <h4>
+          <i className="fa fa-user" />
+          Users</h4>
+      </Link>
+      <br />
     </div>
 
-    <div className={styles.main}>
-      <Row>
-        <Col span={6}></Col>
-
-        <Col span={6}>
-          <div>
-            <h2 className={styles.routeName}>Route:</h2>
-            <Link to="/">
-              <h4>
-                <i className="fa fa-home" />
-                Home
-              </h4>
-            </Link>
-            <br />
-            <Link to="/todos">
-              <h4>
-                <i className="fa fa-list" />
-                Todos</h4>
-            </Link>
-            <br />
-            <Link to="/users">
-              <h4>
-                <i className="fa fa-user" />
-                Users</h4>
-            </Link>
-            <br />
-          </div>
-        </Col>
-        <Col span={6}>
-          <div>
-            {children}
-          </div>
-        </Col>
-        <Col span={6}></Col>
-      </Row>
-    </div>
-
+    {children}
 
     <Footer className={styles.footer}/>
   </div>;

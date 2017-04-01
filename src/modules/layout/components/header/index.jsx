@@ -1,13 +1,44 @@
 import React, { PropTypes } from 'react';
-import { Card } from 'antd';
-import style from './style.less';
-import logo from '!file-loader!./assets/logo.png';
+import { Row, Col, Menu, Icon, Button } from 'antd';
+import { browserHistory } from 'react-router';
+import { Link } from 'react-router';
 
-const Header = () =><header className={style.header}>
-  <div>
-    <img src={logo} className={style.logo}/>
-    <h1>React Starter kit</h1>
-  </div>
-</header>;
+import style from './style.less';
+import img1 from '!file-loader!./assets/react.png';
+
+const logout = () => {
+  alert('log off');
+};
+const goHome = () => {
+  browserHistory.push('/');
+};
+
+const Header = ({currentPath}) => {
+
+  let result = <header className={style.header}>
+    <div className={style.left}>
+      <img src={img1} alt="logo"/>
+      <h1>
+        React Starter
+      </h1>
+    </div>
+    <div className={style.right}>
+      <Button type="default"
+              icon="appstore"
+              onClick={goHome}>
+        Home
+      </Button>
+      <Button type="primary"
+              icon="logout"
+              onClick={logout}
+        >
+        Logout
+      </Button>
+    </div>
+
+  </header>;
+
+  return result;
+};
 
 export default Header;

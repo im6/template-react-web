@@ -41,7 +41,7 @@ app.post('/auth', function (req, res) {
         isAuth: true
       }
     });
-  }, 1000);
+  }, 1);
 
 });
 
