@@ -25,7 +25,7 @@ const Routes = ({ history, store }) =>{
           });
         }
       }, (res) => {
-        replace('/error');
+        store.dispatch({type: "auth/login/hot"});
         callback();
       });
 

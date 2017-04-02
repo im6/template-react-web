@@ -3,13 +3,13 @@
 =========================
 
 An unopinionate react starter for SPA.
-If you prefer a server-side rendering solution, please go to [react-starter-kit](https://github.com/kriasoft/react-starter-kit)
+If you prefer a react-server-side rendering solution, please go to [react-starter-kit](https://github.com/kriasoft/react-starter-kit)
 
 
 ## cli example
 
 ```
-npm start
+npm run hot
 ```
 Run webpack hot server
 ```
@@ -17,9 +17,9 @@ npm run build
 ```
 Make a production build with minification.
 ```
-npm run watch
+npm start
 ```
-Watch the source change and reload when debugging with the server side(express.js here)
+Watch the source change and reload when debugging with the server side(using express.js here)
 
 ```
 npm run lint

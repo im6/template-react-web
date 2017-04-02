@@ -9,6 +9,12 @@ const auth = handleActions({
       url: null
     });
   },
+  ['auth/login/hot'](state, action) {
+    return state.merge({
+      isAuth: true, // hot dev mode
+      url: null
+    });
+  },
 
   ['auth/saveUrl'](state, action) {
     return state.merge({
