@@ -4,7 +4,8 @@ import { Card, Button } from 'antd';
 const Hello = () => <Card>
   Hello World
   <br/>
-  <Button>click me!1234</Button>
-</Card>
+  <br/>
+  <Button>click</Button>
+</Card>;
 
 export default Hello;

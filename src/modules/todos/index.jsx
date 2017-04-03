@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 
 
 const Todos = ({data, dispatch, isLoading}) => {
-
   const fn1 = ()=>{
     dispatch({
       type:'todos/get',

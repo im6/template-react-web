@@ -1,4 +1,4 @@
-# [react starter](https://facebook.github.io/react/)
+# [react starter](https://github.com/zj1926/react_starter)
 [![build status](http://img.shields.io/travis/reactjs/react-redux/master.svg?style=flat-square)](http://www.guozj.com) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]() [![Rating](https://img.shields.io/amo/stars/dustman.svg)]()
 =========================
 
@@ -47,7 +47,7 @@ do the style copping
 ## How Does It Work?
 
 Clone the repo to your local, make some customize if you'd like.
-during the server running, set env.DEV = true
+during the server running, set **env.DEV = true**
 Enjoy!
 
 ## License

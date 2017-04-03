@@ -13,7 +13,8 @@ const TodoList = ({ todos, getTodoList, isLoading }) =>
   {isLoading? <Spin/> : null}
 
   <br />
-  <Button type="primary" onClick={getTodoList}>Get Todo</Button>
+  <br />
+  <Button type="primary" onClick={getTodoList}>Load</Button>
 </Card>;
 
 export default TodoList;
