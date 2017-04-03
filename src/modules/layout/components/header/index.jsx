@@ -7,7 +7,7 @@ import style from './style.less';
 import img1 from '!file-loader!./assets/react.png';
 
 const logout = () => {
-  alert('log off');
+  browserHistory.push('/logon');
 };
 const goHome = () => {
   browserHistory.push('/');

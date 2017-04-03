@@ -6,6 +6,7 @@ import Users from '../modules/users';
 import ErrorPage from '../modules/errorPage';
 import Hello from '../modules/hello';
 import Loading from '../modules/loading';
+import LogOn from '../modules/logon';
 
 import { getAuth } from '../services/resource';
 
@@ -40,6 +41,7 @@ const Routes = ({ history, store }) =>{
   };
 
   return <Router history={history} >
+    <Route path="/logon" component={LogOn} />
     <Route path="/loading"
            component={Loading}/>
     <Route path="/"
