@@ -33,6 +33,7 @@ do the style copping
 - express.js
 - react 15.4
 - redux
+- react-redux 5.0.3
 - react-router 3.0
 - react-saga
 - webpack 2.2
