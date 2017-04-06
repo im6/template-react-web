@@ -61,7 +61,8 @@ var rules = [
       {
         loader: 'css-loader',
         options: {
-          modules: true
+          modules: true,
+          localIdentName: '[hash:base64:5]'
         }
       },
       'less-loader'
