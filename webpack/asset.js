@@ -184,19 +184,15 @@ var plugins = {
 
 var entry = {
     hot:{
-      app: [
-        'webpack-dev-server/client?http://' + HOST + ':' + PORT,
-        'webpack/hot/only-dev-server',
-        './src/entry/index.jsx'
-      ],
+      app: './src/entry/index.jsx',
       vendor: VENDORS
     },
     watch:{
-      app: ['./src/entry/index.jsx'],
+      app: './src/entry/index.jsx',
       vendor: VENDORS
     },
     build:{
-      app: ['./src/entry/index.jsx'],
+      app: './src/entry/index.jsx',
       vendor: VENDORS
     }
 };
