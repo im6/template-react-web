@@ -12,7 +12,7 @@ function* watchers(a) {
 function* fetchTodos(action) {
   try {
     const payload = yield call(getTodos, action.payload);
-    yield delay(2000);
+    yield delay(200);
     let actCreater = createAction('todos/get/success');
     yield put(actCreater(payload));
   } catch (e) {

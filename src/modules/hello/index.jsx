@@ -1,11 +1,26 @@
 import React, { PropTypes } from 'react';
 import { Card, Button } from 'antd';
+import { createAction } from 'redux-actions';
+import { connect } from 'react-redux';
 
-const Hello = () => <Card>
-  Hello World 1234
+const Hello = ({click}) => <Card>
+  Hello World
   <br/>
   <br/>
-  <Button>click</Button>
+  <Button onClick={click}>click</Button>
 </Card>;
 
-export default Hello;
+
+function mapStateToProps(){
+  return {}
+}
+function mapDispatchToProps(dispatch) {
+  return({
+    click: () => {
+      let actcr = createAction('hello/get');
+      dispatch(actcr())
+    }
+  })
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Hello);

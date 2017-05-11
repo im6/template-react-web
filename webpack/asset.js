@@ -135,7 +135,7 @@ var plugins = {
   ],
   watch: [
     new HtmlWebpackPlugin({
-      title: 'ZJ Guo',
+      title: 'React Starter',
       template: 'src/template/index.html',
       //favicon: 'src/content/img/favicon.ico',
       hash:true,
@@ -166,16 +166,10 @@ var plugins = {
       }
     }),
     new HtmlWebpackPlugin({
-      title: 'ZJ Guo',
+      title: 'React Starter',
       template: 'src/template/index.html',
       favicon: './src/content/img/favicon.ico',
       hash:true,
-      showErrors: false
-    }),
-    new HtmlWebpackPlugin({
-      template: 'src/template/error.html',
-      filename: 'error.html',
-      inject: false,
       showErrors: false
     }),
     commonsChunk
@@ -192,7 +186,7 @@ var entry = {
       vendor: VENDORS
     },
     build:{
-      app: './src/entry/index.jsx',
+      app: './src/entry/index_prod.jsx',
       vendor: VENDORS
     }
 };

@@ -19,15 +19,10 @@ app.get('/test', function (req, res) {
   });
 });
 
-app.get('*', function (req, res) {
-  res.sendFile(path.resolve(__dirname,`../${publicDir}/index.html`) );
-});
-
-
-app.post('/test', function (req, res) {
+app.get('/hello', function (req, res) {
   res.json({
     status: 'success',
-    reqBody: req.body
+    data: 'hello from server'
   });
 });
 
@@ -41,7 +36,7 @@ app.post('/auth', function (req, res) {
         isAuth: true
       }
     });
-  }, 1);
+  }, 1000);
 
 });
 
@@ -73,6 +68,9 @@ app.post('/users', function (req, res) {
     });
   }, 400);
 
+});
+app.get('*', function (req, res) {
+  res.sendFile(path.resolve(__dirname,`../${publicDir}/index.html`) );
 });
 
 
