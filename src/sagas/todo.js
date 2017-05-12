@@ -22,7 +22,5 @@ function* fetchTodos(action) {
 }
 
 export default function*(){
-  let actCreater = createAction('todos/get');
   yield fork(watchers);
-  yield put(actCreater());
 }
