@@ -9,7 +9,6 @@ function* fetchUsers(action) {
     const actCreater = createAction('users/get/success');
     yield put(actCreater(payload));
   } catch (e) {
-
     const actCreater = createAction('users/get/fail');
     yield put(actCreater({ msg: e }));
   }
@@ -21,7 +20,7 @@ function* watchers() {
   ];
 }
 
-export default function*(){
+export default function*() {
   yield fork(watchers);
   const actCreater = createAction('users/get');
   yield put(actCreater({

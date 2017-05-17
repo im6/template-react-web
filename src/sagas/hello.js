@@ -7,6 +7,7 @@ import { getHello } from '../services/resource';
 function* getHelloRes(action) {
   try {
     const payload = yield call(getHello, action.payload);
+    delay(1);
     notification.success({
       message: 'Server response: ',
       description: payload.data,

@@ -7,17 +7,17 @@ function* fetchTodos(action) {
   try {
     const payload = yield call(getTodos, action.payload);
     yield delay(200);
-    let actCreater = createAction('todos/get/success');
+    const actCreater = createAction('todos/get/success');
     yield put(actCreater(payload));
   } catch (e) {
-    let actCreater = createAction('todos/get/fail');
+    const actCreater = createAction('todos/get/fail');
     yield put(actCreater({ msg:e }));
   }
 }
 
 function* watchers() {
   yield [
-    takeLatest("todos/get", fetchTodos),
+    takeLatest('todos/get', fetchTodos),
   ];
 }
 
