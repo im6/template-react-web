@@ -3,11 +3,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware,compose, combineReducers } from 'redux';
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer as routing } from 'react-router-redux';
 import RedBox from 'redbox-react';
+import createLogger from 'redux-logger';
 
 import { sagaInitiator } from '../config/saga';
 import { moduleReducers } from '../config/reducer';
@@ -17,14 +18,11 @@ const appDom = document.getElementById('app');
 const sagaMiddleware = createSagaMiddleware();
 const isDev = process.env.NODE_ENV === 'dev';
 
-let middleList = [sagaMiddleware];
-if(isDev){
-  console.log('MODE: DEV');
-  let createLogger = require('redux-logger');
+const middleList = [sagaMiddleware];
+if (isDev) {
   const logger = createLogger();
   middleList.push(logger);
 }
-
 
 const initialState = {};
 const enhancer = compose(

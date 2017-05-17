@@ -1,21 +1,15 @@
 import React from 'react';
-import { Button } from 'antd';
+import PropTypes from 'prop-types';
 
-class UserItem extends React.Component {
-
-  constructor(props) {
-    super(props);
-    let me = this;
-  }
-
-  render() {
-    let me = this;
-    return <h2>
-      { me.props.user.get('key') + ': ' + me.props.user.get('value') }
-    </h2>;
-  }
+function UserItem({ user }) {
+  return (<h2>
+    { `${user.get('key')}: ${user.get('value')}` }
+  </h2>);
 }
 
+UserItem.propTypes = {
+  user: PropTypes.object.isRequired,
+};
 
 export default UserItem;
 

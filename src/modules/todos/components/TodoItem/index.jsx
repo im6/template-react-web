@@ -1,20 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Tag } from 'antd';
 
-class TodoItem extends React.Component {
-
-  constructor(props) {
-    super(props);
-    let me = this;
-  }
-
-  render() {
-    let me = this;
-    let todo = me.props.todo;
-    return <Tag color="#87d068">
-      { todo.get('key') + ': ' + todo.get('value') }
-    </Tag>;
-  }
+function TodoItem({ todo }) {
+  return (<Tag color="#87d068">
+    { `${todo.get('key')}: ${todo.get('value')}` }
+  </Tag>);
 }
+
+TodoItem.propTypes = {
+  todo: PropTypes.array.isRequired,
+};
 
 export default TodoItem;

@@ -1,20 +1,31 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, Button, Spin } from 'antd';
 import TodoItem from '../TodoItem';
 
 const TodoList = ({ todos, getTodoList, isLoading }) =>
-  <Card title="Todo List" extra={<a href="#">More</a>}>
-  {
-    todos.map((v, k) => {
-    return <TodoItem todo={v} key={k}/>
-    })
-  }
+  <Card
+    title="Todo List"
+    extra={<a>More</a>}
+  >
+    {
+      todos.map((v, k) => <TodoItem todo={v} key={k} />)
+    }
+    {
+      isLoading ? <Spin /> : null
+    }
 
-  {isLoading? <Spin/> : null}
+    <br />
+    <br />
+    <Button type="primary" onClick={getTodoList}>
+      Load
+    </Button>
+  </Card>;
 
-  <br />
-  <br />
-  <Button type="primary" onClick={getTodoList}>Load</Button>
-</Card>;
+TodoList.propTypes = {
+  todos: PropTypes.array.isRequired,
+  getTodoList: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+};
 
 export default TodoList;

@@ -5,63 +5,61 @@ import QueueAnim from 'rc-queue-anim';
 import { default as appService } from './service';
 
 class App extends React.Component {
-  constructor(prop){
+  constructor(prop) {
     super(prop);
-    let me = this;
+    const me = this;
     me.state = {
       childrenCurrent: null,
       isTransitionSlot: false
     };
   }
-  shouldComponentUpdate(nextprops, nextstate){
-    let me = this;
-
+  shouldComponentUpdate(nextprops) {
+    const me = this;
     const isSame = appService.compareRoutes(nextprops.routes, me.props.routes);
-    let willChange = !isSame || me.state.isTransitionSlot;
+    const willChange = !isSame || me.state.isTransitionSlot;
     return willChange;
   }
 
   componentWillMount() {
-    let me = this;
+    const me = this;
     me.setDelayEffect();
   }
 
-  componentWillReceiveProps(nextProps){
-
-    let me = this;
-    let isSame = appService.compareRoutes(nextProps.routes, me.props.routes);
-    if(isSame){
+  componentWillReceiveProps(nextProps) {
+    const me = this;
+    const isSame = appService.compareRoutes(nextProps.routes, me.props.routes);
+    if(isSame) {
       return;
-    }else{
+    } else {
       me.setDelayEffect();
     }
-
   }
 
-  setDelayEffect(){
-    let me = this;
+  setDelayEffect() {
+    const me = this;
     me.setState({
       childrenCurrent: null,
       isTransitionSlot: true,
     });
-    setTimeout(function(){
+    setTimeout(() => {
       me.setState({
         childrenCurrent: me.props.children,
-        isTransitionSlot: false
+        isTransitionSlot: false,
       });
     }, 600);
   }
 
-  render(){
+  render() {
     let me = this;
     return (<Layout>
       <QueueAnim delay={50}
-                 type={['right','left']}
-                 ease={['easeOutQuart', 'easeInOutQuart']} >
+                 type={['right', 'left']}
+                 ease={['easeOutQuart', 'easeInOutQuart']}
+        >
         {
-          me.state.childrenCurrent?
+          me.state.childrenCurrent ?
             <div key="a">
-              {me.state.childrenCurrent}
+              { me.state.childrenCurrent }
             </div>
             : null
         }

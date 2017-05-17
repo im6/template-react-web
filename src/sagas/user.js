@@ -1,29 +1,30 @@
-import { takeEvery, takeLatest } from 'redux-saga';
+import { takeLatest } from 'redux-saga';
 import { call, put, fork } from 'redux-saga/effects';
-import { getUsers } from '../services/resource.js';
 import { createAction } from 'redux-actions';
-
-function* watchers(a) {
-  yield [
-    takeLatest("users/get", fetchUsers)
-  ]
-}
+import { getUsers } from '../services/resource.js';
 
 function* fetchUsers(action) {
   try {
     const payload = yield call(getUsers, action.payload);
-    let actCreater = createAction('users/get/success');
+    const actCreater = createAction('users/get/success');
     yield put(actCreater(payload));
   } catch (e) {
-    let actCreater = createAction('users/get/fail');
-    yield put(actCreater({msg: e}));
+
+    const actCreater = createAction('users/get/fail');
+    yield put(actCreater({ msg: e }));
   }
+}
+
+function* watchers() {
+  yield [
+    takeLatest('users/get', fetchUsers),
+  ];
 }
 
 export default function*(){
   yield fork(watchers);
-  let actCreater = createAction('users/get');
+  const actCreater = createAction('users/get');
   yield put(actCreater({
-    test:"get some users initially"
+    test:'get some users initially',
   }));
 }
