@@ -1,26 +1,35 @@
-/* eslint-disable */
 import fetch from 'isomorphic-fetch';
-import cookie from 'js-cookie';
+import { notification } from 'antd';
+import merge from 'merge';
 
+const DEFAULTCONFIG = {
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  credentials: 'same-origin',
+};
 
 function jsonParse(res) {
-  //return res.json().then(data => ({ ...res, data }));
   return res.json();
 }
 
-const requester = (url, options) => {
-  const opts = { ...options };
+function errorHandle(res) {
+  if ('status_code' in res && 'result' in res && res.result.error) {
+    const message = `${res.result.errorMessage}. ${res.result.description}`;
+    notification.error({
+      message,
+    });
+  }
+  return res;
+}
 
-  let copyHeader = Object.assign({},opts.headers);
-  copyHeader = Object.assign(copyHeader, {
-    authorization: cookie.get('authorization') || '',
-    "Content-Type": 'application/json',
+const requester = (method, url, body) => {
+  const opts = merge.recursive(true, DEFAULTCONFIG, {
+    method,
+    body: JSON.stringify(body),
   });
-  opts.headers = copyHeader;
 
-  return fetch(url, opts)
-    .then(jsonParse);
-
+  return fetch(url, opts).then(jsonParse).then(errorHandle);
 };
 
 export default requester;
