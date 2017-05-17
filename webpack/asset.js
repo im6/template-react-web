@@ -1,6 +1,7 @@
 var webpack = require('webpack'),
   path = require('path'),
-  HtmlWebpackPlugin = require('html-webpack-plugin');
+  HtmlWebpackPlugin = require('html-webpack-plugin'),
+  FriendlyErrors = require('friendly-errors-webpack-plugin');
 
 const HOST = "127.0.0.1",
   PORT = "3000",
@@ -30,6 +31,18 @@ var baseTemplate = {
 
 
 var rules = [
+  {
+    enforce: "pre",
+    test: /\.jsx?$/,
+    exclude: /node_modules/,
+    include: [
+      path.join(__dirname, '../src')
+    ],
+    loader: "eslint-loader",
+    options: {
+      failOnWarning: true,
+    }
+  },
   {
       test: /\.jsx?$/,
       exclude: /node_modules/,
@@ -148,6 +161,7 @@ var plugins = {
         NODE_ENV: JSON.stringify("dev")
       }
     }),
+    new FriendlyErrors()
   ],
   build: [
     new webpack.optimize.UglifyJsPlugin({

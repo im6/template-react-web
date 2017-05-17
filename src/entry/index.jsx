@@ -1,6 +1,5 @@
 /* eslint global-require:0 */
 
-const isDev = process.env.NODE_ENV === 'dev';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -8,6 +7,7 @@ import { createStore, applyMiddleware,compose, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer as routing } from 'react-router-redux';
+import RedBox from 'redbox-react';
 
 import { sagaInitiator } from '../config/saga';
 import { moduleReducers } from '../config/reducer';
@@ -15,6 +15,8 @@ import Routes from '../routes/index.jsx';
 
 const appDom = document.getElementById('app');
 const sagaMiddleware = createSagaMiddleware();
+const isDev = process.env.NODE_ENV === 'dev';
+
 let middleList = [sagaMiddleware];
 if(isDev){
   console.log('MODE: DEV');
@@ -53,8 +55,6 @@ let render = () => {
 if (module.hot) {
   const renderNormally = render;
   const renderException = (error) => {
-    const RedBox = require('redbox-react').default;
-
     ReactDOM.render(<RedBox error={error} />, appDom);
   };
 

@@ -12,7 +12,7 @@ Object.assign(baseTemplate, {
   },
   plugins: asset.plugins("watch"),
   entry: asset.entry("watch"),
-  devtool: 'eval',
+  devtool: 'eval-source-map',
   output: {
     publicPath: '/',
     path: path.join(__dirname, '../temp'),

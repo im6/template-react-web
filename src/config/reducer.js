@@ -1,7 +1,7 @@
 const context = require.context('../reducers/', true, /\.js$/);
 const keys = context.keys();
 
-export const moduleReducers = keys.reduce(function(res, v) {
+export const moduleReducers = keys.reduce((res, v) => {
   let str0 = v.replace(/\.js$/,'');
   let str1 = str0.replace(/^.\//,'');
   if(str1.indexOf('/') > -1){
