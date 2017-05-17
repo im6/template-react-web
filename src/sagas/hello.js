@@ -2,11 +2,11 @@ import { takeLatest, delay } from 'redux-saga';
 import { call, put, fork } from 'redux-saga/effects';
 import { createAction } from 'redux-actions';
 import { notification } from 'antd';
-import { getHello } from '../services/resource';
+import requester from '../services/requester';
 
-function* getHelloRes(action) {
+function* getHelloRes() {
   try {
-    const payload = yield call(getHello, action.payload);
+    const payload = yield call(requester, 'GET', '/hello');
     delay(1);
     notification.success({
       message: 'Server response: ',
@@ -26,7 +26,7 @@ function* getHelloRes(action) {
 
 function* watchers() {
   yield [
-    takeLatest("hello/get", getHelloRes),
+    takeLatest('hello/get', getHelloRes),
   ];
 }
 
