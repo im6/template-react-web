@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Card, Button, Input, Icon } from 'antd';
 import QueueAnim from 'rc-queue-anim';
 import ReactDipper from 'react-dipper';

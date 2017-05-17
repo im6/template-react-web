@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Card } from 'antd';
 import UserItem from './components/UserItem';
@@ -9,7 +9,7 @@ const Users = ({data}) => <Card>
   }
 </Card>;
 
-function mapStateToProps({user, routing}){
+function mapStateToProps({user, routing}) {
   return {
     data: user.get('list'),
     isLoading: user.get('loading')

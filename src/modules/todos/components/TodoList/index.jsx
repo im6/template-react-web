@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Card, Button, Spin } from 'antd';
 import TodoItem from '../TodoItem';
 

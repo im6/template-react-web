@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Tag } from 'antd';
 
 class TodoItem extends React.Component {

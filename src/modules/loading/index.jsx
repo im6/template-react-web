@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Table, Icon, Card, Button, Popconfirm } from 'antd';
 import { createAction } from 'redux-actions';

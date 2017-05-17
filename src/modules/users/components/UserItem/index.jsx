@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Button } from 'antd';
 
 class UserItem extends React.Component {

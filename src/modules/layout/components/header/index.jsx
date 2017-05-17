@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Row, Col, Menu, Icon, Button } from 'antd';
 import { browserHistory } from 'react-router';
 import { Link } from 'react-router';

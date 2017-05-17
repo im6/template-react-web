@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Router, Route, IndexRoute } from 'react-router';
 import App from '../modules/app';
 import Todos from '../modules/todos';
@@ -16,7 +17,7 @@ const Routes = ({ history, store }) =>{
     if(store.getState().auth.get('isAuth')){
       callback();
     }else{
-      getAuth({username:'Jim',password: 'Teddy'}).then((res) => {
+      getAuth({ username:'Jim',password: 'Teddy' }).then((res) => {
         if(!res.data){
           replace('/error');
         } else {
