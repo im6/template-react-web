@@ -25,7 +25,7 @@ function mapStateToProps() {
 function mapDispatchToProps(dispatch) {
   return {
     click: () => {
-      let actcr = createAction('hello/get');
+      const actcr = createAction('hello/get');
       dispatch(actcr());
     },
   };
