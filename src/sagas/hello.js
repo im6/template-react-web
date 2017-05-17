@@ -12,24 +12,24 @@ function* getHelloRes(action) {
       message: 'Server response: ',
       description: payload.data,
     });
-    let actCreater = createAction('hello/get/success');
+    const actCreater = createAction('hello/get/success');
     yield put(actCreater(payload));
   } catch (e) {
-    let actCreater = createAction('hello/get/fail');
+    const actCreater = createAction('hello/get/fail');
     notification.error({
       message: 'Server response fail: ',
       description: 'no server response',
     });
-    yield put(actCreater({ msg:e }));
+    yield put(actCreater({ msg: e }));
   }
 }
 
 function* watchers() {
   yield [
     takeLatest("hello/get", getHelloRes),
-  ]
+  ];
 }
 
-export default function*() {
+export default function* () {
   yield fork(watchers);
 }

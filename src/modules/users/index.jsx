@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Card } from 'antd';
 import UserItem from './components/UserItem';
@@ -9,11 +10,16 @@ const Users = ({data}) => <Card>
   }
 </Card>;
 
-function mapStateToProps({user, routing}) {
+function mapStateToProps({ user }) {
   return {
     data: user.get('list'),
-    isLoading: user.get('loading')
+    isLoading: user.get('loading'),
   };
 }
+
+Users.propTypes = {
+  data: PropTypes.object.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+};
 
 export default connect(mapStateToProps)(Users);

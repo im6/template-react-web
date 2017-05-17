@@ -20,10 +20,10 @@ function* watchers() {
   ];
 }
 
-export default function*() {
+export default function* () {
   yield fork(watchers);
   const actCreater = createAction('users/get');
   yield put(actCreater({
-    test:'get some users initially',
+    test: 'get some users initially',
   }));
 }

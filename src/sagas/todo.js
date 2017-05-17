@@ -11,7 +11,7 @@ function* fetchTodos(action) {
     yield put(actCreater(payload));
   } catch (e) {
     const actCreater = createAction('todos/get/fail');
-    yield put(actCreater({ msg:e }));
+    yield put(actCreater({ msg: e }));
   }
 }
 
@@ -21,6 +21,6 @@ function* watchers() {
   ];
 }
 
-export default function*(){
+export default function* () {
   yield fork(watchers);
 }
