@@ -1,30 +1,30 @@
-/* eslint-disable */
+/* eslint no-useless-computed-key: 0, object-shorthand: 0 */
 import { handleActions } from 'redux-actions';
-import Immutable, {Map, List} from 'immutable';
+import { Map as immap } from 'immutable';
 
 const auth = handleActions({
-  ['auth/login'](state, action) {
+  ['auth/login'](state) {
     return state.merge({
       isAuth: true,
-      url: null
+      url: null,
     });
   },
-  ['auth/login/hot'](state, action) {
+  ['auth/login/hot'](state) {
     return state.merge({
-      isAuth: true, // hot dev mode
-      url: null
+      isAuth: true,
+      url: null,
     });
   },
 
   ['auth/saveUrl'](state, action) {
     return state.merge({
-      url: action.payload
+      url: action.payload,
     });
   },
 
-}, Map({
+}, immap({
   isAuth: false,
-  url: null
+  url: null,
 }));
 
 export default auth;
