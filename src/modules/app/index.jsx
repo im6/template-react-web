@@ -1,3 +1,4 @@
+/* eslint react/forbid-prop-types: 0 */
 import React from 'react';
 import PropTypes from 'prop-types';
 import QueueAnim from 'rc-queue-anim';
@@ -47,7 +48,6 @@ class App extends React.Component {
   }
 
   render() {
-    debugger;
     const me = this;
     return (<Layout>
       <QueueAnim
@@ -68,8 +68,8 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  children: PropTypes.isRequired,
-  routes: PropTypes.isRequired,
+  children: PropTypes.object.isRequired,
+  routes: PropTypes.array.isRequired,
 };
 
 export default App;

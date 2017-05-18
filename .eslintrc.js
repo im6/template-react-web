@@ -8,7 +8,6 @@ module.exports = {
   "rules": {
     "import/no-extraneous-dependencies": 0,
     "import/extensions": 0,
-    "no-debugger": 0,
   },
   "env": {
     "browser": true

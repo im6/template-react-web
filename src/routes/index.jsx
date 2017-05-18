@@ -1,3 +1,4 @@
+/* eslint react/forbid-prop-types: 0 */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Router, Route, IndexRoute } from 'react-router';
@@ -57,8 +58,8 @@ const Routes = ({ history, store }) => {
 };
 
 Routes.propTypes = {
-  history: PropTypes.isRequired,
-  store: PropTypes.isRequired,
+  history: PropTypes.object.isRequired,
+  store: PropTypes.object.isRequired,
 };
 
 export default Routes;
