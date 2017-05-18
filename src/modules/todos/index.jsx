@@ -4,7 +4,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 import TodoList from './components/TodoList';
 
-const Todos = ({ list, dispatch, isLoading }) => {
+const Todos = ({ list, isLoading, dispatch }) => {
   const fn1 = () => {
     dispatch({
       type: 'todos/get',
@@ -21,7 +21,7 @@ const Todos = ({ list, dispatch, isLoading }) => {
 };
 
 Todos.propTypes = {
-  list: ImmutablePropTypes.list,
+  list: ImmutablePropTypes.list.isRequired,
   dispatch: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
 };

@@ -15,7 +15,6 @@ const TodoList = ({ todos, getTodoList, isLoading }) =>
     {
       isLoading ? <Spin /> : null
     }
-
     <br />
     <br />
     <Button type="primary" onClick={getTodoList}>

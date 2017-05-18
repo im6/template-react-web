@@ -1,28 +1,9 @@
 import requester from './requester';
 
-export async function getHello() {
-  return requester('/hello', {
-    method: 'GET',
-  });
-}
+const resource = {
+  getAuth(obj) {
+    return requester('POST', '/auth', obj);
+  },
+};
 
-export async function getTodos(obj) {
-  return requester('/todos', {
-    method: 'POST',
-    body: JSON.stringify(obj),
-  });
-}
-
-export async function getUsers(obj) {
-  return requester('/users', {
-    method: 'POST',
-    body: JSON.stringify(obj),
-  });
-}
-
-export async function getAuth(obj) {
-  return requester('/auth', {
-    method: 'POST',
-    body: JSON.stringify(obj),
-  });
-}
+export default resource;

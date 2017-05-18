@@ -1,6 +1,6 @@
 /* eslint no-useless-computed-key: 0, object-shorthand: 0 */
 import { handleActions } from 'redux-actions';
-import { Map as immap } from 'immutable';
+import Immutable from 'immutable';
 
 const todos = handleActions({
   ['todos/get'](state) {
@@ -21,7 +21,7 @@ const todos = handleActions({
       list: [],
     });
   },
-}, immap({
+}, Immutable.fromJS({
   list: [],
   loading: false,
 }));

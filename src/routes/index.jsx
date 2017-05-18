@@ -7,14 +7,14 @@ import Hello from '../modules/hello';
 import Loading from '../modules/loading';
 import LogOn from '../modules/logon';
 import Todos from '../modules/todos';
-import { getAuth } from '../services/resource';
+import resource from '../services/resource';
 
 const Routes = ({ history, store }) => {
   const checkAuth = (nextState, replace, callback) => {
     if (store.getState().auth.get('isAuth')) {
       callback();
     } else {
-      getAuth({
+      resource.getAuth({
         username: 'Jim',
         password: 'Teddy',
       }).then((res) => {
