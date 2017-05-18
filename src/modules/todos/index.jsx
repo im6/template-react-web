@@ -1,28 +1,36 @@
 import React from 'react';
-import { Card } from 'antd';
+import PropTypes from 'prop-types';
+import ImmutablePropTypes from 'react-immutable-proptypes';
+import { connect } from 'react-redux';
 import TodoList from './components/TodoList';
 
-import { connect } from 'react-redux';
-
-
-const Todos = ({data, dispatch, isLoading}) => {
-  const fn1 = ()=>{
+const Todos = ({ list, dispatch, isLoading }) => {
+  const fn1 = () => {
     dispatch({
-      type:'todos/get',
-      payload:{
-        test:"get some todos"
-      }
-    })
+      type: 'todos/get',
+      payload: {
+        test: 'get some todos',
+      },
+    });
   };
-
-  return <TodoList todos={data} getTodoList={fn1} isLoading={isLoading}/>
+  return (<TodoList
+    todos={list}
+    getTodoList={fn1}
+    isLoading={isLoading}
+  />);
 };
 
-function mapStateToProps({todo, routing}){
+Todos.propTypes = {
+  list: ImmutablePropTypes.list,
+  dispatch: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+};
+
+function mapStateToProps({ todo }) {
   return {
-    data: todo.get('todoList'),
-    isLoading: todo.get('loading')
-  }
+    list: todo.get('list'),
+    isLoading: todo.get('loading'),
+  };
 }
 
 export default connect(mapStateToProps)(Todos);

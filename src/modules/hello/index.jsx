@@ -5,7 +5,7 @@ import { createAction } from 'redux-actions';
 import { connect } from 'react-redux';
 
 const Hello = ({ click }) => <Card>
-  Hello World
+  Hello World 1234
   <br />
   <br />
   <Button onClick={click}>

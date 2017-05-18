@@ -1,29 +1,28 @@
-/* eslint-disable */
+/* eslint no-useless-computed-key: 0, object-shorthand: 0 */
 import { handleActions } from 'redux-actions';
-import Immutable, {Map, List} from 'immutable';
+import { Map as immap } from 'immutable';
 
 const todos = handleActions({
-  ['todos/get'](state, action) {
+  ['todos/get'](state) {
     return state.merge({
       loading: true,
-      todoList: []
+      list: [],
     });
   },
   ['todos/get/success'](state, action) {
     return state.merge({
       loading: false,
-      todoList: action.payload.data
+      list: action.payload.data,
     });
   },
-  ['todos/get/fail'](state, action) {
-    console.error('loading todos fail!');
+  ['todos/get/fail'](state) {
     return state.merge({
       loading: false,
-      todoList: []
+      list: [],
     });
-  }
-}, Map({
-  todoList: [],
+  },
+}, immap({
+  list: [],
   loading: false,
 }));
 

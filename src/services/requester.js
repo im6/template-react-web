@@ -1,6 +1,5 @@
 import fetch from 'isomorphic-fetch';
 import { notification } from 'antd';
-import merge from 'merge';
 
 const DEFAULTCONFIG = {
   headers: {
@@ -24,7 +23,7 @@ function errorHandle(res) {
 }
 
 const requester = (method, url, body) => {
-  const opts = merge.recursive(true, DEFAULTCONFIG, {
+  const opts = Object.assign(DEFAULTCONFIG, {
     method,
     body: JSON.stringify(body),
   });

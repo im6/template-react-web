@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import { Card, Button, Spin } from 'antd';
 import TodoItem from '../TodoItem';
 
@@ -23,7 +24,7 @@ const TodoList = ({ todos, getTodoList, isLoading }) =>
   </Card>;
 
 TodoList.propTypes = {
-  todos: PropTypes.array.isRequired,
+  todos: ImmutablePropTypes.list.isRequired,
   getTodoList: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import { Tag } from 'antd';
 
 function TodoItem({ todo }) {
@@ -9,7 +9,7 @@ function TodoItem({ todo }) {
 }
 
 TodoItem.propTypes = {
-  todo: PropTypes.array.isRequired,
+  todo: ImmutablePropTypes.map.isRequired,
 };
 
 export default TodoItem;

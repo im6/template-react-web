@@ -40,7 +40,7 @@ var rules = [
     ],
     loader: "eslint-loader",
     options: {
-      failOnWarning: true,
+      //failOnWarning: true,
     }
   },
   {

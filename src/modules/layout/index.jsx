@@ -1,3 +1,4 @@
+/* eslint import/no-unresolved: 0 */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
@@ -23,12 +24,6 @@ const Layout = ({ children }) =>
       <Link to="/todos">
         <span>
           Todos
-        </span>
-      </Link>
-      &nbsp;&nbsp;
-      <Link to="/users">
-        <span>
-          Users
         </span>
       </Link>
     </div>

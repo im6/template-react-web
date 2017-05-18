@@ -36,7 +36,7 @@ class LoadingPanel extends React.Component {
 }
 
 LoadingPanel.propTypes = {
-  url: PropTypes.string.isRequired,
+  url: PropTypes.string,
 };
 
 function mapStateToProps({ auth }) {
