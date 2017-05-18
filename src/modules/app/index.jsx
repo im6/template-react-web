@@ -47,6 +47,7 @@ class App extends React.Component {
   }
 
   render() {
+    debugger;
     const me = this;
     return (<Layout>
       <QueueAnim
@@ -67,8 +68,8 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  children: PropTypes.object.isRequired,
-  routes: PropTypes.array,
+  children: PropTypes.isRequired,
+  routes: PropTypes.isRequired,
 };
 
 export default App;

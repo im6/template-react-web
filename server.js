@@ -1,7 +1,17 @@
+/* eslint strict: 0, no-console: 0 */
 "use strict";
-let app = require('./bin/app'),
-  port = process.env.PORT || 5000;
+const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
+const globalConfig = require('./server/config/global');
+const route = require('./server/route');
+const app = express();
 
-app.listen(port, function () {
-    console.log('Example app listening on port: '+ port);
+app.use(express.static(globalConfig.publicDir));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(route);
+
+const server = app.listen(globalConfig.port, function () {
+    console.log(`app is listening to port: ${globalConfig.port}`);
 });

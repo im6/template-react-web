@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
+import { Card, Button } from 'antd';
 import TodoList from './components/TodoList';
 
 const Todos = ({ list, isLoading, dispatch }) => {
@@ -13,11 +14,21 @@ const Todos = ({ list, isLoading, dispatch }) => {
       },
     });
   };
-  return (<TodoList
-    todos={list}
-    getTodoList={fn1}
-    isLoading={isLoading}
-  />);
+  return (<Card
+    title="Todo List"
+    extra={<a>More</a>}
+  >
+    <TodoList
+      todos={list}
+      isLoading={isLoading}
+    />
+    <br />
+    <br />
+    <br />
+    <Button type="primary" onClick={fn1}>
+      Load
+    </Button>
+  </Card>);
 };
 
 Todos.propTypes = {
