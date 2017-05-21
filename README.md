@@ -31,12 +31,12 @@ do the style copping
 
 - ant.design(latest)
 - express.js
-- react 15.4
+- react 15.5
 - redux
 - react-redux 5.0.3
 - react-router 3.0
 - react-saga
-- webpack 2.2
+- webpack 2.5.1
 - es2015(es6)
 - babel
 - less
