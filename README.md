@@ -3,6 +3,7 @@
 =========================
 
 An unopinionate react starter for SPA.
+For a lite version, go to [react_starter_lite](https://github.com/zj1926/react_starter_lite)
 If you prefer a react-server-side rendering solution, please go to [react-starter-kit](https://github.com/kriasoft/react-starter-kit)
 
 
@@ -48,7 +49,7 @@ do the style copping
 ## How Does It Work?
 
 Clone the repo to your local, make some customize if you'd like.
-during the server running, set **env.DEV = true**
+during the server running, set **env.NODE_ENV = dev**
 Enjoy!
 
 ## License
