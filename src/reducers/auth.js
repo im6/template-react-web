@@ -1,6 +1,6 @@
 /* eslint no-useless-computed-key: 0, object-shorthand: 0 */
 import { handleActions } from 'redux-actions';
-import { Map as immap } from 'immutable';
+import Immutable from 'immutable';
 
 const auth = handleActions({
   ['auth/login'](state) {
@@ -22,9 +22,20 @@ const auth = handleActions({
     });
   },
 
-}, immap({
+}, Immutable.fromJS({
   isAuth: false,
   url: null,
+  users: [
+    {
+      username: 'John',
+    },
+    {
+      username: 'Timothy',
+    },
+    {
+      username: 'Evan',
+    },
+  ],
 }));
 
 export default auth;
