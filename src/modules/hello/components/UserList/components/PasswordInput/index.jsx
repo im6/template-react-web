@@ -25,24 +25,21 @@ class PasswordInput extends React.Component {
   onBlur(a) {
     const me = this;
     if (a === 'pass1') {
-      me.validate();
+      const isValid = me.validate();
+      if (isValid) {
+        me.props.onChange(me.state.pass0);
+      } else {
+        me.props.onChange(null);
+      }
+      me.setState({
+        error: !isValid,
+      });
     }
   }
 
   validate() {
     const me = this;
-    const good = (me.state.pass0 === me.state.pass1) && passReg.test(me.state.pass0);
-    if (good) {
-      me.setState({
-        error: false,
-      });
-      me.props.onChange(me.state.pass0);
-    } else {
-      me.setState({
-        error: true,
-      });
-      me.props.onChange(null);
-    }
+    return (me.state.pass0 === me.state.pass1) && passReg.test(me.state.pass0);
   }
 
   render() {
@@ -71,7 +68,7 @@ class PasswordInput extends React.Component {
       <br />
       {
         me.state.error ? <Tag color="red">
-          Invalid Password!
+          Inconsistent Password!
         </Tag> : null
       }
 
