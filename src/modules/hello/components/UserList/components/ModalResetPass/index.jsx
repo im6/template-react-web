@@ -25,7 +25,7 @@ class ModalResetPass extends React.Component {
     const me = this;
     const result = (
       <Modal
-        width={700}
+        width={440}
         title={<h3>Reset Password</h3>}
         visible={me.props.isVisible}
         cancelText="Cancel"
@@ -35,7 +35,7 @@ class ModalResetPass extends React.Component {
       >
         <label htmlFor>Username: </label>
         &nbsp;
-        <b>{me.props.user.get('username')}</b>
+        <b style={{ fontSize: '1.5em' }}>{me.props.user.get('username')}</b>
         <br />
         <br />
         <PasswordInput onChange={me.onPassChange.bind(me)} />

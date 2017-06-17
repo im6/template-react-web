@@ -45,18 +45,24 @@ class PasswordInput extends React.Component {
   render() {
     const me = this;
     const result = (<div>
-      <label htmlFor>New Password: </label>&nbsp;
+      <label htmlFor>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        New Password:
+      </label>&nbsp;&nbsp;
       <Input
         type="password"
         className={style.input}
         value={me.state.pass0}
         onChange={me.onChange.bind(me, 'pass0')}
       />
-      &nbsp;&nbsp;
-      &nbsp;&nbsp;
-      &nbsp;&nbsp;
+      <br />
+      <br />
 
-      <label htmlFor>Re-enter Password: </label>&nbsp;
+      <label htmlFor>
+        Re-enter Password:
+      </label>&nbsp;&nbsp;
       <Input
         type="password"
         className={style.input}
@@ -64,10 +70,8 @@ class PasswordInput extends React.Component {
         onBlur={me.onBlur.bind(me, 'pass1')}
         onChange={me.onChange.bind(me, 'pass1')}
       />
-      <br />
-      <br />
       {
-        me.state.error ? <Tag color="red">
+        me.state.error ? <Tag style={{ marginLeft: 10 }} color="red">
           Inconsistent Password!
         </Tag> : null
       }
