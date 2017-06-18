@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/jinouwuque/react_starter#readme",
   "devDependencies": {
-    "antd": "^2.10.2",
+    "antd": "^2.11.0",
     "autoprefixer": "^6.7.7",
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.3",
@@ -81,5 +81,7 @@
     "express": "^4.14.0",
     "prop-types": "^15.5.10"
   },
-  "pre-commit": ["lint"]
+  "pre-commit": [
+    "lint"
+  ]
 }
