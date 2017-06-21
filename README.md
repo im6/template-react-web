@@ -38,7 +38,7 @@ do the style copping
 - react-redux 5.0.3
 - react-router 3.0
 - react-saga
-- webpack 2.5.1
+- webpack 3.0
 - es2015(es6)
 - babel
 - less

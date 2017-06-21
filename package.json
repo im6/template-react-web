@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "webpack --progress --colors --watch --config webpack/watch.js",
-    "hot": "webpack-dev-server --progress --profile --colors --config webpack/hot.js",
+    "hot": "webpack-dev-server --inline --progress --profile --colors --config webpack/hot.js",
     "prebuild": "clear && echo start cleaning... && rm -rf public && echo clearning fininshed!",
     "build": "webpack --config webpack/build.js",
     "lint": "eslint --ext .js,.jsx src/"
@@ -57,7 +57,7 @@
     "qs": "^6.4.0",
     "rc-queue-anim": "^1.0.3",
     "rc-tween-one": "^0.10.1",
-    "react": "^15.5.4",
+    "react": "^15.6.1",
     "react-dipper": "^0.1.3",
     "react-dom": "^15.5.4",
     "react-hot-loader": "1.3.0",
@@ -73,8 +73,8 @@
     "redux-saga": "^0.12.0",
     "style-loader": "^0.13.2",
     "url-loader": "^0.5.8",
-    "webpack": "^2.5.1",
-    "webpack-dev-server": "^2.4.5"
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
