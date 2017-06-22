@@ -23,10 +23,6 @@ npm start
 ```
 Watch the source change and reload when debugging with the server side(using express.js here)
 
-```
-npm run lint
-```
-do the style copping
 
 
 ## Highlight
