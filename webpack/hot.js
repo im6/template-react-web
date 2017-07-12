@@ -32,7 +32,7 @@ Object.assign(baseTemplate, {
     host: asset.constant.host,
     proxy: {
       '*': {
-        target: 'http://localhost:8080',
+        target: 'http://localhost:8080', // NOTE: your express.js server port number
         secure: false
       }
     }

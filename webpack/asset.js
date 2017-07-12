@@ -160,14 +160,14 @@ var plugins = {
       hash:true,
       showErrors: false
     }),
-    commonsChunk,
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
       "process.env": {
         NODE_ENV: JSON.stringify("dev")
       }
     }),
-    new FriendlyErrors()
+    new FriendlyErrors(),
+    commonsChunk,
   ],
   build: [
     new webpack.optimize.UglifyJsPlugin({
@@ -192,7 +192,7 @@ var plugins = {
       hash:true,
       showErrors: false
     }),
-    commonsChunk
+    commonsChunk,
   ]
 };
 
@@ -201,7 +201,6 @@ var entry = {
       './src/entry/index.jsx',
       'webpack/hot/only-dev-server',
       'webpack-dev-server/client?http://0.0.0.0:' + PORT
-
     ],
     watch:{
       app: './src/entry/index.jsx',
