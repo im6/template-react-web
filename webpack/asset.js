@@ -140,7 +140,7 @@ var plugins = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
-      title: 'React Starter DEV',
+      title: 'React Starter HOT DEV',
       template: 'src/template/index.html',
       //favicon: 'src/content/img/favicon.ico',
       hash:true,

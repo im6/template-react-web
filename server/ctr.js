@@ -38,6 +38,6 @@ module.exports = {
     });
   },
   static: function(req, res, next){
-    res.sendFile(path.resolve(__dirname, `../${globalConfig.publicDir}/index.html`));
+    res.sendFile(path.resolve(__dirname, `../public/index.html`));
   },
 };

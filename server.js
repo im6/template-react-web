@@ -7,7 +7,7 @@ const globalConfig = require('./server/config/global');
 const route = require('./server/route');
 const app = express();
 
-app.use(express.static(globalConfig.publicDir));
+app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(route);
