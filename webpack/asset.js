@@ -139,7 +139,13 @@ var plugins = {
   hot: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    commonsChunk,
+    new HtmlWebpackPlugin({
+      title: 'React Starter DEV',
+      template: 'src/template/index.html',
+      //favicon: 'src/content/img/favicon.ico',
+      hash:true,
+      showErrors: false
+    }),
     new webpack.DefinePlugin({
       "process.env": {
         NODE_ENV: JSON.stringify("dev")
@@ -191,10 +197,12 @@ var plugins = {
 };
 
 var entry = {
-    hot:{
-      app: './src/entry/index.jsx',
-      vendor: VENDORS
-    },
+    hot:[
+      './src/entry/index.jsx',
+      'webpack/hot/only-dev-server',
+      'webpack-dev-server/client?http://0.0.0.0:' + PORT
+
+    ],
     watch:{
       app: './src/entry/index.jsx',
       vendor: VENDORS

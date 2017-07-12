@@ -8,8 +8,8 @@
     "npm": "^4.1.1"
   },
   "scripts": {
-    "start": "webpack --progress --colors --watch --config webpack/watch.js",
-    "hot": "webpack-dev-server --inline --progress --profile --colors --config webpack/hot.js",
+    "start": "webpack-dev-server --inline --progress --profile --colors --config webpack/hot.js",
+    "watch": "webpack --progress --colors --watch --config webpack/watch.js",
     "prebuild": "clear && echo start cleaning... && rm -rf public && echo clearning fininshed!",
     "build": "webpack --config webpack/build.js",
     "lint": "eslint --ext .js,.jsx src/"

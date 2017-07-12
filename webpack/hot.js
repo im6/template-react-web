@@ -16,7 +16,7 @@ Object.assign(baseTemplate, {
   output: {
     publicPath: '/',
     path: path.join(__dirname, '../public'),
-    filename: 'app.js'
+    filename: 'bundle.js'
   },
   devServer: {
     contentBase: "./public",
