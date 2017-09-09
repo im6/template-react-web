@@ -11,19 +11,14 @@ If you prefer a react-server-side rendering solution, please go to [react-starte
 ## cli example
 
 ```
-npm run hot
+npm install
+npm start
 ```
 Run webpack hot server
 ```
 npm run build
 ```
 Make a production build with minification.
-```
-npm start
-```
-Watch the source change and reload when debugging with the server side(using express.js here)
-
-
 
 ## Highlight
 
