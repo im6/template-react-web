@@ -2,7 +2,7 @@
   "name": "react_starter",
   "version": "1.0.0",
   "description": "react starter with all the popular packages",
-  "main": "index.js",
+  "main": "server.js",
   "engines": {
     "node": ">=4.5.0",
     "npm": "^4.1.1"
