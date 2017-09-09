@@ -9,8 +9,6 @@
   },
   "scripts": {
     "start": "webpack-dev-server --open --inline --progress --profile --colors --config webpack/hot.js",
-    "watch": "webpack --progress --colors --watch --config webpack/watch.js",
-    "prebuild": "clear && echo start cleaning... && rm -rf public && echo clearning fininshed!",
     "build": "webpack --config webpack/build.js",
     "lint": "eslint --ext .js,.jsx src/"
   },
@@ -37,6 +35,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
     "babel-runtime": "^6.23.0",
+    "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.25.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^12.0.0",
@@ -54,6 +53,7 @@
     "less-loader": "^2.2.3",
     "postcss-loader": "^1.3.3",
     "pre-commit": "^1.2.2",
+    "prop-types": "^15.5.10",
     "qs": "^6.4.0",
     "rc-queue-anim": "^1.0.3",
     "rc-tween-one": "^0.10.1",
@@ -78,8 +78,7 @@
   },
   "dependencies": {
     "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "prop-types": "^15.5.10"
+    "express": "^4.14.0"
   },
   "pre-commit": [
     "lint"
