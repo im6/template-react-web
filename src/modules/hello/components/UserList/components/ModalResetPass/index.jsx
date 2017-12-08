@@ -33,7 +33,7 @@ class ModalResetPass extends React.Component {
         onOk={me.onOK.bind(me)}
         onCancel={me.props.onCancel.bind(me)}
       >
-        <label htmlFor>Username: </label>
+        <label htmlFor="test">Username: </label>
         &nbsp;
         <b style={{ fontSize: '1.5em' }}>{me.props.user.get('username')}</b>
         <br />

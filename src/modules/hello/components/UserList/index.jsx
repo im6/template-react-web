@@ -46,10 +46,12 @@ class UserList extends React.Component {
     const tableColumns = [
       {
         title: 'Username',
+        key: 'username',
         render: r => r.get('username'),
       },
       {
         title: 'Options',
+        key: 'option',
         render: r => (
           <div>
             <Button

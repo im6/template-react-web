@@ -45,7 +45,7 @@ class PasswordInput extends React.Component {
   render() {
     const me = this;
     const result = (<div>
-      <label htmlFor>
+      <label htmlFor="test">
         &nbsp;
         &nbsp;
         &nbsp;
@@ -60,7 +60,7 @@ class PasswordInput extends React.Component {
       <br />
       <br />
 
-      <label htmlFor>
+      <label htmlFor="test">
         Re-enter Password:
       </label>&nbsp;&nbsp;
       <Input
