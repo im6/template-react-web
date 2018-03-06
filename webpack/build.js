@@ -24,6 +24,7 @@ var commonsChunk = new webpack.optimize.CommonsChunkPlugin({
   ];
 
 Object.assign(base, {
+  mode: 'production',
   devtool: 'cheap-module-source-map',
   entry: {
     app: './src/entry/index_prod.jsx',

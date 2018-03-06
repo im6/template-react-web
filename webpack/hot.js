@@ -7,6 +7,7 @@ var webpack = require('webpack'),
   PORT = "3000";
 
 Object.assign(base, {
+  mode: 'development',
   devtool: 'source-map',
   entry: [
     './src/entry/index.jsx',
@@ -19,6 +20,7 @@ Object.assign(base, {
     filename: 'bundle.js'
   },
   plugins: [
+    new webpack.LoaderOptionsPlugin({ options: {} }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
