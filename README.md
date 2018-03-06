@@ -22,14 +22,14 @@ Make a production build with minification.
 
 ## Highlight
 
-- ant.design(latest)
+- ant.design
 - express.js
-- react 15.5
+- react 16.2
 - redux
 - react-redux 5.0.3
 - react-router 3.0
 - react-saga
-- webpack 3.0
+- webpack 4.1
 - es2015(es6)
 - babel
 - less
