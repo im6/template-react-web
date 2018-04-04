@@ -24,7 +24,7 @@ Make a production build with minification.
 
 - ant.design
 - express.js
-- react 16.2
+- react 16.3
 - redux
 - react-redux 5.0.3
 - react-router 3.0
