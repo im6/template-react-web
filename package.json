@@ -31,7 +31,6 @@
     "autoprefixer": "^6.7.7",
     "babel-loader": "^8.0.5",
     "babel-plugin-import": "^1.11.0",
-    "babel-runtime": "^6.23.0",
     "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.25.0",
     "eslint": "^3.19.0",
