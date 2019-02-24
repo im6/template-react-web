@@ -1,5 +1,4 @@
-var path = require('path'),
-  antDir = process.platform === 'win32' ? /node_modules\\antd\\lib/ :  /node_modules\/antd\/lib/;
+const antDir = process.platform === 'win32' ? /node_modules\\antd\\lib/ : /node_modules\/antd\/lib/;
 
 module.exports = {
   resolve: {
@@ -7,42 +6,41 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        enforce: "pre",
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        include: [
-          path.join(__dirname, '../src')
-        ],
-        loader: "eslint-loader",
-        options: {
-          failOnWarning: true,
-        }
-      },
+      // {
+      //   enforce: 'pre',
+      //   test: /\.jsx?$/,
+      //   exclude: /node_modules/,
+      //   include: [
+      //     path.join(__dirname, '../src'),
+      //   ],
+      //   loader: 'eslint-loader',
+      //   options: {
+      //     failOnWarning: true,
+      //   },
+      // },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: [{
           loader: 'babel-loader',
           options: {
-            "presets": ["es2015","react", "stage-0"],
-            "plugins": [
-              "transform-runtime",
-              ["import", {
-                "libraryName": "antd",
-                "libraryDirectory": "lib",
-                "style": true  // use less, 'css' to css build
-              }]
-            ]
-          }
-        }]
+            presets: ['es2015', 'react', 'stage-0'],
+            plugins: [
+              'transform-runtime',
+              ['import', {
+                libraryName: 'antd',
+                libraryDirectory: 'lib',
+                style: true,  // use less, 'css' to css build
+              }],
+            ],
+          },
+        }],
       },
       {
         test: /\.less$/,
         use: ['style-loader', 'css-loader', 'less-loader'],
-        include: antDir
+        include: antDir,
       },
-
       {
         test: /\.less$/,
         use: [
@@ -51,12 +49,12 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: true,
-              localIdentName: '[hash:base64:5]'
-            }
+              localIdentName: '[hash:base64:5]',
+            },
           },
-          'less-loader'
+          'less-loader',
         ],
-        exclude: antDir
+        exclude: antDir,
       },
       {
         test: /\.css$/,
@@ -65,18 +63,20 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              modules: true
-            }
+              modules: true,
+            },
           },
           {
             loader: 'postcss-loader',
             options: {
-              plugins: function () {
+              // eslint-disable-next-line
+              plugins: () => {
                 return [
-                  require('autoprefixer')
+                  // eslint-disable-next-line
+                  require('autoprefixer'),
                 ];
-              }
-            }
+              },
+            },
           },
         ],
       },
@@ -86,9 +86,9 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              limit: 10000
-            }
-          }
+              limit: 10000,
+            },
+          },
         ],
       },
       {
@@ -98,15 +98,15 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 10000,
-              mimetype: 'application/font-woff'
-            }
-          }
+              mimetype: 'application/font-woff',
+            },
+          },
         ],
       },
       {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        use: ['file-loader']
-      }
+        use: ['file-loader'],
+      },
     ],
   },
 

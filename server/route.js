@@ -1,7 +1,7 @@
-'use strict';
-const express = require('express'),
-  router = express.Router(),
-  ctr = require("./ctr");
+const express = require('express');
+/* eslint new-cap: 0 */
+const router = express.Router();
+const ctr = require('./ctr');
 
 router.get('/hello', ctr.hello);
 router.post('/auth', ctr.auth);

@@ -1,22 +1,13 @@
-'use strict';
-
-const globalConfig = require('./config/global'),
-  path = require('path');
-
-const privateFn = {
-  test: 123,
-};
+const path = require('path');
 
 module.exports = {
-  hello: function(req, res, next){
+  hello: (req, res) => {
     res.json({
       status: 'success',
       data: 'hello from server',
     });
   },
-  auth: function(req, res, next){
-    console.log(`username: ${req.body.username}`);
-    console.log(`password: ${req.body.password}`);
+  auth: (req, res) => {
     setTimeout(() => {
       res.json({
         status: 'success',
@@ -26,7 +17,7 @@ module.exports = {
       });
     }, 1000);
   },
-  todos: function(req, res, next){
+  todos: (req, res) => {
     res.json({
       status: 'success',
       data: [
@@ -37,7 +28,7 @@ module.exports = {
       ],
     });
   },
-  static: function(req, res, next){
-    res.sendFile(path.resolve(__dirname, `../public/index.html`));
+  static: (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../public/index.html'));
   },
 };

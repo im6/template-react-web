@@ -1,10 +1,10 @@
-"use strict";
-var webpack = require('webpack'),
-  HtmlWebpackPlugin = require('html-webpack-plugin'),
-  path = require('path'),
-  base = require('./base'),
-  HOST = "127.0.0.1",
-  PORT = "3000";
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const base = require('./base');
+
+const HOST = '127.0.0.1';
+const PORT = '3000';
 
 Object.assign(base, {
   mode: 'development',
@@ -12,12 +12,12 @@ Object.assign(base, {
   entry: [
     './src/entry/index.jsx',
     'webpack/hot/only-dev-server',
-    'webpack-dev-server/client?http://0.0.0.0:' + PORT,
+    `webpack-dev-server/client?http://0.0.0.0:${PORT}`,
   ],
   output: {
     publicPath: '/',
     path: path.join(__dirname, '../public'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   plugins: [
     new webpack.LoaderOptionsPlugin({ options: {} }),
@@ -26,18 +26,17 @@ Object.assign(base, {
     new HtmlWebpackPlugin({
       title: 'React Starter HOT DEV',
       template: 'src/template/index.html',
-      //favicon: 'src/content/img/favicon.ico',
-      hash:true,
-      showErrors: false
+      hash: true,
+      showErrors: false,
     }),
     new webpack.DefinePlugin({
-      "process.env": {
-        NODE_ENV: JSON.stringify("dev")
-      }
+      'process.env': {
+        NODE_ENV: JSON.stringify('dev'),
+      },
     }),
   ],
   devServer: {
-    contentBase: "./public",
+    contentBase: './public',
     // do not print bundle build stats
     noInfo: true,
     // enable HMR
@@ -51,10 +50,10 @@ Object.assign(base, {
     proxy: {
       '*': {
         target: 'http://localhost:8080', // NOTE: your express.js server port number
-        secure: false
-      }
-    }
-  }
+        secure: false,
+      },
+    },
+  },
 });
 
 module.exports = base;

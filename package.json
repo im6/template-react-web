@@ -10,7 +10,7 @@
   "scripts": {
     "start": "webpack-dev-server --open --inline --progress --profile --colors --config webpack/hot.js",
     "build": "webpack --config webpack/build.js",
-    "lint": "eslint --ext .js,.jsx src/"
+    "lint": "eslint --ext .js,.jsx src/ server/ webpack/"
   },
   "repository": {
     "type": "git",

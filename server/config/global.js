@@ -1,5 +1,3 @@
-'use strict';
-
 const env = process.env;
 const isDev = env.NODE_ENV === 'dev';
 
