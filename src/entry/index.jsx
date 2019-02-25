@@ -8,7 +8,7 @@ import createSagaMiddleware from 'redux-saga';
 import { browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer as routing } from 'react-router-redux';
 import RedBox from 'redbox-react';
-import createLogger from 'redux-logger';
+import { createLogger } from 'redux-logger';
 import sagaInitiator from '../config/saga';
 import moduleReducers from '../config/reducer';
 import Routes from '../routes/index.jsx';
@@ -20,7 +20,7 @@ const logger = createLogger();
 const initialState = {};
 const enhancer = compose(
   applyMiddleware(sagaMiddleware, logger),
-  window.devToolsExtension ? window.devToolsExtension() : f => f
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 

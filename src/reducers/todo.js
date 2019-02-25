@@ -3,6 +3,9 @@ import { handleActions } from 'redux-actions';
 import Immutable from 'immutable';
 
 const todos = handleActions({
+  ['hello/get'](state) {
+    return state;
+  },
   ['todos/get'](state) {
     return state.merge({
       loading: true,

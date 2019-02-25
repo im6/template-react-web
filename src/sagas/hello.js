@@ -1,5 +1,4 @@
-import { takeLatest, delay } from 'redux-saga';
-import { call, put, fork } from 'redux-saga/effects';
+import { call, put, takeLatest, delay } from 'redux-saga/effects';
 import { createAction } from 'redux-actions';
 import { notification } from 'antd';
 import requester from '../services/requester';
@@ -25,11 +24,6 @@ function* getHelloRes() {
 }
 
 function* watchers() {
-  yield [
-    takeLatest('hello/get', getHelloRes),
-  ];
+  yield takeLatest('hello/get', getHelloRes);
 }
-
-export default function* () {
-  yield fork(watchers);
-}
+export default watchers;

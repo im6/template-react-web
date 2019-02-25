@@ -7,8 +7,6 @@ import { connect } from 'react-redux';
 import UserList from './components/UserList';
 
 const Hello = ({ click, users }) => <Card>
-  Hello World
-  <br />
   <Button onClick={click}>
     click
   </Button>

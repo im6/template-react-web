@@ -6,18 +6,6 @@ module.exports = {
   },
   module: {
     rules: [
-      // {
-      //   enforce: 'pre',
-      //   test: /\.jsx?$/,
-      //   exclude: /node_modules/,
-      //   include: [
-      //     path.join(__dirname, '../src'),
-      //   ],
-      //   loader: 'eslint-loader',
-      //   options: {
-      //     failOnWarning: true,
-      //   },
-      // },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,

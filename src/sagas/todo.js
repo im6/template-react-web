@@ -1,12 +1,11 @@
-import { takeLatest, delay } from 'redux-saga';
-import { call, put, fork } from 'redux-saga/effects';
+import { takeLatest, delay, call, put, fork } from 'redux-saga/effects';
 import { createAction } from 'redux-actions';
 import requester from '../services/requester';
 
 function* fetchTodos(action) {
   try {
     const payload = yield call(requester, 'POST', '/todos', action.payload);
-    yield delay(200);
+    yield delay(2000);
     const actCreater = createAction('todos/get/success');
     yield put(actCreater(payload));
   } catch (e) {
@@ -16,9 +15,7 @@ function* fetchTodos(action) {
 }
 
 function* watchers() {
-  yield [
-    takeLatest('todos/get', fetchTodos),
-  ];
+  yield takeLatest('todos/get', fetchTodos);
 }
 
 export default function* () {
