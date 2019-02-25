@@ -20,6 +20,7 @@ const logger = createLogger();
 const initialState = {};
 const enhancer = compose(
   applyMiddleware(sagaMiddleware, logger),
+  // eslint-disable-next-line
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
