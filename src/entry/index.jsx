@@ -20,7 +20,7 @@ const middlewareList = [
 ];
 
 if (isDev) {
-  const reduxLogger = require('redux-logger');
+  const reduxLogger = require('redux-logger'); // not really conditional loading
 
   const logger = reduxLogger.createLogger();
   middlewareList.push(logger);
