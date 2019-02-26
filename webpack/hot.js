@@ -31,7 +31,7 @@ Object.assign(base, {
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('dev'),
+        NODE_ENV: JSON.stringify('development'),
       },
     }),
   ],

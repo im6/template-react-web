@@ -7,30 +7,36 @@ import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer as routing } from 'react-router-redux';
-import RedBox from 'redbox-react';
-import { createLogger } from 'redux-logger';
 import sagaInitiator from '../config/saga';
 import moduleReducers from '../config/reducer';
 import Routes from '../routes/index.jsx';
 
+const isDev = process.env.NODE_ENV === 'development';
 const appDom = document.getElementById('app');
 const sagaMiddleware = createSagaMiddleware();
-const logger = createLogger();
+
+const middlewareList = [
+  sagaMiddleware,
+];
+
+if (isDev) {
+  const reduxLogger = require('redux-logger');
+
+  const logger = reduxLogger.createLogger();
+  middlewareList.push(logger);
+}
 
 const initialState = {};
 const enhancer = compose(
-  applyMiddleware(sagaMiddleware, logger),
+  applyMiddleware(...middlewareList),
   // eslint-disable-next-line
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-
 const store = createStore(combineReducers({
   ...moduleReducers, routing,
 }), initialState, enhancer);
-
 sagaInitiator(sagaMiddleware);
-
 const history = syncHistoryWithStore(browserHistory, store);
 
 let render = () => {
@@ -45,19 +51,16 @@ let render = () => {
   );
 };
 
-if (module.hot) {
-  const renderNormally = render;
-  const renderException = (error) => {
-    ReactDOM.render(<RedBox error={error} />, appDom);
-  };
+if (isDev && module.hot) {
+  const RedBox = require('redbox-react').default;
 
+  const renderNormally = render;
   render = () => {
     try {
       renderNormally();
     } catch (error) {
-      renderException(error);
+      ReactDOM.render(<RedBox error={error} />, appDom);
     }
   };
 }
-
 render();
