@@ -2,7 +2,6 @@
 
 [![build status](http://img.shields.io/travis/reactjs/react-redux/master.svg?style=flat-square)](http://www.javascript.fun) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](http://www.javascript.fun) [![Rating](https://img.shields.io/amo/stars/dustman.svg)](http://www.javascript.fun)
 
-=========================
 
 An unopinionate react starter for SPA.  
   
