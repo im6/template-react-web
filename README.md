@@ -1,14 +1,18 @@
-# [react starter](https://github.com/zj1926/react_starter)
+# react starter
 
 [![build status](http://img.shields.io/travis/reactjs/react-redux/master.svg?style=flat-square)](http://www.javascript.fun) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](http://www.javascript.fun) [![Rating](https://img.shields.io/amo/stars/dustman.svg)](http://www.javascript.fun)
 
 
-An unopinionate react starter for SPA.  
+An unopinionate react starter for SPA(Non-SSR).  
   
 For a lite version, go to [react_starter_lite](https://github.com/zj1926/react_starter_lite).  
-If you prefer a react-server-side rendering solution, please go to [react-starter-kit](https://github.com/kriasoft/react-starter-kit)
+If you prefer a react-server-side rendering solution, please go to [react-ssr](https://github.com/im6/template-react-ssr) [react-starter-kit](https://github.com/kriasoft/react-starter-kit)
 
 ## cli example
+
+```sh
+node server/index.js # run test server
+```
 
 ```sh
 npm install
