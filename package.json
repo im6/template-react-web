@@ -1,5 +1,5 @@
 {
-  "name": "react_starter",
+  "name": "template-react-antd",
   "version": "1.0.0",
   "description": "react starter with all the popular packages",
   "main": "server.js",
@@ -12,11 +12,8 @@
     "build": "webpack --config webpack/build.js",
     "lint": "eslint --ext .js,.jsx src/ server/ webpack/"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jinouwuque/react_starter.git"
-  },
-  "author": "",
+  "repository": "git+https://github.com/im6/template-react-antd.git",
+  "author": "im6 <ee2win@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jinouwuque/react_starter/issues"
@@ -73,5 +70,6 @@
   },
   "pre-commit": [
     "lint"
-  ]
+  ],
+  "private": false
 }
