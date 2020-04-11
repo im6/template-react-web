@@ -1,23 +1,13 @@
-/* eslint react/forbid-prop-types: 0, no-unused-vars: 0 */
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Router, Route, IndexRoute } from 'react-router';
-import App from '../modules/app';
-import ErrorPage from '../modules/errorPage';
-import Hello from '../modules/hello';
-import Todos from '../modules/todos';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import Hello from "../containers/hello";
+import Todos from "../containers/todo";
 
-const Routes = ({ history, store }) => <Router history={history}>
-  <Route path="/" component={App}>
-    <IndexRoute component={Hello} />
+const Routes = () => (
+  <Switch>
+    <Route exact path="/" component={Hello} />
     <Route path="todos" component={Todos} />
-    <Route path="*" component={ErrorPage} />
-  </Route>
-</Router>;
-
-Routes.propTypes = {
-  history: PropTypes.object.isRequired,
-  store: PropTypes.object.isRequired,
-};
+  </Switch>
+);
 
 export default Routes;
