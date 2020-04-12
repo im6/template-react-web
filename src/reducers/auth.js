@@ -4,8 +4,8 @@ import Immutable from "immutable";
 
 const auth = handleActions(
   {
-    ["auth/update/name"](state, { payload }) {
-      return state.set("name", payload);
+    ["auth/do/nothing"](state, { payload }) {
+      return state;
     },
   },
   Immutable.fromJS({

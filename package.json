@@ -4,7 +4,7 @@
   "description": "react starter",
   "scripts": {
     "dev": "webpack --config ./webpack/dev.js",
-    "build": "webpack --config webpack/build.js",
+    "build": "webpack --config webpack/prod.js",
     "lint": "eslint --ext .js,.jsx src/ webpack/"
   },
   "repository": "git+https://github.com/im6/template-react-antd.git",

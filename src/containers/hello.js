@@ -8,13 +8,4 @@ const mapStateToProps = ({ auth }) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    click: () => {
-      const actcr = createAction("hello/get");
-      dispatch(actcr());
-    },
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Hello);
+export default connect(mapStateToProps)(Hello);
