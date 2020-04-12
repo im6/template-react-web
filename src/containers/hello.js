@@ -4,7 +4,7 @@ import Hello from "../components/Hello";
 
 const mapStateToProps = ({ auth }) => {
   return {
-    users: auth.get("users"),
+    name: auth.get("name"),
   };
 };
 

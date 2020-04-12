@@ -62,6 +62,17 @@
     "regenerator-runtime": "^0.13.5",
     "uuid": "^7.0.3"
   },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      [
+        "@babel/preset-react",
+        {
+          "runtime": "classic"
+        }
+      ]
+    ]
+  },
   "eslintConfig": {
     "extends": [
       "airbnb",

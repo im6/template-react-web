@@ -1,16 +1,12 @@
 /* eslint import/no-unresolved: 0 */
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import style from "./style.less";
-import Footer from "./components/Footer/index.jsx";
 import Header from "./components/Header/index.jsx";
 
 const Layout = ({ children }) => (
-  <div
-    className={style.layout}
-    style={{ background: `#f5f6f7 url(${img}) repeat-x 0 0` }}
-  >
+  <div className={style.layout}>
     <Header />
     <div className={style.menuContainer}>
       Link: &nbsp;&nbsp;&nbsp;&nbsp;
@@ -23,7 +19,6 @@ const Layout = ({ children }) => (
       </Link>
     </div>
     <div className={style.main}>{children}</div>
-    <Footer className={style.footer} />
   </div>
 );
 

@@ -1,31 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
-import TodoList from "./components/TodoList";
 
-const Todos = ({ list, isLoading, dispatch }) => {
-  const fn1 = () => {
-    dispatch({
-      type: "todos/get",
-      payload: {
-        test: "get some todos",
-      },
-    });
-  };
+const Todos = ({ list }) => {
+  console.log(list);
   return (
-    <div>
-      <TodoList todos={list} isLoading={isLoading} />
-      <br />
-      <br />
-      <br />
-      <button onClick={fn1}>Load</button>
-    </div>
+    <ul>
+      {list.map(({ id, name }) => {
+        return <li key={id.toString()}>{name}</li>;
+      })}
+    </ul>
   );
 };
 
 Todos.propTypes = {
-  list: PropTypes.any,
-  dispatch: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired,
+  list: PropTypes.array,
 };
 
 export default Todos;
