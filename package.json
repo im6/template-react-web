@@ -63,6 +63,11 @@
     "regenerator-runtime": "^0.13.5",
     "uuid": "^7.0.3"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint && yarn test"
+    }
+  },
   "babel": {
     "presets": [
       "@babel/preset-env",

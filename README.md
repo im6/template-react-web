@@ -1,6 +1,6 @@
-# template react for website ![](https://github.com/im6/template-react-web/workflows/build/badge.svg)
+# template react for web ![](https://github.com/im6/template-react-web/workflows/build/badge.svg)
 
-## cli example
+## CLI
 
 dev
 
