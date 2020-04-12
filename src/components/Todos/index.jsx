@@ -5,11 +5,6 @@ const Todos = ({ list, onAdd }) => {
   const [edit, setEdit] = useState('');
   return (
     <div>
-      <ul>
-        {list.map(({ id, name }) => (
-          <li key={id.toString()}>{name}</li>
-        ))}
-      </ul>
       <div>
         <label htmlFor="abc123">
           Add: &nbsp;
@@ -33,6 +28,11 @@ const Todos = ({ list, onAdd }) => {
           Add
         </button>
       </div>
+      <ul>
+        {list.map(({ id, name }) => (
+          <li key={id.toString()}>{name}</li>
+        ))}
+      </ul>
     </div>
   );
 };

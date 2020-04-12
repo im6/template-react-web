@@ -6,7 +6,7 @@ dev
 
 ```sh
 yarn install
-yarn start
+yarn dev
 ```
 
 prod

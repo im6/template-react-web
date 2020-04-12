@@ -11,9 +11,9 @@
   "repository": "git+https://github.com/im6/template-react-web.git",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jinouwuque/react_starter/issues"
+    "url": "https://github.com/im6/template-react-web/issues"
   },
-  "homepage": "https://github.com/jinouwuque/react_starter#readme",
+  "homepage": "https://github.com/im6/template-react-web#readme",
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
@@ -93,9 +93,7 @@
     ],
     "rules": {
       "import/no-extraneous-dependencies": 0,
-      "prettier/prettier": [
-        "error"
-      ]
+      "prettier/prettier": 2
     },
     "env": {
       "browser": true,
