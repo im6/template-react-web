@@ -2,31 +2,20 @@
 import { handleActions } from 'redux-actions';
 import Immutable from 'immutable';
 
-const todos = handleActions({
-  ['hello/get'](state) {
-    return state;
+const todos = handleActions(
+  {
+    ['todo/add'](state, { payload }) {
+      const newId = state.getIn(['list', state.get('list').size - 1, 'id']);
+      const newState = state.updateIn(['list'], (v) => {
+        return v.push({ id: newId + 1, name: payload });
+      });
+      return newState;
+    },
   },
-  ['todos/get'](state) {
-    return state.merge({
-      loading: true,
-      list: [],
-    });
-  },
-  ['todos/get/success'](state, action) {
-    return state.merge({
-      loading: false,
-      list: action.payload.data,
-    });
-  },
-  ['todos/get/fail'](state) {
-    return state.merge({
-      loading: false,
-      list: [],
-    });
-  },
-}, Immutable.fromJS({
-  list: [],
-  loading: false,
-}));
+  Immutable.fromJS({
+    list: null,
+    loading: false,
+  })
+);
 
 export default todos;

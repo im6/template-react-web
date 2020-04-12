@@ -1,4 +1,7 @@
-node_modules/
-.idea/
+node_modules
+.idea
+.vscode
 npm-debug.log
-public
+local
+dist
+coverage
