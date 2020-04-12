@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Hello = ({ name }) => (
   <div>
     <h3>
-      Hello
+      Hello, &nbsp;
       {name}
     </h3>
   </div>

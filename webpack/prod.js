@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
+// const CompressionPlugin = require('compression-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
@@ -70,10 +70,10 @@ const client = Object.assign(clientBaseConfig, prodBase, {
       filename: '[name].css?[contenthash]',
     }),
     new OptimizeCssAssetsPlugin(),
-    new CompressionPlugin({
-      filename: '[path]',
-      minRatio: 1,
-    }),
+    // new CompressionPlugin({
+    //   filename: '[path]',
+    //   minRatio: 1,
+    // }),
     new webpack.DefinePlugin({
       'process.env.lastBuildDate': JSON.stringify(
         `${new Date().toLocaleString()} UTC`

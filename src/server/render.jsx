@@ -28,7 +28,7 @@ export default (req, res) => {
   const app = (
     <StaticRouter location={req.url}>
       <Provider store={store}>
-        <Layout>
+        <Layout url={req.url}>
           <Routes />
         </Layout>
       </Provider>

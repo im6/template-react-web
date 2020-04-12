@@ -11,7 +11,7 @@ const Todos = ({ list, onAdd }) => {
         ))}
       </ul>
       <div>
-        <label>
+        <label htmlFor="abc123">
           Add: &nbsp;
           <input
             type="text"

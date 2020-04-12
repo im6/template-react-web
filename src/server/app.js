@@ -1,8 +1,9 @@
 import express from 'express';
 import render from './render';
+import { STATIC_URL } from '../constant';
 
 const app = express();
-app.use('/static', express.static('local/public'));
+app.use('/static', express.static(`${STATIC_URL}/public`));
 app.get('/api/todos', (_, req) => {
   req.send([
     { id: 0, name: 'do 0' },
