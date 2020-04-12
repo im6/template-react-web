@@ -1,9 +1,9 @@
 /* eslint import/no-unresolved: 0 */
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import style from "./style.less";
-import Header from "./components/Header/index.jsx";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import style from './style.less';
+import Header from './components/Header/index.jsx';
 
 const Layout = ({ children }) => (
   <div className={style.layout}>

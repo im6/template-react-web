@@ -1,6 +1,6 @@
 /* eslint import/no-unresolved: 0 */
-import React from "react";
-import style from "./style.less";
+import React from 'react';
+import style from './style.less';
 
 const Header = () => {
   const result = (

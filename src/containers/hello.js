@@ -1,10 +1,9 @@
-import { createAction } from "redux-actions";
-import { connect } from "react-redux";
-import Hello from "../components/Hello";
+import { connect } from 'react-redux';
+import Hello from '../components/Hello';
 
 const mapStateToProps = ({ auth }) => {
   return {
-    name: auth.get("name"),
+    name: auth.get('name'),
   };
 };
 

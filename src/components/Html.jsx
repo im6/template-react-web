@@ -1,5 +1,6 @@
-import React from "react";
-import serialize from "serialize-javascript";
+import React from 'react';
+import PropTypes from 'prop-types';
+import serialize from 'serialize-javascript';
 
 const Html = ({ children, initState, reduxName }) => {
   return (
@@ -17,8 +18,13 @@ const Html = ({ children, initState, reduxName }) => {
         <link href="/static/main.css" rel="stylesheet" />
       </head>
       <body>
-        <div id="app" dangerouslySetInnerHTML={{ __html: children }} />
+        <div
+          id="app"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: children }}
+        />
         <script
+          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
             __html: `window.${reduxName}=${serialize(initState)}`,
           }}
@@ -28,5 +34,9 @@ const Html = ({ children, initState, reduxName }) => {
     </html>
   );
 };
-
+Html.propTypes = {
+  reduxName: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
+  initState: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+};
 export default Html;

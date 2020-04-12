@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const Todos = ({ list, onAdd }) => {
-  const [edit, setEdit] = useState("");
+  const [edit, setEdit] = useState('');
   return (
     <div>
       <ul>
@@ -10,32 +10,36 @@ const Todos = ({ list, onAdd }) => {
           <li key={id.toString()}>{name}</li>
         ))}
       </ul>
-      <form>
-        <label>Add: &nbsp;</label>
-        <input
-          value={edit}
-          onChange={({ target }) => {
-            setEdit(target.value);
-          }}
-        />
+      <div>
+        <label>
+          Add: &nbsp;
+          <input
+            type="text"
+            value={edit}
+            onChange={({ target }) => {
+              setEdit(target.value);
+            }}
+          />
+        </label>
         &nbsp;
         <button
+          type="button"
           onClick={(event) => {
             event.preventDefault();
-            setEdit("");
+            setEdit('');
             onAdd(edit);
           }}
         >
           Add
         </button>
-      </form>
+      </div>
     </div>
   );
 };
 
 Todos.propTypes = {
-  list: PropTypes.array,
-  onAdd: PropTypes.func,
+  list: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onAdd: PropTypes.func.isRequired,
 };
 
 export default Todos;
