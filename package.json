@@ -1,14 +1,14 @@
 {
-  "name": "template-react-antd",
+  "name": "template-react-web",
   "version": "1.0.0",
   "description": "react starter",
   "scripts": {
     "dev": "webpack --config ./webpack/dev.js",
     "build": "webpack --config webpack/prod.js",
-    "lint": "eslint --ext .js,.jsx src/ webpack/",
+    "lint": "eslint src/ webpack/",
     "test": "jest --coverage"
   },
-  "repository": "git+https://github.com/im6/template-react-antd.git",
+  "repository": "git+https://github.com/im6/template-react-web.git",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jinouwuque/react_starter/issues"
