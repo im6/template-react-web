@@ -33,7 +33,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <span>Todos</span>
         </Link> */}
       </div>
-      <Box component="main" sx={{ p: 4, overflow: "auto" }}>
+      <Box component="main" sx={{ pt: 8, px: 5, overflow: "auto" }}>
         {children}
       </Box>
     </div>

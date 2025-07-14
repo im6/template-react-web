@@ -1,6 +1,8 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { renderToPipeableStream } from "react-dom/server";
 import { StaticRouter } from "react-router";
+import { configureStore } from "@reduxjs/toolkit";
+import reducers from "../../reducers/index";
 // import { Provider } from "react-redux";
 // import { createStore, combineReducers } from "redux";
 // import { renderToString, renderToStaticMarkup } from "react-dom/server";
@@ -15,9 +17,18 @@ import { reduxName } from "../../constant";
 import App from "../../components/App/index";
 
 export default (req: FastifyRequest, reply: FastifyReply) => {
+  const initialState = {
+    home: { value: 0 },
+    demo1: { value: 0 },
+    demo2: { value: 0 },
+  };
+  const store = configureStore({
+    reducer: reducers, // Add your reducers here
+    preloadedState: initialState,
+  });
   const { pipe } = renderToPipeableStream(
     <StaticRouter location={req.url}>
-      <App reduxName={reduxName} />
+      <App store={store} reduxName={reduxName} />
     </StaticRouter>,
     {
       bootstrapScripts: ["/public/vendors.js", "/public/main.js"],
