@@ -15,7 +15,7 @@ fastify.register(staticPlugin, {
   prefix: "/public/",
 });
 
-fastify.get("/", renderMiddleware);
 fastify.get("/health", healthCheck);
+fastify.get("/*", renderMiddleware);
 
 export default fastify;

@@ -14,3 +14,13 @@ prod
 ```sh
 yarn build
 ```
+
+## Library
+
+- React.js
+- React-Router
+- Redux
+- Fastify
+- Webpack
+- Typescript
+- RxJS

@@ -1,13 +1,13 @@
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import React, { useState } from "react";
-interface LayoutProps {
+interface IProps {
   name?: string;
 }
-const Hello: React.FC<LayoutProps> = ({ name }) => {
+const Home: React.FC<IProps> = ({ name }) => {
   const [count, setCount] = useState(0);
   return (
     <div>
-      <h3>Hello, {name}</h3>
+      <Typography>Hello, {name}. Welcome to Home!</Typography>
       <Button variant="contained" onClick={() => setCount(count + 1)}>
         You clicked me {count} times
       </Button>
@@ -15,4 +15,4 @@ const Hello: React.FC<LayoutProps> = ({ name }) => {
   );
 };
 
-export default Hello;
+export default Home;
