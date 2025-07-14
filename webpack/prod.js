@@ -1,65 +1,37 @@
-const path = require('path');
-const webpack = require('webpack');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require("path");
+const webpack = require("webpack");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 // const CompressionPlugin = require('compression-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const autoprefixer = require('autoprefixer');
+// const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 const {
   clientBaseConfig,
   serverBaseConfig,
   localIdentName,
   include,
-} = require('./base');
+} = require("./base");
 
 const prodBase = {
-  mode: 'production',
+  mode: "production",
 };
 
 const client = Object.assign(clientBaseConfig, prodBase, {
   output: {
     // publicPath: '//dkny.oss-cn-hangzhou.aliyuncs.com/2/',
-    path: path.join(__dirname, '../dist/public'),
-    filename: '[name].js?[contenthash]',
+    path: path.join(__dirname, "../dist/public"),
+    filename: "[name].js?[contenthash]",
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.tsx?$/,
         include,
         use: [
           {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env', '@babel/preset-react'],
-              plugins: ['@babel/plugin-syntax-dynamic-import'],
-            },
+            loader: "ts-loader",
           },
-        ],
-      },
-      {
-        test: /\.less$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                localIdentName,
-              },
-            },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: [autoprefixer()],
-            },
-          },
-          'less-loader',
         ],
       },
     ],
@@ -67,26 +39,32 @@ const client = Object.assign(clientBaseConfig, prodBase, {
   plugins: [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: '[name].css?[contenthash]',
+      filename: "[name].css?[contenthash]",
     }),
-    new OptimizeCssAssetsPlugin(),
+    // new OptimizeCssAssetsPlugin(),
     // new CompressionPlugin({
     //   filename: '[path]',
     //   minRatio: 1,
     // }),
+
+    new CopyPlugin({
+      patterns: [{ from: "static", to: "./" }],
+    }),
     new webpack.DefinePlugin({
-      'process.env.lastBuildDate': JSON.stringify(
+      "process.env.lastBuildDate": JSON.stringify(
         `${new Date().toLocaleString()} UTC`
       ),
     }),
   ],
   optimization: {
-    // minimize: false,
     splitChunks: {
-      chunks: 'all',
+      chunks: "all",
       cacheGroups: {
-        default: false,
-        vendors: false,
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          chunks: "all",
+        },
       },
     },
   },
@@ -94,38 +72,22 @@ const client = Object.assign(clientBaseConfig, prodBase, {
 
 const server = Object.assign(serverBaseConfig, prodBase, {
   output: {
-    path: path.join(__dirname, '../dist/server'),
-    filename: 'index.js',
+    path: path.join(__dirname, "../dist/server"),
+    filename: "index.js",
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.tsx?$/,
         include,
-        use: ['babel-loader'],
-      },
-      {
-        test: /\.less$/,
-        include,
-        use: [
-          {
-            loader: 'css-loader',
-            options: {
-              onlyLocals: true,
-              modules: {
-                localIdentName,
-              },
-            },
-          },
-          'less-loader',
-        ],
+        use: ["ts-loader"],
       },
     ],
   },
   plugins: [
     new CleanWebpackPlugin(),
     new webpack.DefinePlugin({
-      'process.env.lastBuildDate': JSON.stringify(
+      "process.env.lastBuildDate": JSON.stringify(
         `${new Date().toLocaleString()} EST`
       ),
     }),

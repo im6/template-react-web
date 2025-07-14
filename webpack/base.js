@@ -1,22 +1,22 @@
-const path = require('path');
-const nodeExternals = require('webpack-node-externals');
+const path = require("path");
+const nodeExternals = require("webpack-node-externals");
 
 const resolve = {
-  extensions: ['.js', '.jsx'],
+  extensions: [".js", ".jsx", ".ts", ".tsx"],
 };
 
 exports.clientBaseConfig = {
   resolve,
-  entry: path.join(__dirname, '../src/client'),
+  entry: path.join(__dirname, "../src/client/index"),
 };
 
 exports.serverBaseConfig = {
-  target: 'node',
+  target: "node",
   resolve,
   externals: [nodeExternals()],
-  entry: path.join(__dirname, '../src/server'),
+  entry: path.join(__dirname, "../src/server/index"),
 };
 
-exports.localIdentName = '[hash:base64:5]';
-exports.staticAssetsPath = 'assets/static';
-exports.include = path.resolve(__dirname, '../src');
+exports.localIdentName = "[hash:base64:5]";
+exports.staticAssetsPath = "assets/static";
+exports.include = path.resolve(__dirname, "../src");

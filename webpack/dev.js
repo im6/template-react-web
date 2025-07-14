@@ -1,117 +1,85 @@
-const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ServerStartPlugin = require('./plugins/ServerStartPlugin');
+const path = require("path");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ServerStartPlugin = require("./plugins/ServerStartPlugin");
 
 const {
   clientBaseConfig,
   serverBaseConfig,
   localIdentName,
   include,
-} = require('./base');
+} = require("./base");
 
 const devBase = {
-  watch: true,
-  mode: 'development',
-  devtool: 'inline-source-map',
-  watchOptions: {
-    ignored: /node_modules/,
-  },
+  mode: "development",
+  devtool: "inline-source-map",
 };
 
 const client = Object.assign(clientBaseConfig, devBase, {
+  watch: true,
+  watchOptions: {
+    ignored: /node_modules/,
+  },
+
   optimization: {
     splitChunks: {
-      chunks: 'all',
+      chunks: "all",
       cacheGroups: {
-        default: false,
-        vendors: false,
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          chunks: "all",
+        },
       },
     },
   },
   output: {
-    publicPath: '/static/',
-    path: path.join(__dirname, '../local/public'),
-    filename: '[name].js',
+    publicPath: "/static/",
+    path: path.join(__dirname, "../local/public"),
+    filename: "[name].js",
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.tsx?$/,
         include,
         use: [
           {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env', '@babel/preset-react'],
-              plugins: ['@babel/plugin-syntax-dynamic-import'],
-            },
+            loader: "ts-loader",
+            // options: {
+            //   configFile: "tsconfig.client.json",
+            // },
           },
-        ],
-      },
-
-      {
-        test: /\.less$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: true,
-            },
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                localIdentName,
-              },
-            },
-          },
-          'less-loader',
         ],
       },
     ],
   },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-    }),
-  ],
+  plugins: [new CleanWebpackPlugin()],
 });
 
 const server = Object.assign(serverBaseConfig, devBase, {
   output: {
-    path: path.join(__dirname, '../local/server'),
-    filename: 'index.js',
+    path: path.join(__dirname, "../local/server"),
+    filename: "index.js",
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.tsx?$/,
         include,
-        use: ['babel-loader'],
-      },
-      {
-        test: /\.less$/,
-        include,
+        exclude: /node_modules/,
         use: [
           {
-            loader: 'css-loader',
-            options: {
-              onlyLocals: true,
-              modules: {
-                localIdentName,
-              },
-            },
+            loader: "ts-loader",
+            // options: {
+            //   configFile: "tsconfig.server.json",
+            // },
           },
-          'less-loader',
         ],
       },
     ],
   },
-  plugins: [new CleanWebpackPlugin(), new ServerStartPlugin('./local/server')],
+  plugins: [new CleanWebpackPlugin(), new ServerStartPlugin("./local/server")],
 });
 
 module.exports = [client, server];
