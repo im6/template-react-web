@@ -1,8 +1,8 @@
 import { Provider } from "react-redux";
-import Html from "../../components/Html/index";
 import Layout from "../Layout/index";
-import ThemeProvider from "../ThemeProvider/index";
 import Routes from "../Routes/index";
+import Html from "../../components/Html/index";
+import ThemeProvider from "../ThemeProvider/index";
 
 interface IProps {
   store: any;

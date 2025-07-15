@@ -18,11 +18,8 @@ const Html: React.FC<HtmlProps> = ({ children }) => {
         <meta name="robots" content="INDEX,FOLLOW" />
         <meta name="keywords" content="react starter" />
         <meta name="description" content="react starter" />
-        {/* <link href="/static/main.css" rel="stylesheet" /> */}
       </head>
-      <body>
-        <div id="root">{children}</div>
-      </body>
+      <body>{children}</body>
     </html>
   );
 };

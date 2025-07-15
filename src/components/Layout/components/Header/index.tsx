@@ -1,19 +1,21 @@
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
+import { FC } from "react";
+import {
+  AppBar,
+  Button,
+  Box,
+  Toolbar,
+  Typography,
+  IconButton,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
-import { Button } from "@mui/material";
 
 interface IProps {
   drawerOpen: boolean;
   onClickMenu: (a: any) => void;
 }
 
-const Header: React.FC<IProps> = ({ drawerOpen, onClickMenu }) => {
+const Header: FC<IProps> = ({ drawerOpen, onClickMenu }) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -32,7 +34,7 @@ const Header: React.FC<IProps> = ({ drawerOpen, onClickMenu }) => {
             {drawerOpen ? <MenuOpenIcon /> : <MenuIcon />}
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            React.js
+            React.js ({process.env.NODE_ENV === "development" ? "Dev" : "Prod"})
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>

@@ -1,19 +1,21 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
+import { FC } from "react";
 import { Link } from "react-router";
+import {
+  Box,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+import InboxIcon from "@mui/icons-material/MoveToInbox";
 
 interface IProps {
   open: boolean;
   onClose: () => void;
 }
-const LeftNav: React.FC<IProps> = ({ open, onClose }) => {
+const LeftNav: FC<IProps> = ({ open, onClose }) => {
   const toggleDrawer = () => {
     onClose();
   };
