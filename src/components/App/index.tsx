@@ -5,14 +5,12 @@ import ThemeProvider from "../ThemeProvider/index";
 import Routes from "../Routes/index";
 
 interface IProps {
-  reduxName: string;
   store: any;
 }
 
-const App: React.FC<IProps> = ({ reduxName, store }) => (
+const App: React.FC<IProps> = ({ store }) => (
   <Provider store={store}>
-    // The store is provided to the entire application via the Redux Provider.
-    <Html reduxName={reduxName} initState={{}}>
+    <Html>
       <ThemeProvider>
         <Layout>
           <Routes />

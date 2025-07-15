@@ -2,11 +2,9 @@ import React from "react";
 
 type HtmlProps = {
   children: any;
-  initState: any;
-  reduxName: string;
 };
 
-const Html: React.FC<HtmlProps> = ({ children, initState, reduxName }) => {
+const Html: React.FC<HtmlProps> = ({ children }) => {
   return (
     <html lang="en">
       <head>
@@ -23,12 +21,6 @@ const Html: React.FC<HtmlProps> = ({ children, initState, reduxName }) => {
         {/* <link href="/static/main.css" rel="stylesheet" /> */}
       </head>
       <body>
-        <script
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{
-            __html: `window.${reduxName}=${JSON.stringify(initState)}`,
-          }}
-        />
         <div id="root">{children}</div>
       </body>
     </html>

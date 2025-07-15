@@ -2,36 +2,30 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { renderToPipeableStream } from "react-dom/server";
 import { StaticRouter } from "react-router";
 import { configureStore } from "@reduxjs/toolkit";
+
 import reducers from "../../reducers/index";
-// import { Provider } from "react-redux";
-// import { createStore, combineReducers } from "redux";
-// import { renderToString, renderToStaticMarkup } from "react-dom/server";
-
-// import moduleReducers from "../reducers";
-// import Routes from "../routes";
-
-// import Layout from "../../components/Layout";
-
 import { reduxName } from "../../constant";
-// import Html from "../../components/Html";
 import App from "../../components/App/index";
 
 export default (req: FastifyRequest, reply: FastifyReply) => {
   const initialState = {
-    home: { value: 0 },
-    demo1: { value: 0 },
-    demo2: { value: 0 },
+    home: { value: 1 },
+    demo1: { value: 2 },
+    demo2: { value: 3 },
   };
   const store = configureStore({
-    reducer: reducers, // Add your reducers here
+    reducer: reducers,
     preloadedState: initialState,
   });
   const { pipe } = renderToPipeableStream(
     <StaticRouter location={req.url}>
-      <App store={store} reduxName={reduxName} />
+      <App store={store} />
     </StaticRouter>,
     {
       bootstrapScripts: ["/public/vendors.js", "/public/main.js"],
+      bootstrapScriptContent: `window.${reduxName} = ${JSON.stringify(
+        initialState
+      )}`,
       onShellReady() {
         reply.header("content-type", "text/html");
         pipe(reply.raw);
