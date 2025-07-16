@@ -17,6 +17,11 @@ export default (req: FastifyRequest, reply: FastifyReply) => {
     reducer: reducers,
     preloadedState: initialState,
   });
+  const nonce = "122";
+  reply.header(
+    "Content-Security-Policy",
+    `default-src 'self'; script-src 'strict-dynamic' 'nonce-${nonce}';`
+  );
   const { pipe } = renderToPipeableStream(
     <StaticRouter location={req.url}>
       <App store={store} />
