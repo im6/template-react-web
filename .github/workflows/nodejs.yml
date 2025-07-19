@@ -15,6 +15,6 @@ jobs:
     steps:
       - name: test console
         run: |
-          console.log('Hello, world!')
+          echo "Hello, world!"
         env:
           CI: true
