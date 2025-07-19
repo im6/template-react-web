@@ -8,7 +8,7 @@ interface IProps {
 }
 
 const AppThemeProvider: FC<IProps> = ({ children }) => {
-  const isDark = useSelector((state: any) => state.home.isDark);
+  const isDark = useSelector((state: any) => state.ui.isDark);
   return (
     <MuiThemeProvider theme={isDark ? darkTheme : lightTheme}>
       {children}

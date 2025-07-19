@@ -1,23 +1,29 @@
 import React, { useState } from "react";
-import { Button, Typography } from "@mui/material";
+import { Box, Button, Typography, CircularProgress } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 interface IProps {
   name?: string;
 }
 const Home: React.FC<IProps> = ({ name }) => {
-  const homeValue = useSelector((state: any) => state.home.value);
+  const demo1State = useSelector((state: any) => state.demo1);
   const dispatch = useDispatch();
   return (
-    <div>
+    <Box>
       <Typography>Hello, {name}. Welcome to Home!</Typography>
-      <Typography>Current Value: {homeValue}</Typography>
+      <Typography>Current Value: {demo1State.value}</Typography>
       <Button
         variant="contained"
-        onClick={() => dispatch({ type: "home/sync-add" })}
+        sx={{ my: 3 }}
+        onClick={() => dispatch({ type: "demo1/sync-add" })}
       >
         Add async 10
       </Button>
-    </div>
+      {demo1State.loading && (
+        <Box>
+          <CircularProgress />
+        </Box>
+      )}
+    </Box>
   );
 };
 

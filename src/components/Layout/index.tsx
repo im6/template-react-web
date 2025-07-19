@@ -13,7 +13,7 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [leftNavOpen, setLeftNavOpen] = useState(false);
   const dispatch = useDispatch();
-  const darkMode = useSelector((state: any) => state.home.isDark);
+  const darkMode = useSelector((state: any) => state.ui.isDark);
   const handleClickMenu = () => {
     setLeftNavOpen(!leftNavOpen);
   };
@@ -21,7 +21,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     setLeftNavOpen(false);
   };
   const handleToggleDarkMode = () => {
-    dispatch({ type: "home/toggle" });
+    dispatch({ type: "ui/toggle" });
   };
   return (
     <Fragment>

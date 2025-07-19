@@ -1,16 +1,17 @@
 import reducerDemo1 from "./demo1";
 import reducerDemo2 from "./demo2";
-import reducerHome from "./home";
+import reducerUi from "./ui";
 
 export interface ReduxSchema {
+  ui: typeof reducerUi;
   demo1: typeof reducerDemo1;
   demo2: typeof reducerDemo2;
-  home: typeof reducerHome;
 }
+
 const reducers: ReduxSchema = {
+  ui: reducerUi,
   demo1: reducerDemo1,
   demo2: reducerDemo2,
-  home: reducerHome,
 };
 
 export default reducers;
