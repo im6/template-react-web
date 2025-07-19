@@ -10,7 +10,7 @@ import App from "../../components/App/index";
 export default (req: FastifyRequest, reply: FastifyReply) => {
   const initialState = {
     ui: { value: 1, isDark: false },
-    demo1: { value: 2 },
+    demo1: { value: 2, loading: false },
     demo2: { value: 3 },
   };
   const store = configureStore({

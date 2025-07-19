@@ -1,6 +1,6 @@
+import reducerUi from "./ui";
 import reducerDemo1 from "./demo1";
 import reducerDemo2 from "./demo2";
-import reducerUi from "./ui";
 
 export interface ReduxSchema {
   ui: typeof reducerUi;

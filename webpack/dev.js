@@ -1,5 +1,6 @@
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 const ServerStartPlugin = require("./plugins/ServerStartPlugin");
 
 const {
@@ -53,7 +54,12 @@ const client = Object.assign(clientBaseConfig, devBase, {
       },
     ],
   },
-  plugins: [new CleanWebpackPlugin()],
+  plugins: [
+    new CleanWebpackPlugin(),
+    new CopyPlugin({
+      patterns: [{ from: "static", to: "./" }],
+    }),
+  ],
 });
 
 const server = Object.assign(serverBaseConfig, devBase, {
