@@ -12,7 +12,7 @@ const AppRoutes = () => (
       index
       element={
         <Suspense fallback={<CircularProgress />}>
-          <Home name="Demo1" />
+          <Home name="World" />
         </Suspense>
       }
     />

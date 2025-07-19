@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { FC } from "react";
 import { Box, Button, Typography, CircularProgress } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 interface IProps {
   name?: string;
 }
-const Home: React.FC<IProps> = ({ name }) => {
+const Home: FC<IProps> = ({ name }) => {
   const demo1State = useSelector((state: any) => state.demo1);
   const dispatch = useDispatch();
   return (
@@ -13,16 +13,12 @@ const Home: React.FC<IProps> = ({ name }) => {
       <Typography>Current Value: {demo1State.value}</Typography>
       <Button
         variant="contained"
+        disabled={demo1State.loading}
         sx={{ my: 3 }}
         onClick={() => dispatch({ type: "demo1/sync-add" })}
       >
-        Add async 10
+        {demo1State.loading ? <CircularProgress size={24} /> : "Add async 10"}
       </Button>
-      {demo1State.loading && (
-        <Box>
-          <CircularProgress />
-        </Box>
-      )}
     </Box>
   );
 };
