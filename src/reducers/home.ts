@@ -14,6 +14,9 @@ const oneReducer = createReducer(initialState, (builder) => {
     })
     .addCase(createAction<number>("home/sync-add/success"), (state, action) => {
       state.value += 10;
+    })
+    .addCase(createAction("home/toggle"), (state) => {
+      state.isDark = !state.isDark;
     });
 });
 

@@ -9,13 +9,22 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
 
 interface IProps {
+  darkMode: boolean;
   drawerOpen: boolean;
   onClickMenu: (a: any) => void;
+  onToggleDarkMode: () => void;
 }
 
-const Header: FC<IProps> = ({ drawerOpen, onClickMenu }) => {
+const Header: FC<IProps> = ({
+  darkMode,
+  drawerOpen,
+  onClickMenu,
+  onToggleDarkMode,
+}) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -34,8 +43,16 @@ const Header: FC<IProps> = ({ drawerOpen, onClickMenu }) => {
             {drawerOpen ? <MenuOpenIcon /> : <MenuIcon />}
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            React.js ({process.env.NODE_ENV === "development" ? "Dev" : "Prod"})
+            React.js ({process.env.NODE_ENV === "development" ? "DEV" : "PROD"})
           </Typography>
+          <IconButton
+            sx={{ mr: 1 }}
+            onClick={onToggleDarkMode}
+            color="inherit"
+            aria-label="toggle dark mode"
+          >
+            {darkMode ? <DarkModeIcon /> : <LightModeIcon />}
+          </IconButton>
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>

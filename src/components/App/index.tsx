@@ -2,9 +2,9 @@ import { Provider } from "react-redux";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import Layout from "../Layout/index";
-import Routes from "../Routes/index";
 import Html from "../../components/Html/index";
 import ThemeProvider from "../ThemeProvider/index";
+import Routes from "../../modules/Routes/index";
 
 interface IProps {
   store: any;
