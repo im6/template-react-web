@@ -17,7 +17,7 @@ export default (req: FastifyRequest, reply: FastifyReply) => {
     reducer: reducers,
     preloadedState: initialState,
   });
-  const nonce = "122";
+  const nonce = "124";
   reply.header(
     "Content-Security-Policy",
     `default-src 'self'; script-src 'strict-dynamic' 'nonce-${nonce}';`
