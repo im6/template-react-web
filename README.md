@@ -2,14 +2,14 @@
 
 ## CLI
 
-dev
+local development
 
 ```sh
 yarn install
 yarn dev
 ```
 
-prod
+build for production
 
 ```sh
 yarn build
