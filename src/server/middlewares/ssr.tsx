@@ -9,7 +9,7 @@ import App from "../../components/App/index";
 
 export default (req: FastifyRequest, reply: FastifyReply) => {
   const initialState = {
-    home: { value: 1 },
+    home: { value: 1, isDark: true },
     demo1: { value: 2 },
     demo2: { value: 3 },
   };

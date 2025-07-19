@@ -2,25 +2,15 @@
 
 ## CLI
 
-dev
+local development
 
 ```sh
 yarn install
 yarn dev
 ```
 
-prod
+build for production
 
 ```sh
 yarn build
 ```
-
-## Library
-
-- React.js
-- React-Router
-- Redux
-- Fastify
-- Webpack
-- Typescript
-- RxJS
