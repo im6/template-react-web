@@ -4,15 +4,24 @@ import { reduxName } from "../../constant";
 
 import epics from "../epics/index";
 import reducer from "../../reducers/index";
+import { getDarkModeFromCookies } from "../../util/cookie";
 
 const epicMddleware = createEpicMiddleware();
+const ssrState = (window as { [key: string]: any })[reduxName] as any;
+
+const initState = {
+  ...ssrState,
+  ui: {
+    ...ssrState.ui,
+    isDark: getDarkModeFromCookies(),
+  },
+};
 
 const store = configureStore({
   // @ts-ignore
   reducer,
   devTools: process.env.NODE_ENV !== "production",
-  // @ts-ignore
-  preloadedState: window[reduxName],
+  preloadedState: initState,
   // @ts-ignore
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(epicMddleware),

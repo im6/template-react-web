@@ -1,4 +1,5 @@
 import Fastify from "fastify";
+import cookie from "@fastify/cookie";
 import staticPlugin from "@fastify/static";
 const path = require("node:path");
 
@@ -13,6 +14,9 @@ const fastify = Fastify({
 fastify.register(staticPlugin, {
   root: path.join(process.cwd(), `${STATIC_URL}/public`),
   prefix: "/public/",
+});
+fastify.register(cookie, {
+  secret: "my-secret",
 });
 
 fastify.get("/health", healthCheck);
