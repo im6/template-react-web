@@ -9,7 +9,6 @@ const Html: React.FC<HtmlProps> = ({ children }) => {
     <html lang="en">
       <head>
         <title>React Starter</title>
-        <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
         <meta charSet="UTF-8" />
         <meta
           name="viewport"
@@ -18,6 +17,18 @@ const Html: React.FC<HtmlProps> = ({ children }) => {
         <meta name="robots" content="INDEX,FOLLOW" />
         <meta name="keywords" content="react starter" />
         <meta name="description" content="react starter" />
+        <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+
+        <link
+          href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@100..900&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body>{children}</body>
     </html>
