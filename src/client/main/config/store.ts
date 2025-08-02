@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { createEpicMiddleware } from "redux-observable";
-import { reduxName } from "../../constant";
+import { reduxName } from "../../../constant";
 
 import epics from "../epics/index";
-import reducer from "../../reducers/index";
-import { getDarkModeFromCookies } from "../../util/cookie";
+import reducer from "../reducers/index";
+import { getDarkModeFromCookies } from "../../../util/cookie";
 
 const epicMddleware = createEpicMiddleware();
 const ssrState = (window as { [key: string]: any })[reduxName] as any;

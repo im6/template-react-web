@@ -1,14 +1,13 @@
 import { FC } from "react";
-import { useSelector } from "react-redux";
 import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
 import { lightTheme, darkTheme } from "./theme";
 
 interface IProps {
+  isDark: boolean;
   children: any;
 }
 
-const AppThemeProvider: FC<IProps> = ({ children }) => {
-  const isDark = useSelector((state: any) => state.ui.isDark);
+const AppThemeProvider: FC<IProps> = ({ isDark, children }) => {
   return (
     <MuiThemeProvider theme={isDark ? darkTheme : lightTheme}>
       {children}

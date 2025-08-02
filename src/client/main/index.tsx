@@ -1,12 +1,15 @@
 import { hydrateRoot } from "react-dom/client";
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router";
 
 import store from "./config/store";
-import App from "../components/App/index";
+import App from "./components/App/index";
 
 hydrateRoot(
   document,
   <BrowserRouter>
-    <App store={store} />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </BrowserRouter>
 );

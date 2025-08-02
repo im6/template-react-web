@@ -1,5 +1,4 @@
 import React, { ReactNode, useState, Fragment } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import { Box } from "@mui/material";
 
@@ -7,13 +6,17 @@ import Header from "./components/Header/index";
 import LeftNav from "./components/LeftNav/index";
 
 interface LayoutProps {
+  darkMode: boolean;
   children?: ReactNode;
+  onToggleDarkMode: () => void;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC<LayoutProps> = ({
+  children,
+  darkMode,
+  onToggleDarkMode,
+}) => {
   const [leftNavOpen, setLeftNavOpen] = useState(false);
-  const dispatch = useDispatch();
-  const darkMode = useSelector((state: any) => state.ui.isDark);
   const handleClickMenu = () => {
     setLeftNavOpen(!leftNavOpen);
   };
@@ -21,7 +24,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     setLeftNavOpen(false);
   };
   const handleToggleDarkMode = () => {
-    dispatch({ type: "ui/toggle" });
+    onToggleDarkMode();
   };
   return (
     <Fragment>

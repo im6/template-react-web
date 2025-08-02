@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { Box, Button, Typography, CircularProgress } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 interface IProps {
@@ -7,6 +7,9 @@ interface IProps {
 const Home: FC<IProps> = ({ name }) => {
   const demo1State = useSelector((state: any) => state.demo1);
   const dispatch = useDispatch();
+  useEffect(() => {
+    console.log("xxx lazyload home");
+  }, []);
   return (
     <Box>
       <Typography>Hello, {name}. Welcome to Home!</Typography>

@@ -21,6 +21,8 @@ fastify.register(cookie, {
 
 fastify.get("/health", healthCheck);
 fastify.get("/login", renderLogin);
-fastify.get("/*", renderApp);
+fastify.get("/demo1", renderApp);
+fastify.get("/demo2", renderApp);
+fastify.get("/", renderApp);
 
 export default fastify;

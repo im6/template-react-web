@@ -1,6 +1,6 @@
 import { ofType } from "redux-observable";
 import { tap, EMPTY, switchMap } from "rxjs";
-import { toggleDarkModeCookie } from "../../util/cookie";
+import { toggleDarkModeCookie } from "../../../util/cookie";
 
 const epic0 = (action$: any) =>
   action$.pipe(
