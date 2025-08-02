@@ -1,5 +1,6 @@
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
+const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
 
 const { clientBaseConfig, devBase } = require("./base");
 
@@ -15,29 +16,14 @@ const client = Object.assign(clientBaseConfig, devBase, {
     filename: "[name].bundle.js",
     chunkFilename: "[name].chunk.js",
   },
-
-  optimization: {
-    splitChunks: {
-      chunks: "all",
-      cacheGroups: {
-        react: {
-          test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
-          name: "react-vendor",
-          chunks: "all",
-          priority: 20,
-        },
-        vendors: {
-          test: /[\\/]node_modules[\\/]/,
-          name: "vendors",
-          chunks: "all",
-          priority: 10,
-        },
-      },
-    },
-  },
   plugins: [
     new CopyPlugin({
       patterns: [{ from: "static", to: "./" }],
+    }),
+    new WebpackManifestPlugin({
+      fileName: path.join(__dirname, "../local/server/manifest.json"),
+      publicPath: "",
+      writeToFileEmit: true, // Important for dev mode
     }),
   ],
 });

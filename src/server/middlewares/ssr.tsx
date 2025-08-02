@@ -1,14 +1,25 @@
+import fs from "fs";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { renderToPipeableStream } from "react-dom/server";
 
 import { reduxName } from "../../constant";
 import AppShell from "../../components/AppShell/index";
 
+const outputFolder = process.env.NODE_ENV === "development" ? "local" : "dist";
+let manifest: Record<string, string> = {};
+try {
+  manifest = JSON.parse(
+    fs.readFileSync(`./${outputFolder}/server/manifest.json`, "utf8")
+  );
+} catch (error) {
+  console.error("Could not load manifest file:", error);
+}
+
 const getMainChunkName = (url: string): string => {
   const chunkMap = {
-    "/": "home",
-    "/demo1": "demo1",
-    "/demo2": "demo2",
+    "/": manifest["main.home.js"],
+    "/demo1": manifest["main.demo1.js"],
+    "/demo2": manifest["main.demo2.js"],
   } as const;
 
   // @ts-ignore
@@ -34,10 +45,10 @@ export const renderApp = (req: FastifyRequest, reply: FastifyReply) => {
   const thisChunkName = getMainChunkName(req.url);
   const { pipe } = renderToPipeableStream(<AppShell isDark={isDark} />, {
     bootstrapScripts: [
-      "/public/react-vendor.bundle.js",
-      "/public/vendors.bundle.js",
-      "/public/main.bundle.js",
-      `/public/main.${thisChunkName}.chunk.js`,
+      `/public/${manifest["react-vendor.js"]}`,
+      `/public/${manifest["vendors.js"]}`,
+      `/public/${manifest["main.js"]}`,
+      `/public/${thisChunkName}`,
     ],
     bootstrapScriptContent: `window.${reduxName} = ${JSON.stringify(
       initialState

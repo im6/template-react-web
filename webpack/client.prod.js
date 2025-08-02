@@ -1,7 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const CopyPlugin = require("copy-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
 // const CompressionPlugin = require('compression-webpack-plugin');
 // const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
@@ -21,7 +21,6 @@ const client = Object.assign(clientBaseConfig, prodBase, {
     chunkFilename: "[name].chunk.[contenthash].js",
   },
   plugins: [
-    new CleanWebpackPlugin(),
     // new CompressionPlugin({
     //   filename: '[path]',
     //   minRatio: 1,
@@ -34,6 +33,10 @@ const client = Object.assign(clientBaseConfig, prodBase, {
       "process.env.lastBuildDate": JSON.stringify(
         `${new Date().toLocaleString()} UTC`
       ),
+    }),
+    new WebpackManifestPlugin({
+      fileName: path.join(__dirname, "../dist/server/manifest.json"),
+      publicPath: "",
     }),
   ],
 });
