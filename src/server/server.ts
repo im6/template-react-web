@@ -4,7 +4,7 @@ import staticPlugin from "@fastify/static";
 const path = require("node:path");
 
 import { healthCheck } from "./middlewares/api";
-import renderMiddleware from "./middlewares/ssr";
+import { renderApp, renderLogin } from "./middlewares/ssr";
 import { STATIC_URL } from "../constant";
 
 const fastify = Fastify({
@@ -20,6 +20,7 @@ fastify.register(cookie, {
 });
 
 fastify.get("/health", healthCheck);
-fastify.get("/*", renderMiddleware);
+fastify.get("/login", renderLogin);
+fastify.get("/*", renderApp);
 
 export default fastify;

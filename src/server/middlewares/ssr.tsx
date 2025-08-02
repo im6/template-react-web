@@ -7,7 +7,7 @@ import reducers from "../../reducers/index";
 import { reduxName } from "../../constant";
 import App from "../../components/App/index";
 
-export default (req: FastifyRequest, reply: FastifyReply) => {
+export const renderApp = (req: FastifyRequest, reply: FastifyReply) => {
   const isDarkModeStr = req.cookies.darkMode;
   const initialState = {
     ui: { value: 1, isDark: isDarkModeStr === "true" },
@@ -43,4 +43,8 @@ export default (req: FastifyRequest, reply: FastifyReply) => {
       },
     }
   );
+};
+
+export const renderLogin = (req: FastifyRequest, reply: FastifyReply) => {
+  reply.send("hello login page");
 };
