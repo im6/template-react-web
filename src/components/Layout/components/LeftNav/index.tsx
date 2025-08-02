@@ -8,6 +8,7 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Typography,
 } from "@mui/material";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 
@@ -28,7 +29,7 @@ const LeftNav: FC<IProps> = ({ open, onClose }) => {
             <ListItemIcon>
               <InboxIcon />
             </ListItemIcon>
-            <ListItemText primary="Home" />
+            <ListItemText primary={<Typography>Home</Typography>} />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
@@ -36,7 +37,7 @@ const LeftNav: FC<IProps> = ({ open, onClose }) => {
             <ListItemIcon>
               <InboxIcon />
             </ListItemIcon>
-            <ListItemText primary="Demo 1" />
+            <ListItemText primary={<Typography>Demo 1</Typography>} />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
@@ -44,7 +45,7 @@ const LeftNav: FC<IProps> = ({ open, onClose }) => {
             <ListItemIcon>
               <InboxIcon />
             </ListItemIcon>
-            <ListItemText primary="Demo 2" />
+            <ListItemText primary={<Typography>Demo 2</Typography>} />
           </ListItemButton>
         </ListItem>
       </List>
