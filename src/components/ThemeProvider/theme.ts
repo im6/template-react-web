@@ -2,7 +2,7 @@ import { createTheme } from "@mui/material/styles";
 
 const sharedTheme = {
   typography: {
-    fontFamily: '"Bitcount Prop Single", system-ui;',
+    fontFamily: '"Ubuntu", sans-serif',
     h1: {
       fontWeight: 700,
       fontSize: "2.125rem",

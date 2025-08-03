@@ -11,8 +11,8 @@ const Home: FC<IProps> = ({ name }) => {
     console.log("xxx lazyload home");
   }, []);
   return (
-    <Box>
-      <Typography>Hello, {name}. Welcome to Home!</Typography>
+    <Box sx={{ p: 3, textAlign: "center" }}>
+      <Typography>Hello, Welcome to Home!</Typography>
       <Typography>Current Value: {demo1State.value}</Typography>
       <Button
         variant="contained"
@@ -20,7 +20,7 @@ const Home: FC<IProps> = ({ name }) => {
         sx={{ my: 3 }}
         onClick={() => dispatch({ type: "demo1/sync-add" })}
       >
-        {demo1State.loading ? <CircularProgress size={24} /> : "Add async 10"}
+        {demo1State.loading ? <CircularProgress size={32} /> : "Add async 10"}
       </Button>
     </Box>
   );

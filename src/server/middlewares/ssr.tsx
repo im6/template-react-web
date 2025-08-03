@@ -4,6 +4,7 @@ import { renderToPipeableStream } from "react-dom/server";
 
 import { reduxName } from "../../constant";
 import AppShell from "../../components/AppShell/index";
+import LoginApp from "../../client/login/App/index";
 
 const outputFolder = process.env.NODE_ENV === "development" ? "local" : "dist";
 let manifest: Record<string, string> = {};
@@ -66,5 +67,29 @@ export const renderApp = (req: FastifyRequest, reply: FastifyReply) => {
 };
 
 export const renderLogin = (req: FastifyRequest, reply: FastifyReply) => {
-  reply.send("hello login page");
+  const isDarkModeStr = req.cookies.darkMode;
+  const isDark = isDarkModeStr === "true";
+
+  const nonce = "124";
+  reply.header(
+    "Content-Security-Policy",
+    `default-src 'self'; script-src 'strict-dynamic' 'nonce-${nonce}';`
+  );
+
+  const { pipe } = renderToPipeableStream(<LoginApp />, {
+    bootstrapScripts: [
+      `/public/${manifest["react-vendor.js"]}`,
+      `/public/${manifest["vendors.js"]}`,
+      `/public/${manifest["login.js"]}`,
+    ],
+    onShellReady() {
+      reply.header("content-type", "text/html");
+      pipe(reply.raw);
+    },
+    onError(error: any) {
+      console.error("Error during server-side rendering:", error);
+      reply.status(500);
+      reply.send("Internal Server Error: " + error.message);
+    },
+  });
 };

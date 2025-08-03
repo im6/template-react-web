@@ -53,7 +53,9 @@ const Header: FC<IProps> = ({
           >
             {darkMode ? <DarkModeIcon /> : <LightModeIcon />}
           </IconButton>
-          <Button color="inherit">Login</Button>
+          <Button component="a" color="inherit" href="/login">
+            Login
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>

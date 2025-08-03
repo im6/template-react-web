@@ -1,5 +1,5 @@
 import { FC, useEffect } from "react";
-import { Button, Typography } from "@mui/material";
+import { Button, Typography, Box } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 interface IProps {
   name?: string;
@@ -11,7 +11,7 @@ const Demo1: FC<IProps> = ({ name }) => {
     console.log("xxx lazyload demo1");
   }, []);
   return (
-    <div>
+    <Box sx={{ p: 3, textAlign: "center" }}>
       <Typography sx={{ mb: 3 }}>Hello, {name}. Welcome to Demo 1</Typography>
       <Button
         variant="contained"
@@ -19,7 +19,7 @@ const Demo1: FC<IProps> = ({ name }) => {
       >
         state value: {value}
       </Button>
-    </div>
+    </Box>
   );
 };
 
