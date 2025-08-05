@@ -55,7 +55,7 @@ const App: React.FC = () => {
       }}
     >
       <Paper elevation={6} sx={{ p: 4, minWidth: 340, maxWidth: 400 }}>
-        <Typography variant="h5" align="center" mb={2} fontWeight={600}>
+        <Typography variant="h5" align="center" sx={{ mb: 2, fontWeight: 600 }}>
           Sign In
         </Typography>
         {error && (
